@@ -457,9 +457,7 @@ body::before {
     height: 100%;
     object-fit: cover; /* Clave: hace que el video se recorte elegantemente sin estirarse */
     transition: opacity 1.5s ease-in-out; /* Transición sutil y premium ultra suave */
-    /* ¡PROPIEDADES MÁGICAS DE OPTIMIZACIÓN (GPU)! */
-    will-change: opacity;
-    transform: translateZ(0);
+    
 }
 
 /* Estado de los videos para la coreografía de cruce */
