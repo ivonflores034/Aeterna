@@ -474,7 +474,7 @@ body::before {
     /* Forzamos a que el contenedor se estire más hacia la izquierda */
     max-width: 100% !important; 
     width: 100% !important;
-    padding-left: 5% !important; /* Puedes cambiar este 5% por un valor menor (ej. 3% o 40px) para moverlo más a la izquierda */
+    padding-left: 8% !important; /* para moverlo más a la izquierda */
 }
 
 /* O también puedes ajustar la columna del texto directamente: */
