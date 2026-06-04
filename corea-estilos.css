@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PALETA REMODELADA: MODO OSCURO, NEONES SUAVES Y AURORA ROSA/CELESTE
+   PALETA REMODELADA
    ========================================================================== */
 :root {
     --color-negro-fondo: #0A0A0B;
@@ -7,7 +7,7 @@
     --color-blanco-puro: #FFFFFF;
     --color-gris-texto: #A0A0A0;
     
-    /* Tonos de Neón e Identidad unificados */
+    
     --color-azul-firma: #3f6092c7;
     --neon-rosa-suave: rgba(255, 183, 197, 0.8);
     --neon-celeste-suave: rgba(162, 217, 250, 0.8);
@@ -137,7 +137,7 @@ body {
     font-weight: 600;
     letter-spacing: 0.2rem;
     color: var(--color-blanco-puro);
-    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.507);
 }
 
 .subtitulo-premium {
