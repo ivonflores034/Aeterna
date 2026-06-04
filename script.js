@@ -83,8 +83,8 @@ function obtenerIndiceAleatorio(max, indiceActual) {
 }
 
 function inicializarMotorVideos() {
-    const video1 = document.getElementById('bg-video-luxury-1');
-    const video2 = document.getElementById('bg-video-luxury-2');
+    const video1 = document.getElementById('bg-video-1');
+    const video2 = document.getElementById('bg-video-2');
     
     if (!video1 || !video2 || listaVideosLocales.length === 0) return;
 
