@@ -1,18 +1,19 @@
 /* ==========================================================================
-   PALETA PREMIUM Y VARIABLES ATMOSFÉRICAS
+   PALETA PREMIUM: ALTA COSTURA FRANCESA
    ========================================================================== */
 :root {
-    --color-negro-fondo: #070709;      /* Un negro más profundo y puro para dar contraste */
-    --color-tarjeta-glass: rgba(15, 16, 22, 0.35); /* Vidrio mucho más traslúcido y limpio */
+    --color-negro-fondo: #06080F;      /* Un azul medianoche purísimo y ultra profundo */
+    --color-tarjeta-glass: rgba(14, 18, 30, 0.35); /* Cristal sumamente traslúcido y limpio */
     --color-blanco-puro: #FFFFFF;
-    --color-gris-texto: #B5B5BD;       /* Gris con un tinte frío, más legible y elegante */
+    --color-gris-texto: #B8C1D1;       /* Gris con un tinte frío, de alta legibilidad */
     
-    /* Tonos Solicitados Optimizados */
-    --color-azul-firma: rgba(63, 96, 146, 0.7);
-    --neon-rosa-suave: rgba(255, 192, 203, 0.85);   /* Rosa pastel luminoso */
-    --neon-celeste-suave: rgba(173, 216, 230, 0.85);/* Celeste pastel etéreo */
-    --white-neon-glow: rgba(255, 255, 255, 0.95);  /* Blanco neón para textos clave */
-    --color-oro-soft: #E3C598;        /* Un dorado champaña apagado más lujoso */
+    /* Sofisticación Tricolor Francesa */
+    --color-azul-francia: #225096;
+    --color-azul-glow: rgba(56, 149, 255, 0.85);    /* Azul luminoso etéreo */
+    --color-rojo-francia: #8C2434;
+    --color-rojo-glow: rgba(224, 49, 75, 0.85);     /* Rojo vino/carmesí luminoso */
+    --color-plateado-cristal: rgba(230, 236, 247, 0.95); /* Blanco neón/platino */
+    --color-oro-soft: #E0C397;         /* Dorado champaña apagado muy elegante */
 }
 
 html {
@@ -25,19 +26,19 @@ body {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
     position: relative;
-    /* Un degradado lineal limpio de arriba a abajo con una atmósfera sutil en los extremos */
-    background: linear-gradient(to bottom, #0d0e12 0%, #070709 50%, #030304 100%);
+    /* Degradado lineal continuo, sumamente limpio y libre de ruido visual */
+    background: linear-gradient(to bottom, #0a0e1a 0%, #06080f 50%, #030407 100%);
 }
 
 /* ==========================================================================
-   BOTÓN FIJO REGRESAR (MÁS INTEGRADO Y MINIMALISTA)
+   BOTÓN FIJO REGRESAR (ESTILO AERODINÁMICO Y MINIMALISTA)
    ========================================================================== */
 .btn-regresar-fijo {
     position: fixed;
     top: 25px;
     left: 25px;
     z-index: 1000;
-    background-color: rgba(7, 7, 9, 0.4);
+    background-color: rgba(6, 8, 15, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -51,16 +52,16 @@ body {
 }
 
 .btn-regresar-fijo:hover {
-    border-color: var(--white-neon-glow);
+    border-color: var(--color-plateado-cristal);
     color: var(--color-blanco-puro);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
     transform: translateY(-2px);
 }
 
 /* ==========================================================================
-   PÉTALOS DE FLORES HIPER-TENUES (Efecto Polvo de Hadas)
+   DESTELLOS / PARTICULAS FLOTANTES HIPER-TENUES
    ========================================================================== */
-#contenedor-flores {
+#contenedor-nieve {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     pointer-events: none;
@@ -68,25 +69,31 @@ body {
     overflow: hidden;
 }
 
-.flor-caida {
-    position: absolute;
-    color: var(--neon-rosa-suave);
-    opacity: 0.03; /* Aún más tenue para que no compita visualmente con la lectura */
-    font-size: 1rem;
-    animation: caidaDiagonal linear infinite;
+.copo-nieve-caida {
+    position: fixed;
+    top: -5vh;            
+    font-size: 0.9rem;      
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.04; /* Hiper sutil para que parezca polvo estelar sobre los videos */
+    color: var(--color-plateado-cristal); 
+    text-shadow: 0 0 6px rgba(255, 255, 255, 0.4); 
+    animation-name: caidaNieve;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 }
 
-@keyframes caidaDiagonal {
-    0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; }
+@keyframes caidaNieve {
+    0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
     15% { opacity: 0.06; }
     85% { opacity: 0.06; }
-    100% { transform: translateY(110vh) translateX(100px) rotate(360deg); opacity: 0; }
+    100% { transform: translateY(110vh) translateX(60px) rotate(360deg); opacity: 0; }
 }
 
 /* ==========================================================================
    HERO ADAPTATIVO CON VIDEO INMERSIVO
    ========================================================================== */
-.hero-corea {
+.hero-francia {
     position: relative;
     min-height: 70vh;
     display: flex;
@@ -103,14 +110,14 @@ body {
     z-index: 1;
 }
 
-/* Difuminado suave para fundir el video orgánicamente con el fondo negro de la web */
+/* Fundido cinemático para diluir el video orgánicamente con el fondo de la web */
 .video-background-container::after {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to bottom, 
-        rgba(7, 7, 9, 0.1) 0%, 
-        rgba(7, 7, 9, 0.5) 70%, 
+        rgba(6, 8, 15, 0.1) 0%, 
+        rgba(6, 8, 15, 0.5) 70%, 
         var(--color-negro-fondo) 100%);
     z-index: 2;
 }
@@ -167,23 +174,23 @@ body {
 .divider-glow {
     width: 80px;
     height: 1px;
-    background: linear-gradient(to right, transparent, rgba(255,225,255,0.4), transparent);
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
     margin: 0 auto;
 }
 
 /* ==========================================================================
-   INFOGRAFÍA DE CRISTAL AÉREA (EL CAMBIO PRINCIPAL)
+   INFOGRAFÍA DE CRISTAL INTERACTIVA Y AÉREA
    ========================================================================== */
 .infografia-item {
     margin-bottom: 4rem; 
     padding: 2.5rem;
-    background-color: transparent; /* De base NO tiene fondo rígido, es parte de la página */
-    border: 1px solid transparent; /* Escondemos el borde por defecto */
+    background-color: transparent; /* Sin caja rígida por defecto para dar versatilidad */
+    border: 1px solid transparent; 
     border-radius: 8px;
     position: relative;
     z-index: 1;
     
-    /* Transición de seda pura */
+    /* Transición fluida de seda pura */
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
                 background-color 0.6s ease, 
                 border-color 0.6s ease, 
@@ -191,39 +198,39 @@ body {
     will-change: transform, box-shadow, background-color; 
 }
 
-/* REVELACIÓN DE CRISTAL (Hover): La tarjeta se materializa elegantemente */
+/* REVELACIÓN DE CRISTAL: El cuadro se materializa elegantemente al hacer hover */
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.06);
     
-    /* Elevación súper suave en 3D */
+    /* Elevación tridimensional limpia */
     transform: translateY(-8px) scale(1.015); 
     z-index: 5; 
 }
 
-/* Bordes Neón Laterales Ultra-Delgados */
-.glow-rosa { border-left: 1px solid rgba(255, 192, 203, 0.08); transition: all 0.5s ease; }
-.glow-celeste { border-left: 1px solid rgba(173, 216, 230, 0.08); transition: all 0.5s ease; }
+/* Líneas guía laterales tricolores ultra-delgadas */
+.glow-rojo-vino { border-left: 1px solid rgba(140, 36, 52, 0.1); transition: all 0.5s ease; }
+.glow-azul-marino { border-left: 1px solid rgba(34, 80, 150, 0.1); transition: all 0.5s ease; }
 
-/* El Brillo se activa orgánicamente en conjunto */
-.infografia-item:hover.glow-rosa { 
-    border-left: 2px solid var(--neon-rosa-suave); 
-    box-shadow: -10px 0 30px rgba(255, 192, 203, 0.03), 0 20px 50px rgba(0,0,0,0.5);
+/* Activación de luces en los bordes y sombras dinámicas al pasar el mouse */
+.infografia-item:hover.glow-rojo-vino { 
+    border-left: 2px solid var(--color-rojo-glow); 
+    box-shadow: -10px 0 30px rgba(224, 49, 75, 0.03), 0 20px 50px rgba(0,0,0,0.5);
 }
 
-.infografia-item:hover.glow-celeste { 
-    border-left: 2px solid var(--neon-celeste-suave); 
-    box-shadow: -10px 0 30px rgba(173, 216, 230, 0.03), 0 20px 50px rgba(0,0,0,0.5);
+.infografia-item:hover.glow-azul-marino { 
+    border-left: 2px solid var(--color-azul-glow); 
+    box-shadow: -10px 0 30px rgba(56, 149, 255, 0.03), 0 20px 50px rgba(0,0,0,0.5);
 }
 
-/* Contenedores de Imagen Líquidos */
+/* Envolturas de Imagen Líquidas */
 .img-wrapper-premium {
     overflow: hidden;
     border-radius: 6px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    background: #030304;
+    background-color: #030407;
 }
 
 .img-luxury {
@@ -231,12 +238,12 @@ body {
     height: 340px;
     object-fit: cover;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-    filter: brightness(0.75) grayscale(15%); /* Un toque cinemático apagado al inicio */
+    filter: brightness(0.75) grayscale(10%); /* Look cinematográfico de entrada */
 }
 
 .infografia-item:hover .img-luxury {
     transform: scale(1.03);
-    filter: brightness(0.95) grayscale(0%); /* Cobra vida al apuntarlo */
+    filter: brightness(0.95) grayscale(0%); /* Despierta el color real */
 }
 
 /* Tipografías de la Infografía */
@@ -248,8 +255,8 @@ body {
     display: block;
     margin-bottom: 0.2rem;
 }
-.text-rosa { color: var(--neon-rosa-suave); text-shadow: 0 0 10px rgba(255,192,203,0.2); }
-.text-celeste { color: var(--neon-celeste-suave); text-shadow: 0 0 10px rgba(173,216,230,0.2); }
+.text-rojo-vino { color: var(--color-rojo-glow); text-shadow: 0 0 10px rgba(224,49,75,0.15); }
+.text-azul-marino { color: var(--color-plateado-cristal); text-shadow: 0 0 10px rgba(230,236,247,0.15); }
 
 .lugar-titulo {
     font-family: 'Cormorant Garamond', serif;
@@ -257,7 +264,7 @@ body {
     font-weight: 400;
     margin-bottom: 1.2rem;
     letter-spacing: 0.02rem;
-    color: var(--white-neon-glow);
+    color: var(--color-plateado-cristal);
     transition: color 0.4s ease;
 }
 
@@ -309,10 +316,10 @@ body {
 }
 
 /* ==========================================================================
-   SECCIÓN COMENTARIOS Y CAJA DE RESERVA (EQUILIBRADO)
+   COMENTARIOS Y SECCIÓN INFERIOR
    ========================================================================== */
 .comentarios-box {
-    background-color: rgba(12, 13, 18, 0.4);
+    background-color: rgba(10, 14, 24, 0.4);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.03);
@@ -331,13 +338,13 @@ body {
 
 .comentario-item { border-bottom: 1px solid rgba(255,255,255,0.03); padding: 1.5rem 0; }
 .comentario-item:last-child { border-bottom: none; }
-.comentario-item h5 { font-size: 0.9rem; font-weight: 400; color: var(--white-neon-glow); }
+.comentario-item h5 { font-size: 0.9rem; font-weight: 400; color: var(--color-plateado-cristal); }
 
 .rol-luxury {
     font-size: 0.65rem;
     color: var(--color-oro-soft);
     margin-left: 0.6rem;
-    border: 1px solid rgba(227, 197, 152, 0.2);
+    border: 1px solid rgba(224, 195, 151, 0.2);
     padding: 2px 8px;
     border-radius: 20px;
     text-transform: uppercase;
@@ -350,7 +357,7 @@ body {
 .dynamic-input-group { display: flex; gap: 12px; margin-top: 1.5rem; }
 
 .form-control-comment {
-    background: rgba(5, 5, 7, 0.6);
+    background: rgba(4, 5, 8, 0.6);
     border: 1px solid rgba(255,255,255,0.06);
     border-radius: 4px;
     color: white;
@@ -362,7 +369,7 @@ body {
 .form-control-comment:focus { 
     outline: none; 
     border-color: rgba(255,255,255,0.2); 
-    background: rgba(5, 5, 7, 0.9);
+    background: rgba(4, 5, 8, 0.9);
 }
 
 .btn-comment-submit {
@@ -377,14 +384,14 @@ body {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .btn-comment-submit:hover { 
-    background: var(--white-neon-glow); 
+    background: var(--color-plateado-cristal); 
     color: var(--color-negro-fondo); 
-    border-color: var(--white-neon-glow);
+    border-color: var(--color-plateado-cristal);
 }
 
-/* Tarjeta de Reserva Minimalista */
+/* Tarjeta de Reserva de la Agencia */
 .card-reserva-preview {
-    background: linear-gradient(135deg, rgba(12, 13, 18, 0.7) 0%, rgba(20, 25, 35, 0.2) 100%);
+    background: linear-gradient(135deg, rgba(10, 14, 24, 0.7) 0%, rgba(15, 25, 45, 0.2) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -397,7 +404,7 @@ body {
 .reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; }
 .reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 2rem; letter-spacing: 0.02rem; }
 
-.btn-reservar-corea {
+.btn-reservar-francia {
     display: inline-block;
     background: transparent;
     color: var(--color-blanco-puro);
@@ -409,11 +416,12 @@ body {
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 4px;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
 }
 
-.btn-reservar-corea:hover {
-    background: var(--white-neon-glow);
-    border-color: var(--white-neon-glow);
+.btn-reservar-francia:hover {
+    background: var(--color-plateado-cristal);
+    border-color: var(--color-plateado-cristal);
     color: var(--color-negro-fondo);
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
@@ -434,7 +442,7 @@ body {
 }
 
 /* ==========================================================================
-   BOTÓN FLOTANTE: BANDERA DE COREA (RESERVAS)
+   BOTÓN FLOTANTE: INDUMENTARIA / ACCESO DE FRANCIA
    ========================================================================== */
 .bandera-flotante-link {
     position: fixed;
@@ -447,11 +455,11 @@ body {
 
 .bandera-flotante-container {
     position: relative;
-    width: 65px; /* Ligeramente más pequeña para estilizar la pantalla */
+    width: 65px;       
     height: 65px;
     border-radius: 50%; 
     padding: 2px;
-    background: rgba(7, 7, 9, 0.4);
+    background: rgba(6, 8, 15, 0.4);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
@@ -474,7 +482,7 @@ body {
 .tooltip-reserva {
     position: absolute;
     bottom: -38px;
-    background: rgba(7, 7, 9, 0.95);
+    background: rgba(6, 8, 15, 0.95);
     color: var(--color-oro-soft); 
     font-size: 0.65rem;
     text-transform: uppercase;
@@ -489,13 +497,13 @@ body {
     transition: all 0.3s ease;
 }
 
-/* Interacciones premium del botón flotante */
+/* Interacciones refinadas del botón tricolor francés */
 .bandera-flotante-link:hover .bandera-flotante-container {
     transform: scale(1.1); 
-    border-color: var(--neon-rosa-suave);
-    /* Mezcla de luces suaves de tus neones rosa y celeste */
-    box-shadow: 0 0 25px rgba(255, 192, 203, 0.2), 0 0 25px rgba(173, 216, 230, 0.1), 0 15px 35px rgba(0, 0, 0, 0.7);
-    background: rgba(12, 13, 18, 0.9);
+    border-color: var(--color-plateado-cristal);
+    /* Mezcla de luces dinámicas representando el azul y el rojo de Francia con elegancia */
+    box-shadow: 0 0 25px rgba(56, 149, 255, 0.2), 0 0 25px rgba(224, 49, 75, 0.2), 0 15px 35px rgba(0, 0, 0, 0.7);
+    background: rgba(14, 18, 30, 0.9);
 }
 
 .bandera-flotante-link:hover .bandera-img {
