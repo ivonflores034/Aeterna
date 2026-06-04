@@ -168,15 +168,8 @@ body {
 /* ==========================================================================
    INFOGRAFÍA DE CRISTAL INTERACTIVA Y COMPACTA
    ========================================================================== */
-.infografia-item-link {
-    text-decoration: none !important;
-    color: inherit !important;
-    display: block;
-    transition: transform 0.4s ease;
-}
-
 .infografia-item {
-    margin-bottom: 2.5rem; /* Reducido de 6rem a 2.5rem para juntar las tarjetas */
+    margin-bottom: 2.5rem; 
     padding: 2rem;
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(6px);
@@ -186,7 +179,8 @@ body {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.infografia-item-link:hover .infografia-item {
+/* Ahora el efecto hover se activa directamente sobre la tarjeta */
+.infografia-item:hover {
     background-color: rgba(25, 27, 35, 0.85);
     border-color: rgba(255,255,255,0.1);
     transform: translateY(-4px);
@@ -196,8 +190,8 @@ body {
 .glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); }
 .glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); }
 
-.infografia-item-link:hover .glow-rosa { border-left-color: var(--neon-rosa-suave); }
-.infografia-item-link:hover .glow-celeste { border-left-color: var(--neon-celeste-suave); }
+.infografia-item:hover.glow-rosa { border-left-color: var(--neon-rosa-suave); }
+.infografia-item:hover.glow-celeste { border-left-color: var(--neon-celeste-suave); }
 
 .img-wrapper-premium {
     overflow: hidden;
@@ -213,7 +207,7 @@ body {
     filter: brightness(0.85);
 }
 
-.infografia-item-link:hover .img-luxury {
+.infografia-item:hover .img-luxury {
     transform: scale(1.04);
     filter: brightness(1.05);
 }
@@ -235,7 +229,7 @@ body {
     transition: color 0.3s ease;
 }
 
-.infografia-item-link:hover .lugar-titulo {
+.infografia-item:hover .lugar-titulo {
     color: var(--color-oro-soft);
 }
 
@@ -245,6 +239,7 @@ body {
     color: var(--color-gris-texto);
 }
 
+/* El botón ahora es una etiqueta <a> nativa, neutralizamos su comportamiento */
 .btn-ver-mas-luxury {
     display: inline-block;
     margin-top: 1rem;
@@ -252,12 +247,20 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.15rem;
     color: var(--color-oro-soft);
+    text-decoration: none; /* Quita el subrayado azul nativo */
     opacity: 0.6;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-.infografia-item-link:hover .btn-ver-mas-luxury {
-    opacity: 1;
+/* Animación sutil cuando pasas el cursor sobre toda la tarjeta */
+.infografia-item:hover .btn-ver-mas-luxury {
+    opacity: 0.8;
+}
+
+/* Efecto enfocado e interactivo cuando pasas el cursor ÚNICAMENTE por encima del enlace */
+.btn-ver-mas-luxury:hover {
+    opacity: 1 !important;
+    color: var(--color-blanco-puro);
     transform: translateX(5px);
 }
 
