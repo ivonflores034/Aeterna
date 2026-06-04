@@ -470,7 +470,16 @@ body::before {
 /* Envoltura del contenido interactivo */
 .hero-wrapper-content {
     position: relative;
-    z-index: 3; /* Flota por encima de las capas previas */
+    z-index: 3;
+    /* Forzamos a que el contenedor se estire más hacia la izquierda */
+    max-width: 100% !important; 
+    width: 100% !important;
+    padding-left: 5% !important; /* Puedes cambiar este 5% por un valor menor (ej. 3% o 40px) para moverlo más a la izquierda */
+}
+
+/* O también puedes ajustar la columna del texto directamente: */
+.content-left-align {
+    padding-left: 0px !important; /* Elimina cualquier espacio extra que Bootstrap ponga por defecto */
 }
 
 /* --- SOLUCIÓN AL ESTIRAMIENTO DE IMÁGENES DE PAÍSES --- */
