@@ -473,22 +473,32 @@ body::before {
     max-width: 100% !important; 
     width: 100% !important;
     
-    /* 1. CONTROL HORIZONTAL (Izquierda / Derecha) */
+    /* ¡LA PIEZA FALTANTE! Le da al contenedor la altura del viewport para poder centrar */
+    min-height: 80vh !important; 
     
-    padding-left: 6% !important; 
-    padding-right: 6% !important; 
-    
-    /* 2. CONTROL VERTICAL (Arriba / Abajo) */
+    /* Activamos Flexbox para centrar verticalmente de forma nativa */
     display: flex !important;
     align-items: center !important; 
+    
+    /* 1. CONTROL HORIZONTAL (Izquierda / Derecha) */
+    /* Baja este porcentaje a 4% o 3% si quieres pegarlo MÁS a la izquierda */
+    padding-left: 6% !important; 
+    padding-right: 6% !important; 
 }
 
 .content-left-align {
     padding-left: 0px !important;
     position: relative;
+    width: 100%;
     
-    /* valores negativos suben y positivos bajan el texto*/
-    top: 20px !important; 
+    /* 2. CONTROL VERTICAL (Arriba / Abajo) */
+    /* Como ya hay una altura real gracias al 'min-height' de arriba, 
+       esta perilla ahora sí responderá milimétricamente:
+       0px      = Centrado vertical perfecto.
+       Positivos (ej: 50px, 100px)  = Baja el texto.
+       Negativos (ej: -50px, -100px) = Sube el texto.
+    */
+    top: 60px !important; 
 }
 
 /* --- SOLUCIÓN AL ESTIRAMIENTO DE IMÁGENES DE PAÍSES --- */
