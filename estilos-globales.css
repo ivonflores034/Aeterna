@@ -488,7 +488,7 @@ body::before {
     position: relative;
     
     /* valores negativos suben y positivos bajan el texto*/
-    top: -10px !important; 
+    top: 20px !important; 
 }
 
 /* --- SOLUCIÓN AL ESTIRAMIENTO DE IMÁGENES DE PAÍSES --- */
