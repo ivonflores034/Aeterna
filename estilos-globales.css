@@ -423,7 +423,7 @@ body::before {
     }
 }
 /* ==========================================================================
-   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO 
+   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO E INTERFACES DE LUJO (DOBLE CONTENEDOR)
    ========================================================================== */
 
 .main-area {
@@ -457,7 +457,6 @@ body::before {
     height: 100%;
     object-fit: cover; /* Clave: hace que el video se recorte elegantemente sin estirarse */
     transition: opacity 1.5s ease-in-out; /* Transición sutil y premium ultra suave */
-    
 }
 
 /* Estado de los videos para la coreografía de cruce */
@@ -484,21 +483,6 @@ body::before {
 .hero-wrapper-content {
     position: relative;
     z-index: 4; /* Flota encima del overlay y de los videos */
-}
-
-/* Busca el selector de tus videos nativos de fondo */
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 1.5s ease-in-out; /* Tu transición suave */
-    
-    /* ¡PROPIEDADES MÁGICAS DE OPTIMIZACIÓN! */
-    will-change: opacity;
-    transform: translateZ(0); 
 }
 
 .content-left-align {
