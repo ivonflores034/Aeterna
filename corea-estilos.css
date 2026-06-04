@@ -1,0 +1,297 @@
+/* ==========================================================================
+   PALETA REMODELADA: MODO OSCURO, NEONES SUAVES Y AURORA ROSA/CELESTE
+   ========================================================================== */
+:root {
+    --color-negro-fondo: #0A0A0B;
+    --color-tarjeta-glass: rgba(18, 19, 24, 0.7);
+    --color-blanco-puro: #FFFFFF;
+    --color-gris-texto: #A0A0A0;
+    
+    /* Tonos de Neón e Identidad unificados */
+    --color-azul-firma: #3f6092c7;
+    --neon-rosa-suave: rgba(255, 183, 197, 0.8);
+    --neon-celeste-suave: rgba(162, 217, 250, 0.8);
+    --color-oro-soft: #D4AF37;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-negro-fondo);
+    color: var(--color-blanco-puro);
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    /* Efecto de Aurora Cósmica en tonos Rosa y Celeste transparentes */
+    background: radial-gradient(circle at 20% 25%, rgba(255, 183, 197, 0.363), transparent 45%),
+                radial-gradient(circle at 80% 65%, rgba(63, 96, 146, 0.274), transparent 50%),
+                radial-gradient(circle at 50% 85%, rgba(126, 170, 197, 0.377), transparent 45%),
+                linear-gradient(to bottom, #4b4e5ce8, #121318, #0A0A0B);
+}
+
+/* ==========================================================================
+   BOTÓN FIJO EN LA ESQUINA SUPERIOR IZQUIERDA
+   ========================================================================== */
+.btn-regresar-fijo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: rgba(10, 10, 11, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-blanco-puro);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-regresar-fijo:hover {
+    border-color: var(--color-azul-firma);
+    color: var(--neon-celeste-suave);
+    box-shadow: 0 0 15px rgba(162, 217, 250, 0.2);
+    transform: translateX(-3px);
+}
+
+/* ==========================================================================
+   PÉTALOS DE FLORES HIPER-TENUES (CASI INVISIBLES)
+   ========================================================================== */
+#contenedor-flores {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 99;
+    overflow: hidden;
+}
+
+.flor-caida {
+    position: absolute;
+    color: #FFB7C5;
+    opacity: 0.05;  /* Bajado drásticamente a 0.05 para cuidar la vista */
+    font-size: 1.1rem;
+    animation: caidaDiagonal linear infinite;
+}
+
+@keyframes caidaDiagonal {
+    0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.08; }
+    90% { opacity: 0.08; }
+    100% { transform: translateY(110vh) translateX(120px) rotate(360deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   HERO / CABECERA OSCURA DE COREA
+   ========================================================================== */
+.hero-corea {
+    min-height: 55vh;
+    padding: 3rem;
+}
+
+.titulo-pais {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    color: var(--color-blanco-puro);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.subtitulo-premium {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: var(--color-oro-soft); /* Reservado para lo importante */
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.descripcion-hero {
+    max-width: 650px;
+    margin: 1.5rem auto;
+    font-size: 1rem;
+    color: var(--color-gris-texto);
+    line-height: 1.8;
+}
+
+.divider-glow {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-azul-firma), transparent);
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   INFOGRAFÍA DE CRISTAL OSCURAS (GLASSMORPHISM)
+   ========================================================================== */
+.infografia-item {
+    margin-bottom: 6rem;
+    padding: 2.5rem;
+    background-color: var(--color-tarjeta-glass);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: all 0.5s ease;
+}
+
+/* Brillos sutiles personalizados según la sección */
+.glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); }
+.glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); }
+
+.img-wrapper-premium {
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.img-luxury {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: brightness(0.9);
+}
+
+.infografia-item:hover .img-luxury {
+    transform: scale(1.03);
+    filter: brightness(1);
+}
+
+.lugar-numero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-style: italic;
+    display: block;
+}
+.text-rosa { color: var(--neon-rosa-suave); }
+.text-celeste { color: var(--neon-celeste-suave); }
+
+.lugar-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.05rem;
+}
+
+.lugar-texto {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-gris-texto);
+}
+
+/* ==========================================================================
+   SECCIÓN COMENTARIOS Y CAJA DE RESERVA
+   ========================================================================== */
+.comentarios-box {
+    background-color: rgba(20, 21, 26, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+}
+
+.titulo-comentarios {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+}
+
+.divider-short {
+    width: 40px;
+    height: 1px;
+    background-color: var(--color-azul-firma);
+}
+
+.comentario-item {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 1.2rem 0;
+}
+.comentario-item:last-child { border-bottom: none; }
+
+.comentario-item h5 {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.rol-luxury {
+    font-size: 0.7rem;
+    color: var(--color-oro-soft);
+    margin-left: 0.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 1px 6px;
+    border-radius: 10px;
+}
+
+.stars { color: var(--color-oro-soft); font-size: 0.8rem; }
+.comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.4rem; }
+
+/* Input de comentarios */
+.dynamic-input-group {
+    display: flex;
+    gap: 10px;
+}
+.form-control-comment {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    width: 100%;
+}
+.form-control-comment:focus { outline: none; border-color: var(--color-azul-firma); }
+.btn-comment-submit {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 0 1.2rem;
+    transition: all 0.3s ease;
+}
+.btn-comment-submit:hover { background: white; color: black; }
+
+/* Tarjeta Estratégica de Reserva */
+.card-reserva-preview {
+    background: linear-gradient(135deg, rgba(18, 19, 24, 0.9) 0%, rgba(35, 45, 75, 0.3) 100%);
+    border: 1px solid rgba(63, 96, 146, 0.3);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; }
+.reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 1.5rem; }
+
+.btn-reservar-corea {
+    display: inline-block;
+    background: var(--color-azul-firma);
+    color: white;
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-reservar-corea:hover {
+    background: transparent;
+    border-color: white;
+    color: white;
+    box-shadow: 0 8px 25px rgba(63, 96, 146, 0.4);
+}
+
+/* ==========================================================================
+   ANIMACIONES SCROLL
+   ========================================================================== */
+.scroll-animado {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animado.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
