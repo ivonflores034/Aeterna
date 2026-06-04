@@ -212,7 +212,7 @@ body::before {
     
     /* Combinamos una sombra y un destello alrededor */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
-                0 0 25px rgba(88, 163, 225, 0.438); /* Este es el destello
+                0 0 25px rgba(88, 163, 225, 0.438); /* Este es el destello*/
 }
 
 /* --- SOLUCIÓN AL DESBORDE DE IMÁGENES --- */
@@ -541,7 +541,7 @@ body::before {
     max-width: 90%;
 }
 
-/* Responsividad para celulares: Centrado automático si la pantalla es pequeña */
+/* Responsividad para celulares : Centrado automático si la pantalla es pequeña */
 @media (max-width: 767.98px) {
     .content-left-align {
         text-align: center !important;
