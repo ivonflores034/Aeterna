@@ -1,0 +1,465 @@
+/* ==========================================================================
+   PALETA PREMIUM: ALPES SUIZOS (AZUL MARINO, ROJO VINO, BLANCO Y PLATA)
+   ========================================================================== */
+:root {
+    --color-negro-fondo: #080A10; /* Fondo oscuro tintado sutilmente de azul glacial */
+    --color-tarjeta-glass: rgba(14, 18, 28, 0.75);
+    --color-blanco-puro: #FFFFFF;
+    --color-gris-texto: #B5BDCB;
+    
+    /* Variaciones de la paleta solicitada */
+    --color-azul-marino-profundo: #112240;
+    --color-azul-firma-glow: rgba(56, 128, 255, 0.8);
+    --color-rojo-vino-suizo: #8B1E2F;
+    --color-rojo-vino-glow: rgba(186, 24, 47, 0.85);
+    --color-plateado-cristal: rgba(220, 228, 242, 0.85);
+    --color-oro-soft: #D4AF37;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--color-negro-fondo);
+    color: var(--color-blanco-puro);
+    font-family: 'Raleway', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    /* Inyección de la nueva atmósfera de color mediante gradientes radiales continuos */
+    background: radial-gradient(circle at 20% 25%, rgba(139, 30, 47, 0.18), transparent 45%),
+                radial-gradient(circle at 80% 65%, rgba(17, 34, 64, 0.4), transparent 55%),
+                radial-gradient(circle at 50% 85%, rgba(220, 228, 242, 0.1), transparent 45%),
+                linear-gradient(to bottom, #0E121C, #090C12, #05060A);
+}
+
+/* ==========================================================================
+   BOTÓN FIJO REGRESAR (ESQUINA SUPERIOR IZQUIERDA)
+   ========================================================================== */
+.btn-regresar-fijo {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background-color: rgba(8, 10, 16, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-blanco-puro);
+    padding: 0.5rem 1.2rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-regresar-fijo:hover {
+    border-color: var(--color-rojo-vino-suizo);
+    color: var(--color-plateado-cristal);
+    box-shadow: 0 0 15px rgba(220, 228, 242, 0.2);
+    transform: translateX(-3px);
+}
+
+/* ==========================================================================
+   COPOS DE NIEVE FLOTANTES HIPER-TENUES
+   ========================================================================== */
+#contenedor-nieve {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 99;
+    overflow: hidden;
+}
+
+.copo-nieve-caida {
+    position: absolute;
+    color: #E2EAFC;
+    opacity: 0.03;
+    font-size: 1rem;
+    animation: caidaVertical Neve linear infinite;
+}
+
+@keyframes caidaVerticalNeve {
+    0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.15; }
+    90% { opacity: 0.15; }
+    100% { transform: translateY(110vh) translateX(60px) rotate(360deg); opacity: 0; }
+}
+
+/* ==========================================================================
+   HERO ADAPTATIVO CON VIDEOS PAIS5 Y PAIS45
+   ========================================================================== */
+.hero-suiza {
+    position: relative;
+    min-height: 65vh;
+    padding: 3rem;
+    overflow: hidden;
+    background: #080A10; 
+}
+
+.video-background-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.video-background-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(8,10,16,0.1) 0%, rgba(8,10,16,0.9) 100%);
+    z-index: 2;
+}
+
+.video-luxury-native {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    will-change: opacity;
+}
+
+.video-luxury-native.activo { opacity: 0.4; }
+.video-luxury-native.oculto { opacity: 0; }
+
+.hero-contenido {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+}
+
+.titulo-pais {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+    color: var(--color-blanco-puro);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.7);
+}
+
+.subtitulo-premium {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    color: var(--color-oro-soft);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.descripcion-hero {
+    max-width: 650px;
+    margin: 1.5rem auto;
+    font-size: 1.05rem;
+    color: #E2E8F0;
+    line-height: 1.8;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+}
+
+.divider-glow {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-rojo-vino-suizo), transparent);
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   TARJETAS INFOGRÁFICAS DE CRISTAL (EFECTO 3D FLOTANTE CON GPU)
+   ========================================================================== */
+.infografia-item {
+    margin-bottom: 2.5rem; 
+    padding: 2rem;
+    background-color: var(--color-tarjeta-glass);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s ease, 
+                border-color 0.5s ease, 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    will-change: transform, box-shadow; 
+    position: relative;
+    z-index: 1;
+}
+
+.infografia-item:hover {
+    background-color: rgba(20, 26, 38, 0.85);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-10px) scale(1.025); 
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75);
+    z-index: 5; 
+}
+
+/* Bordes laterales estilizados según la paleta */
+.glow-rojo-vino { border-left: 2px solid rgba(139, 30, 47, 0.25); transition: border-color 0.4s ease; }
+.glow-azul-marino { border-left: 2px solid rgba(56, 128, 255, 0.25); transition: border-color 0.4s ease; }
+
+.infografia-item:hover.glow-rojo-vino { border-left-color: var(--color-rojo-vino-glow); }
+.infografia-item:hover.glow-azul-marino { border-left-color: var(--color-azul-firma-glow); }
+
+.img-wrapper-premium {
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    background-color: #05060A;
+}
+
+.img-luxury {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+    filter: brightness(0.8);
+}
+
+.infografia-item:hover .img-luxury {
+    transform: scale(1.05);
+    filter: brightness(1.02);
+}
+
+.lugar-numero {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-style: italic;
+    display: block;
+}
+.text-rojo-vino { color: var(--color-rojo-vino-glow); }
+.text-azul-marino { color: var(--color-plateado-cristal); }
+
+.lugar-titulo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05rem;
+    transition: color 0.3s ease;
+}
+
+.infografia-item:hover .lugar-titulo {
+    color: var(--color-oro-soft);
+}
+
+.lugar-texto {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-gris-texto);
+}
+
+.btn-ver-mas-luxury {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--color-oro-soft);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.infografia-item:hover .btn-ver-mas-luxury {
+    opacity: 0.8;
+}
+
+.btn-ver-mas-luxury:hover {
+    opacity: 1 !important;
+    color: var(--color-blanco-puro);
+    transform: translateX(6px);
+}
+
+/* ==========================================================================
+   COMENTARIOS Y SECCIÓN INFERIOR
+   ========================================================================== */
+.comentarios-box {
+    background-color: rgba(14, 18, 28, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 2rem;
+}
+
+.titulo-comentarios { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; }
+.divider-short { width: 40px; height: 1px; background-color: var(--color-rojo-vino-suizo); }
+.comentario-item { border-bottom: 1px solid rgba(255,255,255,0.04); padding: 1.2rem 0; }
+.comentario-item:last-child { border-bottom: none; }
+.comentario-item h5 { font-size: 0.9rem; font-weight: 500; }
+
+.rol-luxury {
+    font-size: 0.7rem;
+    color: var(--color-oro-soft);
+    margin-left: 0.5rem;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 1px 6px;
+    border-radius: 10px;
+}
+
+.stars { color: var(--color-oro-soft); font-size: 0.8rem; }
+.comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.4rem; }
+
+.dynamic-input-group { display: flex; gap: 10px; }
+.form-control-comment {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: white;
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    width: 100%;
+}
+.form-control-comment:focus { outline: none; border-color: var(--color-rojo-vino-suizo); }
+.btn-comment-submit {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: white;
+    padding: 0 1.2rem;
+    transition: all 0.3s ease;
+}
+.btn-comment-submit:hover { background: white; color: black; }
+
+.card-reserva-preview {
+    background: linear-gradient(135deg, rgba(14, 18, 28, 0.95) 0%, rgba(17, 34, 64, 0.4) 100%);
+    border: 1px solid rgba(139, 30, 47, 0.3);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; }
+.reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 1.5rem; }
+
+.btn-reservar-suiza {
+    display: inline-block;
+    background: var(--color-rojo-vino-suizo);
+    color: white;
+    padding: 0.9rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-reservar-suiza:hover {
+    background: transparent;
+    border-color: white;
+    color: white;
+    box-shadow: 0 8px 25px rgba(139, 30, 47, 0.4);
+}
+
+/* ==========================================================================
+   ANIMACIONES SCROLL
+   ========================================================================== */
+.scroll-animado {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animado.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   BOTÓN FLOTANTE PREMIUM: BANDERA DE COREA (RESERVAS)
+   ========================================================================== */
+.bandera-flotante-link {
+    position: fixed;
+    top: 25px;         /* Distancia desde arriba */
+    right: 18px;       /* Distancia desde la derecha */
+    z-index: 9999;     /* Máxima prioridad para que siempre flote sobre videos y textos */
+    text-decoration: none;
+    
+    /* Disparamos la animación de flote infinito (Dura 4 segundos y es un ciclo suave) */
+    animation: flotarBanderaInfinita 4s ease-in-out infinite;
+}
+
+.bandera-flotante-container {
+    position: relative;
+    width: 51px;       /* Tamaño compacto y distinguido */
+    height: 51px;
+    border-radius: 50%; /* La hacemos perfectamente redonda estilo insignia */
+    padding: 3px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+
+/* Imagen de la bandera adaptada de forma circular */
+.bandera-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.4s ease;
+}
+
+/* Etiqueta flotante sutil (Tooltip) que aparece al pasar el mouse */
+.tooltip-reserva {
+    position: absolute;
+    bottom: -35px;
+    background: rgba(10, 10, 11, 0.9);
+    color: var(--color-oro-soft, #dfc59f); /* Usa tu color oro o dorado suave */
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   INTERACCIONES HOVER (Cuando el usuario pasa el mouse)
+   -------------------------------------------------------------------------- */
+.bandera-flotante-link:hover .bandera-flotante-container {
+    transform: scale(1.12); /* Crece sutilmente */
+    border-color: var(--neon-rosa-suave, rgba(59, 73, 202, 0.705)); /* Se ilumina con tu neón */
+    box-shadow: 0 0 20px rgba(100, 6, 6, 0.774), 0 12px 30px rgba(0, 0, 0, 0.6);
+    background: rgba(25, 27, 35, 0.9);
+}
+
+.bandera-flotante-link:hover .bandera-img {
+    transform: rotate(8px); /* Pequeño giro coqueto y lujoso al apuntarlo */
+}
+
+.bandera-flotante-link:hover .tooltip-reserva {
+    opacity: 1;
+    transform: translateY(0); /* Despliega el texto suavemente */
+}
+
+/* Al presionarlo da un efecto de pulsación profunda */
+.bandera-flotante-link:active .bandera-flotante-container {
+    transform: scale(0.95);
+}
+
+/* --------------------------------------------------------------------------
+   MOTOR DE ANIMACIÓN MATEMÁTICO (Efecto Flotante Autónomo)
+   -------------------------------------------------------------------------- */
+@keyframes flotarBanderaInfinita {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Sube suavemente 10 pixeles en el aire */
+    }
+    100% {
+        transform: translateY(0px); /* Vuelve a bajar a su posición original */
+    }
+}
