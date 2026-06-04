@@ -473,17 +473,14 @@ body::before {
     max-width: 100% !important; 
     width: 100% !important;
     
-    /* ¡LA PIEZA FALTANTE! Le da al contenedor la altura del viewport para poder centrar */
-    min-height: 80vh !important; 
-    
-    /* Activamos Flexbox para centrar verticalmente de forma nativa */
-    display: flex !important;
-    align-items: center !important; 
-    
     /* 1. CONTROL HORIZONTAL (Izquierda / Derecha) */
-    /* Baja este porcentaje a 4% o 3% si quieres pegarlo MÁS a la izquierda */
     padding-left: 6% !important; 
     padding-right: 6% !important; 
+    
+    /* 2. CONTROL VERTICAL SEGURO (Esto evita que se suba con el zoom) */
+    display: flex !important;
+    align-items: center !important; 
+    min-height: 80vh !important; /* Forzamos a que el contenedor ocupe el 80% de la altura de la pantalla */
 }
 
 .content-left-align {
@@ -491,14 +488,13 @@ body::before {
     position: relative;
     width: 100%;
     
-    /* 2. CONTROL VERTICAL (Arriba / Abajo) */
-    /* Como ya hay una altura real gracias al 'min-height' de arriba, 
-       esta perilla ahora sí responderá milimétricamente:
-       0px      = Centrado vertical perfecto.
-       Positivos (ej: 50px, 100px)  = Baja el texto.
-       Negativos (ej: -50px, -100px) = Sube el texto.
+    /* ¡TU NUEVA PERILLA VERTICAL INMUNE AL ZOOM! */
+    /* Explicación:
+       0px = Centrado vertical perfecto automático.
+       Valores negativos (ej: -30px, -60px) = Sube el texto sutilmente.
+       Valores positivos (ej: 30px, 60px) = Baja el texto sutilmente.
     */
-    top: 60px !important; 
+    transform: translateY(-20px) !important; 
 }
 
 /* --- SOLUCIÓN AL ESTIRAMIENTO DE IMÁGENES DE PAÍSES --- */
