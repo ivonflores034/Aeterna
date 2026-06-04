@@ -449,7 +449,7 @@ body::before {
 }
 
 /* Los elementos de video nativos se adaptan como fondo inteligente */
-.video-luxury-native {
+.video-fondo {
     position: absolute;
     top: 0;
     left: 0;
@@ -460,12 +460,12 @@ body::before {
 }
 
 /* Estado de los videos para la coreografía de cruce */
-.video-luxury-native.activo {
+.video-fondo.activo {
     opacity: 1;
     z-index: 2; /* El video activo se pone por encima del que se va a ocultar */
 }
 
-.video-luxury-native.oculto {
+.video-fondo.oculto {
     opacity: 0;
     z-index: 1;
 }
