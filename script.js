@@ -2,7 +2,7 @@
 function aplicarFiltroCoreografico(criterioValidacion) {
     const tarjetas = document.querySelectorAll('.tarjeta-pais');
 
-    // PASO 1: Desvanecer TODAS las tarjetas al mismo tiempo (Fade-out)
+    // PASO 1: Desvanecer absolutamente TODAS las tarjetas al mismo tiempo (Fade-out)
     tarjetas.forEach(tarjeta => {
         tarjeta.classList.add('fade-oculto');
     });
@@ -24,7 +24,7 @@ function aplicarFiltroCoreografico(criterioValidacion) {
         setTimeout(() => {
             tarjetas.forEach(tarjeta => {
                 if (!tarjeta.classList.contains('completamente-oculto')) {
-                    tarjeta.classList.remove('fade-oculto'); // Hace el Fade-In flotante
+                    tarjeta.classList.remove('fade-oculto'); // Hace el hermoso Fade-In flotante
                 }
             });
         }, 50);
@@ -60,7 +60,7 @@ function buscarPais() {
 }
 
 // ==========================================================================
-// MOTOR DE VIDEOS CON DOBLE CONTENEDOR INTERCALADO
+// MOTOR DE VIDEOS PREMIUM CON DOBLE CONTENEDOR INTERCALADO (41 VIDEOS)
 // ==========================================================================
 
 // 1. Generar automáticamente la lista con las rutas de tus 41 videos
@@ -95,16 +95,16 @@ function inicializarMotorVideos() {
     video1.load();
     video1.play().catch(err => console.log("Autoplay inicial retenido:", err));
 
-    // Precargar otro video aleatorio en el contenedor 2
+    // Precargar de forma silenciosa e invisible otro video aleatorio en el contenedor 2
     let siguienteIndice = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
     video2.src = listaVideosLocales[siguienteIndice];
     video2.load();
 
-    // Iniciar el ciclo de intercambio cada 10 segundos
+    // Iniciar el ciclo de intercambio inteligente cada 10 segundos
     setInterval(() => {
         // Intercambio de roles (Crossfade en la sombra)
         if (usarVideoUno) {
-            // El video 2 pasa al frente y se reproduce
+            // El video 2 (que ya estaba precargado y listo) pasa al frente y se reproduce
             video2.classList.remove('oculto');
             video2.classList.add('activo');
             video2.play().catch(e => console.log(e));
