@@ -1,17 +1,17 @@
 /* ==========================================================================
-   PALETA PREMIUM: ALPES SUIZOS (AZUL MARINO, ROJO VINO, BLANCO Y PLATA)
+   PALETA
    ========================================================================== */
 :root {
-    --color-negro-fondo: #080A10; /* Fondo oscuro tintado sutilmente de azul glacial */
-    --color-tarjeta-glass: rgba(14, 18, 28, 0.75);
+    --color-negro-fondo: #080a10c2; /* Fondo oscuro tintado sutilmente de azul glacial */
+    --color-tarjeta-glass: rgba(14, 18, 28, 0.521);
     --color-blanco-puro: #FFFFFF;
     --color-gris-texto: #B5BDCB;
     
     /* Variaciones de la paleta solicitada */
-    --color-azul-marino-profundo: #112240;
-    --color-azul-firma-glow: rgba(56, 128, 255, 0.8);
-    --color-rojo-vino-suizo: #8B1E2F;
-    --color-rojo-vino-glow: rgba(186, 24, 47, 0.85);
+    --color-azul-marino-profundo: #11224096;
+    --color-azul-firma-glow: rgba(56, 175, 255, 0.534);
+    --color-rojo-vino-suizo: #702f39;
+    --color-rojo-vino-glow: rgba(170, 57, 74, 0.85);
     --color-plateado-cristal: rgba(220, 228, 242, 0.85);
     --color-oro-soft: #D4AF37;
 }
@@ -27,8 +27,8 @@ body {
     overflow-x: hidden;
     position: relative;
     /* Inyección de la nueva atmósfera de color mediante gradientes radiales continuos */
-    background: radial-gradient(circle at 20% 25%, rgba(139, 30, 47, 0.18), transparent 45%),
-                radial-gradient(circle at 80% 65%, rgba(17, 34, 64, 0.4), transparent 55%),
+    background: radial-gradient(circle at 20% 25%, rgba(102, 37, 47, 0.18), transparent 45%),
+                radial-gradient(circle at 80% 65%, rgba(17, 36, 64, 0.4), transparent 55%),
                 radial-gradient(circle at 50% 85%, rgba(220, 228, 242, 0.1), transparent 45%),
                 linear-gradient(to bottom, #0E121C, #090C12, #05060A);
 }
@@ -73,20 +73,40 @@ body {
 }
 
 .copo-nieve-caida {
-    position: absolute;
-    color: #E2EAFC;
-    opacity: 0.03;
-    font-size: 1rem;
-    animation: caidaVertical Neve linear infinite;
-}
+    position: fixed;
+    top: -5vh;            
+    font-size: 1rem;      
+    user-select: none;
+    pointer-events: none;
 
-@keyframes caidaVerticalNeve {
-    0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.15; }
-    90% { opacity: 0.15; }
-    100% { transform: translateY(110vh) translateX(60px) rotate(360deg); opacity: 0; }
-}
+    opacity: 0.1;          
+    
+    color: rgba(255, 255, 255, 0.226); 
+    text-shadow: 0 0 4px rgba(255, 255, 255, 0.3); 
 
+    animation-name: caidaNieve;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+/* Definición de la trayectoria de caída con un sutil balanceo hacia los lados */
+@keyframes caidaNieve {
+    0% {
+        top: -5vh;
+        transform: translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1; /* Aparece suavemente al entrar */
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        top: 105vh; /* Termina debajo de la pantalla */
+        transform: translateX(50px) rotate(360deg); /* Se mueve un poco a la derecha y rota */
+        opacity: 0; /* Se desvanece al tocar el suelo virtual */
+    }
+}
 /* ==========================================================================
    HERO ADAPTATIVO CON VIDEOS PAIS5 Y PAIS45
    ========================================================================== */
@@ -178,7 +198,7 @@ body {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.03);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 30px rgba(9, 11, 44, 0.4);
     
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
                 background-color 0.5s ease, 
@@ -191,8 +211,8 @@ body {
 }
 
 .infografia-item:hover {
-    background-color: rgba(20, 26, 38, 0.85);
-    border-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(24, 36, 58, 0.603);
+    border-color: rgba(255, 255, 255, 0.336);
     transform: translateY(-10px) scale(1.025); 
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75);
     z-index: 5; 

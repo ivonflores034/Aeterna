@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // GENERADOR DE ATMÓSFERA: COPOS DE NIEVE FLOTANTES
     // ==========================================================================
     const contenedorNieve = document.getElementById('contenedor-nieve');
-    const iconosNieve = ['❄️', '❅', '❆']; 
+    const iconosNieve = ['❅', '❆']; 
 
     function crearCopoNieve() {
         if (!contenedorNieve) return;
@@ -100,31 +100,23 @@ document.addEventListener("DOMContentLoaded", function () {
         copo.classList.add('copo-nieve-caida');
         copo.innerText = iconosNieve[Math.floor(Math.random() * iconosNieve.length)];
 
-        // Posicionamiento aleatorio horizontal a lo largo del viewport
         copo.style.left = Math.random() * 110 + 'vw';
-        
-        // Escala aleatoria para simular profundidad de campo (3D)
-        const escala = Math.random() * 0.6 + 0.4;
+        const escala = Math.random() * 0.7 + 0.5;
         copo.style.transform = `scale(${escala})`;
         
-        // Tiempos aleatorios para romper patrones lineales de caída
-        const duracion = Math.random() * 8 + 12;
+        const duracion = Math.random() * 8 + 11;
         copo.style.animationDuration = duracion + 's';
-        copo.style.animationDelay = Math.random() * 3 + 's';
+        copo.style.animationDelay = Math.random() * 4 + 's';
 
         contenedorNieve.appendChild(copo);
 
-        // Remover del DOM una vez completada la trayectoria
         setTimeout(() => {
             copo.remove();
-        }, (duracion + 3) * 1000);
+        }, (duracion + 4) * 1000);
     }
 
-    // Inicializar ráfaga base de entrada
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 15; i++) {
         crearCopoNieve();
     }
-    
-    // Generación constante espaciada
-    setInterval(crearCopoNieve, 750);
+    setInterval(crearCopoNieve, 900);
 });
