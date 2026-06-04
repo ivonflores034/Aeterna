@@ -166,7 +166,7 @@ body {
 }
 
 /* ==========================================================================
-   INFOGRAFÍA DE CRISTAL INTERACTIVA Y COMPACTA
+   INFOGRAFÍA DE CRISTAL INTERACTIVA Y COMPACTA (EFECTO FLOTANTE 3D)
    ========================================================================== */
 .infografia-item {
     margin-bottom: 2.5rem; 
@@ -175,31 +175,42 @@ body {
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     
-    /* CONTROL DE ANIMACIÓN PREMIUM: Volvemos a activar la transición fluida */
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                background-color 0.4s ease, 
-                border-color 0.4s ease, 
-                box-shadow 0.4s ease;
+    /* Sombra base: más compacta porque el cuadro está "pegado" al fondo */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     
-    /* Prepara la tarjeta gráfica para evitar micro-tirones */
+    /* CONTROL DE ANIMACIÓN ULTRA FLUIDA */
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.5s ease, 
+                border-color 0.5s ease, 
+                box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Forzar el uso de la tarjeta de video (GPU) para evitar saltos o vibraciones */
     will-change: transform, box-shadow; 
+    position: relative;
+    z-index: 1;
 }
 
-/* EFECTO HOVER RE-ACTIVADO: Eleva la tarjeta suavemente y oscurece el fondo */
+/* EFECTO ENFOCADO: La tarjeta hace "Zoom" y "Flota cerca" del usuario */
 .infografia-item:hover {
     background-color: rgba(25, 27, 35, 0.85);
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-6px); /* Sutil efecto flotante hacia arriba */
-    box-shadow: 0 25px 50px rgba(0,0,0,0.65);
+    border-color: rgba(255, 255, 255, 0.12);
+    
+    /* MODIFICACIÓN AQUÍ: Se eleva (-10px) y se expande en tamaño (scale 1.025) al mismo tiempo */
+    transform: translateY(-10px) scale(1.025); 
+    
+    /* Sombra de elevación: más grande, suave y dispersa para simular distancia real del fondo */
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+    
+    /* Se asegura de que la tarjeta seleccionada quede visualmente encima de las demás */
+    z-index: 5; 
 }
 
 /* Bordes base por defecto */
 .glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); transition: border-color 0.4s ease; }
 .glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); transition: border-color 0.4s ease; }
 
-/* CORRECCIÓN: Iluminación premium de los bordes neón al pasar el mouse por la tarjeta */
+/* Iluminación de los bordes neón al pasar el mouse */
 .infografia-item:hover.glow-rosa,
 .infografia-item:hover .glow-rosa { 
     border-left-color: var(--neon-rosa-suave); 
@@ -220,13 +231,14 @@ body {
     width: 100%;
     height: 320px;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+    /* Mantiene el zoom interno de la foto de forma armónica */
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
     filter: brightness(0.85);
 }
 
-/* Acercamiento elegante de la fotografía */
+/* El zoom de la imagen de adentro se complementa de forma impecable con el del recuadro */
 .infografia-item:hover .img-luxury {
-    transform: scale(1.04);
+    transform: scale(1.05);
     filter: brightness(1.05);
 }
 
@@ -247,7 +259,6 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Cambia el título a oro sutil al hacer hover en el recuadro */
 .infografia-item:hover .lugar-titulo {
     color: var(--color-oro-soft);
 }
@@ -271,16 +282,14 @@ body {
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-/* Aparece sutilmente cuando se pasa el mouse por cualquier parte del recuadro */
 .infografia-item:hover .btn-ver-mas-luxury {
     opacity: 0.8;
 }
 
-/* Reacción interactiva ÚNICAMENTE al poner el mouse directo sobre el botón */
 .btn-ver-mas-luxury:hover {
     opacity: 1 !important;
     color: var(--color-blanco-puro);
-    transform: translateX(6px); /* Pequeño desplazamiento lateral */
+    transform: translateX(6px);
 }
 
 /* ==========================================================================
