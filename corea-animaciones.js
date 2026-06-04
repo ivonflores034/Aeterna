@@ -88,10 +88,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // ==========================================================================
-    // 2. GENERADOR DE PÉTALOS IMPERCEPTIBLES (OPACIDAD MUY BAJA)
+    // 2. GENERADOR DE PÉTALOS 
     // ==========================================================================
     const contenedorFlores = document.getElementById('contenedor-flores');
-    const iconosFlores = ['🌸', '🌺']; 
+    const iconosFlores = ['🌺']; 
 
     function crearPetalo() {
         if (!contenedorFlores) return;
