@@ -24,11 +24,10 @@ body {
     font-family: 'Raleway', sans-serif;
     overflow-x: hidden;
     position: relative;
-    /* Efecto de Aurora Cósmica en tonos Rosa y Celeste transparentes */
-    background: radial-gradient(circle at 20% 25%, rgba(255, 183, 197, 0.363), transparent 45%),
-                radial-gradient(circle at 80% 65%, rgba(63, 96, 146, 0.274), transparent 50%),
-                radial-gradient(circle at 50% 85%, rgba(126, 170, 197, 0.377), transparent 45%),
-                linear-gradient(to bottom, #4b4e5ce8, #121318, #0A0A0B);
+    background: radial-gradient(circle at 20% 25%, rgba(255, 183, 197, 0.2), transparent 45%),
+                radial-gradient(circle at 80% 65%, rgba(63, 96, 146, 0.15), transparent 50%),
+                radial-gradient(circle at 50% 85%, rgba(126, 170, 197, 0.2), transparent 45%),
+                linear-gradient(to bottom, #16171d, #121318, #0A0A0B);
 }
 
 /* ==========================================================================
@@ -60,7 +59,7 @@ body {
 }
 
 /* ==========================================================================
-   PÉTALOS DE FLORES HIPER-TENUES (CASI INVISIBLES)
+   PÉTALOS DE FLORES HIPER-TENUES
    ========================================================================== */
 #contenedor-flores {
     position: fixed;
@@ -73,7 +72,7 @@ body {
 .flor-caida {
     position: absolute;
     color: #FFB7C5;
-    opacity: 0.05;  /* Bajado drásticamente a 0.05 para cuidar la vista */
+    opacity: 0.05;
     font-size: 1.1rem;
     animation: caidaDiagonal linear infinite;
 }
@@ -86,11 +85,50 @@ body {
 }
 
 /* ==========================================================================
-   HERO / CABECERA OSCURA DE COREA
+   NUEVO: HERO ADAPTATIVO CON VIDEO EN EL TOP
    ========================================================================== */
 .hero-corea {
-    min-height: 55vh;
+    position: relative;
+    min-height: 65vh;
     padding: 3rem;
+    overflow: hidden;
+    background: #0A0A0B; 
+}
+
+.video-background-container {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.video-background-container::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(10,10,11,0.2) 0%, rgba(10,10,11,0.85) 100%);
+    z-index: 2;
+}
+
+.video-luxury-native {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    will-change: opacity;
+}
+
+.video-luxury-native.activo { opacity: 0.45; }
+.video-luxury-native.oculto { opacity: 0; }
+
+.hero-contenido {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
 }
 
 .titulo-pais {
@@ -99,14 +137,14 @@ body {
     font-weight: 600;
     letter-spacing: 0.2rem;
     color: var(--color-blanco-puro);
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
 }
 
 .subtitulo-premium {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.3rem;
-    color: var(--color-oro-soft); /* Reservado para lo importante */
+    color: var(--color-oro-soft);
     display: block;
     margin-bottom: 0.5rem;
 }
@@ -114,9 +152,10 @@ body {
 .descripcion-hero {
     max-width: 650px;
     margin: 1.5rem auto;
-    font-size: 1rem;
-    color: var(--color-gris-texto);
+    font-size: 1.05rem;
+    color: #E0E0E0;
     line-height: 1.8;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
 }
 
 .divider-glow {
@@ -127,22 +166,38 @@ body {
 }
 
 /* ==========================================================================
-   INFOGRAFÍA DE CRISTAL OSCURAS (GLASSMORPHISM)
+   INFOGRAFÍA DE CRISTAL INTERACTIVA Y COMPACTA
    ========================================================================== */
+.infografia-item-link {
+    text-decoration: none !important;
+    color: inherit !important;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
 .infografia-item {
-    margin-bottom: 6rem;
-    padding: 2.5rem;
+    margin-bottom: 2.5rem; /* Reducido de 6rem a 2.5rem para juntar las tarjetas */
+    padding: 2rem;
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.04);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    transition: all 0.5s ease;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Brillos sutiles personalizados según la sección */
+.infografia-item-link:hover .infografia-item {
+    background-color: rgba(25, 27, 35, 0.85);
+    border-color: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+}
+
 .glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); }
 .glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); }
+
+.infografia-item-link:hover .glow-rosa { border-left-color: var(--neon-rosa-suave); }
+.infografia-item-link:hover .glow-celeste { border-left-color: var(--neon-celeste-suave); }
 
 .img-wrapper-premium {
     overflow: hidden;
@@ -152,20 +207,20 @@ body {
 
 .img-luxury {
     width: 100%;
-    height: 360px;
+    height: 320px;
     object-fit: cover;
     transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    filter: brightness(0.9);
+    filter: brightness(0.85);
 }
 
-.infografia-item:hover .img-luxury {
-    transform: scale(1.03);
-    filter: brightness(1);
+.infografia-item-link:hover .img-luxury {
+    transform: scale(1.04);
+    filter: brightness(1.05);
 }
 
 .lugar-numero {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-style: italic;
     display: block;
 }
@@ -174,15 +229,36 @@ body {
 
 .lugar-titulo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    margin-bottom: 1.2rem;
+    font-size: 2.1rem;
+    margin-bottom: 1rem;
     letter-spacing: 0.05rem;
+    transition: color 0.3s ease;
+}
+
+.infografia-item-link:hover .lugar-titulo {
+    color: var(--color-oro-soft);
 }
 
 .lugar-texto {
     font-size: 0.95rem;
     line-height: 1.8;
     color: var(--color-gris-texto);
+}
+
+.btn-ver-mas-luxury {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    color: var(--color-oro-soft);
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.infografia-item-link:hover .btn-ver-mas-luxury {
+    opacity: 1;
+    transform: translateX(5px);
 }
 
 /* ==========================================================================
@@ -194,27 +270,11 @@ body {
     padding: 2rem;
 }
 
-.titulo-comentarios {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-}
-
-.divider-short {
-    width: 40px;
-    height: 1px;
-    background-color: var(--color-azul-firma);
-}
-
-.comentario-item {
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 1.2rem 0;
-}
+.titulo-comentarios { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; }
+.divider-short { width: 40px; height: 1px; background-color: var(--color-azul-firma); }
+.comentario-item { border-bottom: 1px solid rgba(255,255,255,0.05); padding: 1.2rem 0; }
 .comentario-item:last-child { border-bottom: none; }
-
-.comentario-item h5 {
-    font-size: 0.9rem;
-    font-weight: 500;
-}
+.comentario-item h5 { font-size: 0.9rem; font-weight: 500; }
 
 .rol-luxury {
     font-size: 0.7rem;
@@ -228,11 +288,7 @@ body {
 .stars { color: var(--color-oro-soft); font-size: 0.8rem; }
 .comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.4rem; }
 
-/* Input de comentarios */
-.dynamic-input-group {
-    display: flex;
-    gap: 10px;
-}
+.dynamic-input-group { display: flex; gap: 10px; }
 .form-control-comment {
     background: rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.1);
@@ -251,7 +307,6 @@ body {
 }
 .btn-comment-submit:hover { background: white; color: black; }
 
-/* Tarjeta Estratégica de Reserva */
 .card-reserva-preview {
     background: linear-gradient(135deg, rgba(18, 19, 24, 0.9) 0%, rgba(35, 45, 75, 0.3) 100%);
     border: 1px solid rgba(63, 96, 146, 0.3);
