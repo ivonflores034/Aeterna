@@ -422,7 +422,7 @@ body::before {
     }
 }
 /* ==========================================================================
-   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO (CORREGIDO)
+   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO (CORREGIDO COMPORTAMIENTO ZOOM)
    ========================================================================== */
 
 .main-area {
@@ -432,6 +432,10 @@ body::before {
     min-height: 90vh; /* Define la altura del contenedor principal */
     overflow: hidden;
     background: #0A0A0B; 
+    
+    /* ¡NUEVO! Convertimos al padre en Flexbox para que controle el centrado real de los hijos */
+    display: flex !important;
+    align-items: center !important;
 }
 
 /* Contenedor de video en modo absoluto forzado */
@@ -477,10 +481,9 @@ body::before {
     padding-left: 6% !important; 
     padding-right: 6% !important; 
     
-    /* 2. CONTROL VERTICAL SEGURO (Esto evita que se suba con el zoom) */
-    display: flex !important;
-    align-items: center !important; 
-    min-height: 80vh !important; /* Forzamos a que el contenedor ocupe el 80% de la altura de la pantalla */
+    /* 2. REPARACIÓN DEL CONTROL VERTICAL */
+    /* Dejamos que herede la alineación del padre (.main-area) para que sea elástica con el zoom */
+    display: block !important; 
 }
 
 .content-left-align {
@@ -488,15 +491,9 @@ body::before {
     position: relative;
     width: 100%;
     
-    /* ¡TU NUEVA PERILLA VERTICAL INMUNE AL ZOOM! */
-    /* Explicación:
-       0px = Centrado vertical perfecto automático.
-       Valores negativos (ej: -30px, -60px) = Sube el texto sutilmente.
-       Valores positivos (ej: 30px, 60px) = Baja el texto sutilmente.
-    */
-    transform: translateY(-20px) !important; 
+    /* Quitamos el transform invasivo para evitar desfases visuales extraños al alejar */
+    transform: none !important; 
 }
-
 /* --- SOLUCIÓN AL ESTIRAMIENTO DE IMÁGENES DE PAÍSES --- */
 .card-img-container {
     width: 100%;
