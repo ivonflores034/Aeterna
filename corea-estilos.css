@@ -176,22 +176,39 @@ body {
     -webkit-backdrop-filter: blur(6px);
     border: 1px solid rgba(255, 255, 255, 0.04);
     box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* CONTROL DE ANIMACIÓN PREMIUM: Volvemos a activar la transición fluida */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.4s ease, 
+                border-color 0.4s ease, 
+                box-shadow 0.4s ease;
+    
+    /* Prepara la tarjeta gráfica para evitar micro-tirones */
+    will-change: transform, box-shadow; 
 }
 
-/* Ahora el efecto hover se activa directamente sobre la tarjeta */
+/* EFECTO HOVER RE-ACTIVADO: Eleva la tarjeta suavemente y oscurece el fondo */
 .infografia-item:hover {
     background-color: rgba(25, 27, 35, 0.85);
-    border-color: rgba(255,255,255,0.1);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 45px rgba(0,0,0,0.6);
+    border-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-6px); /* Sutil efecto flotante hacia arriba */
+    box-shadow: 0 25px 50px rgba(0,0,0,0.65);
 }
 
-.glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); }
-.glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); }
+/* Bordes base por defecto */
+.glow-rosa { border-left: 2px solid rgba(255, 183, 197, 0.2); transition: border-color 0.4s ease; }
+.glow-celeste { border-left: 2px solid rgba(162, 217, 250, 0.2); transition: border-color 0.4s ease; }
 
-.infografia-item:hover.glow-rosa { border-left-color: var(--neon-rosa-suave); }
-.infografia-item:hover.glow-celeste { border-left-color: var(--neon-celeste-suave); }
+/* CORRECCIÓN: Iluminación premium de los bordes neón al pasar el mouse por la tarjeta */
+.infografia-item:hover.glow-rosa,
+.infografia-item:hover .glow-rosa { 
+    border-left-color: var(--neon-rosa-suave); 
+}
+
+.infografia-item:hover.glow-celeste,
+.infografia-item:hover .glow-celeste { 
+    border-left-color: var(--neon-celeste-suave); 
+}
 
 .img-wrapper-premium {
     overflow: hidden;
@@ -203,10 +220,11 @@ body {
     width: 100%;
     height: 320px;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
     filter: brightness(0.85);
 }
 
+/* Acercamiento elegante de la fotografía */
 .infografia-item:hover .img-luxury {
     transform: scale(1.04);
     filter: brightness(1.05);
@@ -229,6 +247,7 @@ body {
     transition: color 0.3s ease;
 }
 
+/* Cambia el título a oro sutil al hacer hover en el recuadro */
 .infografia-item:hover .lugar-titulo {
     color: var(--color-oro-soft);
 }
@@ -239,7 +258,7 @@ body {
     color: var(--color-gris-texto);
 }
 
-/* El botón ahora es una etiqueta <a> nativa, neutralizamos su comportamiento */
+/* El botón de vistazo previo */
 .btn-ver-mas-luxury {
     display: inline-block;
     margin-top: 1rem;
@@ -247,21 +266,21 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.15rem;
     color: var(--color-oro-soft);
-    text-decoration: none; /* Quita el subrayado azul nativo */
+    text-decoration: none;
     opacity: 0.6;
     transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
-/* Animación sutil cuando pasas el cursor sobre toda la tarjeta */
+/* Aparece sutilmente cuando se pasa el mouse por cualquier parte del recuadro */
 .infografia-item:hover .btn-ver-mas-luxury {
     opacity: 0.8;
 }
 
-/* Efecto enfocado e interactivo cuando pasas el cursor ÚNICAMENTE por encima del enlace */
+/* Reacción interactiva ÚNICAMENTE al poner el mouse directo sobre el botón */
 .btn-ver-mas-luxury:hover {
     opacity: 1 !important;
     color: var(--color-blanco-puro);
-    transform: translateX(5px);
+    transform: translateX(6px); /* Pequeño desplazamiento lateral */
 }
 
 /* ==========================================================================
