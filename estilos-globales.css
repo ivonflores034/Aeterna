@@ -457,12 +457,16 @@ body::before {
     height: 100%;
     object-fit: cover; /* Clave: hace que el video se recorte elegantemente sin estirarse */
     transition: opacity 1.5s ease-in-out; /* Transición sutil y premium ultra suave */
+    /* NUEVO: Esto asegura que se queden fijos en su esquina sin importar Flexbox */
+    display: block !important;
 }
 
 /* Estado de los videos para la coreografía de cruce */
 .video-fondo.activo {
     opacity: 1;
     z-index: 2; /* El video activo se pone por encima del que se va a ocultar */
+    pointer-events: auto; /* Permite interacción si fuera necesario */
+    pointer-events: none; /* Evita que interfiera de manera invisible */
 }
 
 .video-fondo.oculto {
