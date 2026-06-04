@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PALETA DE COLORES "SOFT OLD MONEY" & CONFIGURACIONES GENERALES
+   PALETA DE COLORES & CONFIGURACIONES GENERALES
    ========================================================================== */
 :root {
     --color-marfil-suave: #FBF9F6;
@@ -81,7 +81,6 @@ body::before {
     background: transparent !important; /* Forzamos transparencia para unificar el azul */
 }
 
-/* IMPORTANTE: Borra o comenta la regla .main-area::before vieja */
 .main-area::before {
     display: none !important;
 }
@@ -207,12 +206,12 @@ body::before {
 }
 
 .card-luxury:hover {
-    transform: translateY(-8px); /* Sube un poquito más para denotar interactividad */
-    border-color: rgba(255, 255, 255, 0.829); /* Tu color oro soft con opacidad en el borde */
+    transform: translateY(-8px); /* Sube para denotar interactividad */
+    border-color: rgba(255, 255, 255, 0.829);
     
-    /* Combinamos una sombra profunda negra y un destello dorado suave alrededor */
+    /* Combinamos una sombra y un destello alrededor */
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 
-                0 0 25px rgba(88, 163, 225, 0.438); /* Este es el sutil destello dorado */
+                0 0 25px rgba(88, 163, 225, 0.438);
 }
 
 /* --- SOLUCIÓN AL DESBORDE DE IMÁGENES --- */
@@ -226,12 +225,12 @@ body::before {
 .card-img-container img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Recorta y centra la imagen elegantemente sin deformarla */
+    object-fit: cover; /* Recorta y centra la imagen sin deformarla */
     transition: transform 0.6s ease;
 }
 
 .card-luxury:hover .card-img-container img {
-    transform: scale(1.06); /* Efecto zoom premium al pasar el mouse */
+    transform: scale(1.06); /* Efecto zoom al pasar el mouse */
 }
 
 .card-body-luxury {
@@ -260,12 +259,12 @@ body::before {
     visibility: visible;
     display: block; /* Mantiene su estructura en el row de Bootstrap */
     
-    /* Transición ultrasuave para el desvanecimiento y la elevación flotante */
+    /* Transición para el desvanecimiento y la elevación flotante */
     transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1),
                 transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* FASE 1: Desvanecimiento Total (Fade-out hacia abajo o encogimiento sutil) */
+/* FASE 1: Desvanecimiento Total (Fade-out hacia abajo) */
 .tarjeta-pais.fade-oculto {
     opacity: 0;
     transform: translateY(15px) scale(0.95);
@@ -276,7 +275,7 @@ body::before {
     display: none !important;
 }
 
-/* Suavizar el movimiento de reacomodo del contenedor papá de Bootstrap */
+/* Suavizar el movimiento de reacomodo del contenedor de Bootstrap */
 #contenedor-paises {
     transition: all 0.5s ease-in-out;
 }
@@ -488,7 +487,7 @@ body::before {
     object-fit: cover !important; /* Fuerza a la imagen a recortarse en lugar de estirarse */
     transition: transform 0.6s ease;
 }
-/* Ajustes tipográficos pulidos para los títulos principales */
+/* Ajustes tipográficos para los títulos principales */
 .welcome-text {
     font-family: 'Cormorant Garamond', serif;
     font-size: 4.5rem;
@@ -536,7 +535,7 @@ body::before {
     max-width: 90%;
 }
 
-/* Responsividad para móviles: Centrado automático si la pantalla es pequeña */
+/* Responsividad para celulates: Centrado automático si la pantalla es pequeña */
 @media (max-width: 767.98px) {
     .content-left-align {
         text-align: center !important;
