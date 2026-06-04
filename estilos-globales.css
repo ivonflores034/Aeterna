@@ -423,13 +423,13 @@ body::before {
     }
 }
 /* ==========================================================================
-   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO E INTERFACES DE LUJO 
+   NUEVOS ESTILOS: HERO CON VIDEO DE FONDO E INTERFACES DE LUJO (DOBLE CONTENEDOR)
    ========================================================================== */
 
 .main-area {
     position: relative;
     width: 100%;
-    min-height: 90vh; /* Ocupa casi toda la pantalla inicial de forma impactante */
+    min-height: 90vh; /* Ocupa casi toda la pantalla inicial */
     overflow: hidden;
     padding: 6rem 0;
     display: flex;
@@ -448,12 +448,26 @@ body::before {
     overflow: hidden;
 }
 
-/* El elemento de video nativo se adapta como fondo inteligente */
-#bg-video-luxury {
+/* Los elementos de video nativos se adaptan como fondo inteligente */
+.video-luxury-native {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover; /* Clave: hace que el video se recorte elegantemente sin estirarse */
-    transition: opacity 0.8s ease-in-out; /* Transición sutil al cambiar de video */
+    transition: opacity 1.5s ease-in-out; /* Transición sutil y premium ultra suave */
+}
+
+/* Estado de los videos para la coreografía de cruce */
+.video-luxury-native.activo {
+    opacity: 1;
+    z-index: 2; /* El video activo se pone por encima del que se va a ocultar */
+}
+
+.video-luxury-native.oculto {
+    opacity: 0;
+    z-index: 1;
 }
 
 /* Capa de oscurecimiento gradiente para amarrar la estética "Soft Old Money" */
@@ -462,13 +476,13 @@ body::before {
     top: 0; left: 0;
     width: 100%; height: 100%;
     background: linear-gradient(75deg, rgba(5, 5, 5, 0.781) 30%, rgba(10, 10, 11, 0.5) 70%, rgba(18, 19, 24, 0.85) 100%);
-    z-index: 2;
+    z-index: 3; /* Siempre por encima de ambos videos */
 }
 
 /* Envoltura del contenido interactivo */
 .hero-wrapper-content {
     position: relative;
-    z-index: 3; /* Flota encima del overlay y del video */
+    z-index: 4; /* Flota encima del overlay y de los videos */
 }
 
 .content-left-align {
@@ -523,7 +537,7 @@ body::before {
     max-width: 90%;
 }
 
-/* Responsividad para móviles: Centrado automático e intuitivo si la pantalla es pequeña */
+/* Responsividad para móviles: Centrado automático si la pantalla es pequeña */
 @media (max-width: 767.98px) {
     .content-left-align {
         text-align: center !important;

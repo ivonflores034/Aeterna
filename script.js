@@ -60,7 +60,7 @@ function buscarPais() {
 }
 
 // ==========================================================================
-// MOTOR DE VIDEOS LOCALES (.MP4) ALEATORIOS (41 VIDEOS)
+// MOTOR DE VIDEOS PREMIUM CON DOBLE CONTENEDOR INTERCALADO (41 VIDEOS)
 // ==========================================================================
 
 // 1. Generar automáticamente la lista con las rutas de tus 41 videos
@@ -71,53 +71,80 @@ for (let i = 1; i <= 41; i++) {
 
 let indiceVideoLocal = 0;
 const tiempoIntercaladoLocal = 10000; // 10 segundos
+let usarVideoUno = true; // Controla cuál de los dos contenedores pasa al frente
 
 // Función para obtener un índice aleatorio diferente al actual
 function obtenerIndiceAleatorio(max, indiceActual) {
     let nuevoIndice;
     do {
-        // Genera un número entero aleatorio entre 0 y el total de videos - 1
         nuevoIndice = Math.floor(Math.random() * max);
-    } while (nuevoIndice === indiceActual && max > 1); // Evita que salga el mismo video de forma consecutiva
+    } while (nuevoIndice === indiceActual && max > 1);
     return nuevoIndice;
 }
 
-function intercalarVideosNativos() {
-    const videoElement = document.getElementById('bg-video-luxury');
-    const sourceElement = document.getElementById('video-source-luxury');
+function inicializarMotorVideos() {
+    const video1 = document.getElementById('bg-video-luxury-1');
+    const video2 = document.getElementById('bg-video-luxury-2');
     
-    if (!videoElement || !sourceElement || listaVideosLocales.length === 0) return;
+    if (!video1 || !video2 || listaVideosLocales.length === 0) return;
 
-    // Configurar el primer video de forma aleatoria inmediatamente al cargar la página
+    // --- PASO CLAVE DE INICIO ---
+    // Seleccionar el primer video aleatorio y reproducirlo INMEDIATAMENTE en el contenedor 1
     indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, -1);
-    sourceElement.src = listaVideosLocales[indiceVideoLocal];
-    videoElement.load();
+    video1.src = listaVideosLocales[indiceVideoLocal];
+    video1.load();
+    video1.play().catch(err => console.log("Autoplay inicial retenido:", err));
 
-    // Iniciar el ciclo infinito cada 10 segundos
+    // Precargar de forma silenciosa e invisible otro video aleatorio en el contenedor 2
+    let siguienteIndice = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
+    video2.src = listaVideosLocales[siguienteIndice];
+    video2.load();
+
+    // Iniciar el ciclo de intercambio inteligente cada 10 segundos
     setInterval(() => {
-        // Seleccionar el siguiente video al azar sin repetir el actual
-        indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
-        
-        // Fase 1: Desvanecer sutilmente el video actual (Fade-out)
-        videoElement.style.opacity = '0';
-        
-        setTimeout(() => {
-            // Fase 2: Cambiar la ruta del video al nuevo seleccionado aleatoriamente
-            sourceElement.src = listaVideosLocales[indiceVideoLocal];
-            videoElement.load();
-            
-            // Forzar reproducción y asegurar silencio para saltar bloqueos de navegadores
-            videoElement.muted = true;
-            videoElement.play().catch(error => console.log("Autoplay retenido:", error));
-            
-            // Fase 3: Devolver la opacidad para el efecto de transición premium (Fade-in)
-            videoElement.style.opacity = '1';
-        }, 800); // Sincronizado con los 0.8s de la transición CSS del contenedor
+        // Intercambio de roles (Crossfade en la sombra)
+        if (usarVideoUno) {
+            // El video 2 (que ya estaba precargado y listo) pasa al frente y se reproduce
+            video2.classList.remove('oculto');
+            video2.classList.add('activo');
+            video2.play().catch(e => console.log(e));
+
+            // El video 1 se desvanece suavemente
+            video1.classList.remove('activo');
+            video1.classList.add('oculto');
+
+            // Preparamos en la sombra el siguiente video aleatorio dentro del video 1
+            setTimeout(() => {
+                indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
+                video1.src = listaVideosLocales[indiceVideoLocal];
+                video1.load();
+            }, 1500); // Esperamos a que termine de ocultarse para cambiarle la ruta sin que parpadee
+
+        } else {
+            // El video 1 pasa al frente y se reproduce
+            video1.classList.remove('oculto');
+            video1.classList.add('activo');
+            video1.play().catch(e => console.log(e));
+
+            // El video 2 se desvanece suavemente
+            video2.classList.remove('activo');
+            video2.classList.add('oculto');
+
+            // Preparamos en la sombra el siguiente video aleatorio dentro del video 2
+            setTimeout(() => {
+                indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
+                video2.src = listaVideosLocales[indiceVideoLocal];
+                video2.load();
+            }, 1500);
+        }
+
+        // Invertimos la bandera lógica para el siguiente ciclo
+        usarVideoUno = !usarVideoUno;
 
     }, tiempoIntercaladoLocal);
 }
 
 // Inicializar el motor cuando la estructura de la página esté lista
 document.addEventListener('DOMContentLoaded', () => {
-    intercalarVideosNativos();
+    inicializarMotorVideos();
 });
