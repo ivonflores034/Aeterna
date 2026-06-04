@@ -1,235 +1,470 @@
 <!DOCTYPE html>
+
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Aeterna | Agencia de Turismo de Lujo</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="estilos-globales.css">
+
 </head>
+
 <body>
 
+
+
     <div class="grid-container">
+
         
+
         <header class="header-area">
+
             <nav class="nav-luxury container-fluid d-flex justify-content-between align-items-center">
+
                 <div class="logo">
+
                     <a href="#">AETERNA</a>
+
                 </div>
+
                 <ul class="nav-links d-flex align-items-center m-0 p-0">
+
                     <li><a href="#">Inicio</a></li>
+
                     <li><a href="#paises-section">Destinos</a></li>
+
                     <li><a href="registro.html">Registrarse</a></li>
+
                     <li><a href="">Reservar</a></li>
+
                     <li><a href="#contacto-section">Contacto</a></li>
+
                 </ul>
+
             </nav>
+
         </header>
 
+
+
         <main class="main-area d-flex align-items-center">
+
     
+
     <div class="video-background-container">
-    <video id="bg-video-luxury-1" class="video-luxury-native activo" autoplay muted playsinline></video>
-    <video id="bg-video-luxury-2" class="video-luxury-native oculto" muted playsinline></video>
+
+    <video id="bg-video-1" class="video-fondo activo" autoplay muted playsinline></video>
+
+    <video id="bg-video-2" class="video-fondo" muted playsinline></video>
+
 </div>
+
     
+
     <div class="video-overlay-luxury"></div>
 
+
+
     <div class="container hero-wrapper-content">
+
         <div class="row">
+
             <div class="col-12 col-md-7 text-start content-left-align">
+
                 
+
                 <div class="hero-brand-group">
+
                     <h1 class="welcome-text animated-fade">Bienvenidos a Aeterna</h1>
+
                     <p class="subtitle-text animated-fade">Crónicas Inolvidables</p>
+
                 </div>
+
                 
+
                 <div class="philosophy-divider animated-fade"></div>
+
                 
+
                 <div class="hero-philosophy-group animated-fade">
+
                     <h2 class="philosophy-title-hero">Nuestra Filosofía</h2>
+
                     <p class="philosophy-p-hero">
+
                         No diseñamos simples viajes; esculpimos legados de vida. Creemos firmemente en el lujo silencioso, aquel que no necesita gritar para ser apreciado, manifestado en itinerarios minuciosos a medida, accesos exclusivos vedados al público general y un profundo respeto por la identidad cultural de cada latitud.
+
                     </p>
+
                 </div>
+
                 
+
             </div>
+
         </div>
+
     </div>
+
 </main>
 
+
+
         <section id="paises-section" class="paises-area container py-5"> 
+
             <div class="text-center mb-5">
+
                 <h2 class="section-title">Explora Nuestros Destinos Exclusivos</h2>
+
                 <div class="title-divider"></div>
+
             </div>
+
+
 
             <div class="row justify-content-center mb-4">
+
                 <div class="col-md-6 col-sm-10">
+
                     <div class="input-group search-box-container">
+
                         <span class="input-group-text bg-transparent border-end-0 text-muted">
+
                             <i class="fas fa-search"></i>
+
                         </span>
+
                         <input type="text" id="inputBuscarPais" class="form-control border-start-0 bg-transparent custom-search-input" placeholder="Buscar país por nombre..." onkeyup="buscarPais()">
+
                     </div>
+
                 </div>
+
             </div>
 
+
+
             <div class="text-center mb-4">
+
                 <div class="btn-group-luxury" role="group" aria-label="Filtro de Continentes">
+
                     <button type="button" class="btn-filtro activo" id="btn-todos" onclick="filtrarContinente('todos')">Todos</button>
+
                     <button type="button" class="btn-filtro" id="btn-europa" onclick="filtrarContinente('europa')">Europa</button>
+
                     <button type="button" class="btn-filtro" id="btn-asia" onclick="filtrarContinente('asia')">Asia</button>
+
                     <button type="button" class="btn-filtro" id="btn-america" onclick="filtrarContinente('america')">América</button>
+
                 </div>
+
             </div>
+
+
 
             <div class="row g-4 justify-content-center" id="contenedor-paises">
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
+
                      <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/cc/96/9d/cc969d372f952c2053437c16ad80ee6a.jpg" alt="Francia">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                              <h3 class="nombre-pais">Francia</h3>
+
                              <p>Experiencias de alta costura y gastronomía en París.</p>
+
                         </div>
+
                      </div>
+
                 </div>
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/1200x/7b/db/18/7bdb18515af8751d3ba324c2105875e7.jpg" alt="Italia">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Italia</h3>
+
                             <p>Villas privadas suspendidas sobre el mar mediterráneo y alta gastronomía italiana.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="col-12 col-md-4 tarjeta-pais asia" data-continente="asia">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/55/bf/6f/55bf6f8e23130c33e511cfdaa928790c.jpg" alt="Japón">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Japón</h3>
+
                             <p>Santuarios ancestrales resguardados, ceremonias de té privadas y jardines zen místicos.</p>
+
                         </div>
+
                     </div>
+
                 </div>
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/1200x/0e/dd/ed/0eddedef6a67d2a4391e38eb9f444e10.jpg" alt="Perú">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Perú</h3>
+
                             <p>Travesías de lujo hacia Machu Picchu a bordo del Hiram Bingham y retreats místicos.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/97/32/77/9732772e1af26a20824ace7613f2123b.jpg" alt="Suiza">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Suiza</h3>
+
                             <p>Lujo alpino, Relojería fina y paisajes majestuosos.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
                 <div class="col-12 col-md-4 tarjeta-pais asia" data-continente="asia">
+
                     <a href="corea.html" class="tarjeta-enlace-luxury">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/15/d8/75/15d87575174474d05147fbaf61144802.jpg" alt="Corea">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Corea</h3>
+
                             <p>Vanguardia tecnológica mezclada con tradiciones ancestrales.</p>
+
                         </div>
+
                     </div>
+
                     </a>
+
                 </div>
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/42/97/a0/4297a05ba769952608c35d2f7abcfbee.jpg" alt="Estados Unidos">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Estados Unidos</h3>
+
                             <p>Experiencias exclusivas en Nueva York y villas privadas de Miami.</p>
+
                         </div>
+
                     </div>
+
                 </div>
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/41/65/58/416558e6dfaa7a0b8998f95ed372731f.jpg" alt="Colombia">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Colombia</h3>
+
                             <p>Café de alta especialidad y resorts de encanto en el Caribe.</p>
+
                         </div>
+
                     </div>
+
                 </div>
 
+
+
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
+
                     <div class="card-luxury">
+
                         <div class="card-img-container">
+
                             <img src="https://i.pinimg.com/736x/98/8e/39/988e3962884c37090c67e6cf02dabfad.jpg" alt="Bolivia">
+
                         </div>
+
                         <div class="card-body-luxury">
+
                             <h3 class="nombre-pais">Bolivia</h3>
+
                             <p>Aventuras privadas en el Salar de Uyuni y hoteles de sal premium.</p>
+
                         </div>
+
                     </div>
+
                 </div>
+
+
 
             </div>
+
         </section>
 
+
+
         <footer id="contacto-section" class="footer-area">
+
             <div class="container py-5">
+
                 <div class="row g-4 align-items-center">
+
                     <div class="col-12 col-md-6 text-center text-md-start border-md-right">
+
                         <h4 class="footer-brand mb-4">AETERNA</h4>
+
                         <ul class="list-unstyled contact-info-list p-0 m-0">
+
                             <li class="mb-3"><i class="fa-solid fa-location-dot me-3 icon-gold"></i> Av. Salamanca, Edificio Suites de Lujo, Piso 10</li>
+
                             <li class="mb-3"><i class="fa-solid fa-phone me-3 icon-gold"></i> +591 (2) 244-XXXX</li>
+
                             <li class="mb-0"><i class="fa-solid fa-envelope me-3 icon-gold"></i> concierge@aeterna-luxury.com</li>
+
                         </ul>
+
                     </div>
+
                     <div class="col-12 col-md-6 text-center">
+
                         <h5 class="social-title mb-4">Conecte con Nosotros</h5>
+
                         <div class="social-icons-wrapper d-flex justify-content-center gap-4">
+
                             <a href="#" class="social-link-luxury" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+
                             <a href="#" class="social-link-luxury" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+
                             <a href="#" class="social-link-luxury" aria-label="LinkedIn"><i class="fa-brands fa-instagram"></i></a>
+
                         </div>
+
                         <p class="copyright-text mt-4 m-0">&copy; 2026 AETERNA Luxury Travel. Todos los derechos reservados.</p>
+
                     </div>
+
                 </div>
+
             </div>
+
         </footer>
+
+
 
     </div>
 
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
+
