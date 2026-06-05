@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeterna — Reservar Viaje</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="reservar.css">
+</head>
+<body>
+
+    <div class="main-registro-container animated-fade">
+        <div class="card-registro">
+            
+            <div class="text-center" style="text-align: center; margin-bottom: 2rem;">
+                <div class="logo-registro">
+                    <a href="index.html">AETERNA</a>
+                </div>
+                <div class="titulo-registro">Concierge de Experiencias</div>
+                <div class="title-divider"></div>
+            </div>
+
+            <div class="progress-bar-luxury">
+                <div class="step-indicator active" id="step-dot-1"><span>1</span><p>Destino</p></div>
+                <div class="step-indicator" id="step-dot-2"><span>2</span><p>Pasajero</p></div>
+                <div class="step-indicator" id="step-dot-3"><span>3</span><p>Resumen</p></div>
+            </div>
+
+            <form id="bookingForm" novalidate>
+
+                <div class="form-step step-active" id="step-1">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="form-label-luxury">Destino Exclusivo</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-compass icon-input"></i>
+                            <select class="form-control-luxury" id="destino" required>
+                                <option value="" disabled selected>Selecciona tu destino...</option>
+                                <option value="Corea del Sur — Seúl Tradicional">Corea del Sur — Seúl Tradicional</option>
+                                <option value="Suiza — Alpes Franceses e Invernales">Suiza — Alpes Alpinos</option>
+                                <option value="Francia — París Arquitectónico">Francia — París de Época</option>
+                            </select>
+                        </div>
+                        <span class="error-feedback" id="error-destino">Por favor, elija un destino de catálogo.</span>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="flex: 1;">
+                            <label class="form-label-luxury">Fecha de Ida</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-calendar-plus icon-input"></i>
+                                <input type="date" class="form-control-luxury" id="fechaIda" required>
+                            </div>
+                            <span class="error-feedback" id="error-fechaIda">Indique fecha válida.</span>
+                        </div>
+                        <div style="flex: 1;">
+                            <label class="form-label-luxury">Fecha de Regreso</label>
+                            <div class="input-wrapper">
+                                <i class="fa-solid fa-calendar-minus icon-input"></i>
+                                <input type="date" class="form-control-luxury" id="fechaRegreso" required>
+                            </div>
+                            <span class="error-feedback" id="error-fechaRegreso">Fecha inconsistente.</span>
+                        </div>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label class="form-label-luxury">Clase de Cabina</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-crown icon-input"></i>
+                            <select class="form-control-luxury" id="claseCabina">
+                                <option value="Primera Clase (Imperial)">Primera Clase (Imperial)</option>
+                                <option value="Business de Lujo">Business de Lujo</option>
+                                <option value="Premium Economy">Premium Economy</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="button" class="btn-registro-submit" style="width: 100%;" onclick="nextStep(2)">
+                        Continuar <i class="fa-solid fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                    </button>
+                </div>
+
+
+                <div class="form-step" id="step-2">
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="form-label-luxury">Nombre Completo (Como en pasaporte)</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-user icon-input"></i>
+                            <input type="text" class="form-control-luxury" id="nombrePasajero" placeholder="Ej. Ivon Flores" required>
+                        </div>
+                        <span class="error-feedback" id="error-nombre">Se requiere nombre oficial legible.</span>
+                    </div>
+
+                    <div style="margin-bottom: 1.5rem;">
+                        <label class="form-label-luxury">Número de Documento / Pasaporte</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-passport icon-input"></i>
+                            <input type="text" class="form-control-luxury" id="pasaporte" placeholder="Ej. A12345678" required>
+                        </div>
+                        <span class="error-feedback" id="error-pasaporte">Pasaporte o ID obligatorio.</span>
+                    </div>
+
+                    <div style="margin-bottom: 2rem;">
+                        <label class="form-label-luxury">Correo de Contacto Premium</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-envelope icon-input"></i>
+                            <input type="email" class="form-control-luxury" id="emailContacto" placeholder="correo@ejemplo.com" required>
+                        </div>
+                        <span class="error-feedback" id="error-email">Inserte un correo electrónico válido.</span>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem;">
+                        <button type="button" class="back-home" style="background:none; border:none; cursor:pointer;" onclick="prevStep(1)">
+                            <i class="fa-solid fa-arrow-left"></i> Atrás
+                        </button>
+                        <button type="button" class="btn-registro-submit" style="flex: 1;" onclick="nextStep(3)">
+                            Generar Resumen
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="form-step" id="step-3">
+                    <p class="form-label-luxury" style="text-align: center; margin-bottom: 1rem; color: var(--color-oro-soft);">
+                        Verifique su Solicitud de Itinerario
+                    </p>
+                    
+                    <div class="ticket-preview-box">
+                        <div class="ticket-header">
+                            <span>BOARDING PASS</span>
+                            <i class="fa-solid fa-plane-departure" style="color: var(--color-oro-soft);"></i>
+                        </div>
+                        <div class="ticket-body">
+                            <div class="ticket-row">
+                                <div><small>PASAJERO</small><p id="view-nombre">-</p></div>
+                                <div><small>DOCUMENTO</small><p id="view-pasaporte">-</p></div>
+                            </div>
+                            <div class="ticket-row">
+                                <div><small>DESTINO SELECCIONADO</small><p id="view-destino" style="color: var(--color-marfil-suave); font-weight: 500;">-</p></div>
+                            </div>
+                            <div class="ticket-row">
+                                <div><small>SALIDA</small><p id="view-ida">-</p></div>
+                                <div><small>RETORNO</small><p id="view-regreso">-</p></div>
+                            </div>
+                            <div class="ticket-row">
+                                <div><small>CLASE ELEGIDA</small><p id="view-clase" style="color: #6da2f0;">-</p></div>
+                                <div><small>ESTADO</small><p style="color: var(--color-oro-apagado);">PENDIENTE</p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem; align-items: center;">
+                        <button type="button" class="back-home" style="background:none; border:none; cursor:pointer;" onclick="prevStep(2)">
+                            <i class="fa-solid fa-arrow-left"></i> Modificar
+                        </button>
+                        <button type="submit" class="btn-registro-submit" style="flex: 1;">
+                            Confirmar Reserva <i class="fa-solid fa-check" style="margin-left: 0.3rem;"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+            <div style="text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem;">
+                <a href="index.html" class="back-home"><i class="fa-solid fa-house"></i> Volver a la Agencia</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="reservar.js"></script>
+</body>
+</html>

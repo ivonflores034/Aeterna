@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeterna — Club de Sorteos Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --color-oro-apagado: #195485d5;
+;
+            --color-marfil-suave: #f4f4f0;
+            --color-gris-texto: #a0a0a0;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0; padding: 0;
+            background: radial-gradient(circle at 50% 15%, rgba(15, 12, 22, 0.95), #000000 70%);
+            color: var(--color-marfil-suave);
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            position: relative; /* Clave para que el contenedor absoluto se guíe por el body */
+        }
+
+        /* ==========================================================================
+           CORRECCIÓN DEL FONDO DE ONDAS SVG
+           ========================================================================== */
+        .ondas-background-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Lo manda al fondo de todo */
+            pointer-events: none; /* Evita que interfiera si intentas hacer clic en la pantalla */
+            overflow: hidden;
+            opacity: 0.7; /* Le da un toque más sutil y elegante */
+        }
+        
+        .onda-neon {
+            position: absolute;
+            top: 5%; /* Controla qué tan arriba o abajo quieres que inicien las líneas */
+            left: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        .onda-retrasada {
+            top: 12%; /* Desfasa la segunda línea para crear profundidad */
+        }
+        /* ========================================================================== */
+
+        /* Barra superior estilo cristal */
+        .navbar-sorteos {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 4rem; background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            z-index: 10;
+        }
+        .logo-brand {
+            font-family: 'Playfair Display', serif; font-size: 1.6rem;
+            letter-spacing: 0.3rem; text-decoration: none; color: #ffffff;
+        }
+        .nav-links { display: flex; gap: 2.5rem; }
+        .nav-link-item {
+            text-decoration: none; color: var(--color-gris-texto);
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15rem;
+            transition: color 0.3s;
+        }
+        .nav-link-item:hover, .nav-link-item.active { color: #ffffff; }
+
+        .container-premium { 
+            max-width: 1100px; 
+            margin: 5rem auto; 
+            padding: 0 2rem; 
+            position: relative;
+            z-index: 5; /* Asegura que el contenido esté por encima de las ondas */
+        }
+        
+        /* Tarjetas de cristalera para las reglas */
+        .grid-reglas {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem;
+        }
+        .card-regla {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 2.5rem 2rem; border-radius: 12px;
+            backdrop-filter: blur(5px); text-align: center;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+        .card-regla:hover {
+            transform: translateY(-5px); border-color: #315e83d5;
+        }
+        .icon-box {
+            font-size: 2rem; color: var(--color-oro-apagado); margin-bottom: 1.5rem;
+        }
+        .card-title {
+            font-family: 'Playfair Display', serif; font-size: 1.25rem;
+            margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.05rem;
+        }
+        .card-desc {
+            color: var(--color-gris-texto); font-size: 0.88rem; line-height: 1.6; font-weight: 300;
+        }
+
+        /* Sección Interactiva Mecánica de Regalo */
+        .mecanica-regalo-box {
+            margin-top: 5rem; background: linear-gradient(135deg, rgba(212,175,55,0.04), rgba(255,255,255,0.01));
+            border: 1px solid #517592d5; border-radius: 16px;
+            padding: 3.5rem; display: flex; align-items: center; gap: 4rem;
+        }
+        .mecanica-text { flex: 1; }
+        .mecanica-cta {
+            background: var(--color-oro-apagado); color: #000; padding: 1.2rem 2.5rem;
+            text-decoration: none; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.2rem; border-radius: 4px; transition: all 0.3s; display: inline-block;
+        }
+        .mecanica-cta:hover {
+            background: #ffffff; box-shadow: 0 0 20px rgba(255,255,255,0.4);
+        }
+    </style>
+</head>
+<body>
+
+<div class="ondas-background-container">
+    <svg class="onda-neon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2" d="M0,96C240,192,480,288,720,256C960,224,1200,64,1440,32"></path>
+    </svg>
+    <svg class="onda-neon onda-retrasada" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="none" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" d="M0,192C280,64,560,320,840,224C1120,128,1400,96,1440,80"></path>
+    </svg>
+</div>
+
+    <nav class="navbar-sorteos">
+        <a href="index.html" class="logo-brand">AETERNA</a>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link-item">Inicio</a>
+            <a href="sorteos.html" class="nav-link-item active">✦ Sorteos</a>
+            <a href="reservar.html" class="nav-link-item">Reservaciones</a>
+        </div>
+    </nav>
+
+    <main class="container-premium">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+            <span style="text-transform: uppercase; letter-spacing: 0.4rem; font-size: 0.7rem; color: var(--color-oro-apagado); font-weight: 600;">Ecosistema de Fidelidad</span>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 400; margin: 0.8rem 0 1.5rem 0;">¿Cómo funcionan nuestros sorteos mensuales?</h1>
+            <p style="color: var(--color-gris-texto); font-size: 1rem; line-height: 1.7; font-weight: 300;">
+                Diseñamos un sistema exclusivo donde viajar de forma constante expande exponencialmente sus horizontes de recompensa. No es solo volar, es pertenecer al club.
+            </p>
+        </div>
+
+        <div class="grid-reglas">
+            <div class="card-regla">
+                <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                <h3 class="card-title">Acumulación de Boletos</h3>
+                <p class="card-desc">Cada vuelo privado o charter reservado con la agencia suma un boleto electrónico permanente a su cuenta. A mayor historial, mayor probabilidad matemática de asignación automatizada.</p>
+            </div>
+            <div class="card-regla">
+                <div class="icon-box"><i class="fa-solid fa-gem"></i></div>
+                <h3 class="card-title">Categorías Transparentes</h3>
+                <p class="card-desc">Realizamos sorteos independientes para cabinas <strong>Premium Economy</strong> y <strong>Luxury Business</strong>. Excluimos la clase Imperial por regulaciones estrictas de costos y logística de charters.</p>
+            </div>
+            <div class="card-regla">
+                <div class="icon-box"><i class="fa-solid fa-hotel"></i></div>
+                <h3 class="card-title">Estadía Todo Incluido</h3>
+                <p class="card-desc">El ganador obtiene un boleto de ida y retorno en la clase sorteada junto a una semana completa de hospedaje de cortesía en los hoteles de nuestra selecta Alianza Patrocinada.</p>
+            </div>
+        </div>
+
+        <div class="mecanica-regalo-box">
+            <div style="font-size: 3.5rem; color: var(--color-oro-apagado); opacity: 0.8;">
+                <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="mecanica-text">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 400; margin-top: 0; margin-bottom: 0.6rem;">La Regla de Oro: Regalar para Duplicar</h3>
+                <p style="color: var(--color-gris-texto); font-size: 0.92rem; line-height: 1.6; margin: 0; font-weight: 300;">
+                    Si es seleccionado como ganador del mes y sus compromisos ejecutivos le impiden abordar, puede transferir el itinerario como un **obsequio de cortesía** a cualquier miembro del club con menor historial de vuelos. Al hacer esto, **sus probabilidades individuales se duplicarán automáticamente (x2)** para el sorteo del siguiente período mensual.
+                </p>
+            </div>
+            <div>
+                <a href="reservar.html" class="mecanica-cta">Elevar Probabilidades Ahora</a>
+            </div>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 4rem 0; color: #444; font-size: 0.75rem; letter-spacing: 0.1rem; border-top: 1px solid rgba(255,255,255,0.02); margin-top: 5rem;">
+        © 2026 AETERNA AVIATION CLUB. PROYECTO INF-113. DISCRECIÓN & EXCLUSIVIDAD.
+    </footer>
+
+</body>
+</html>
