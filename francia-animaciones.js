@@ -1,95 +1,66 @@
 document.addEventListener("DOMContentLoaded", function () {
-    
-    // ==========================================================================
-    // MOTOR DE VIDEOS ALPINOS ASÍNCRONO
-    // ==========================================================================
-    const videosFrancia = [
-        "videos/pais8.mp4", 
-        "videos/pais9.mp4", 
-        "videos/pais10.mp4",
-        "videos/pais11.mp4", 
-        "videos/pais12.mp4", 
-        "videos/pais13.mp4", 
-        "videos/pais14.mp4"
-    ];
-    let indiceVideoActual = 0;
+   // ==========================================================================
+// MOTOR DE VIDEOS ASÍNCRONO - FRANCIA (OPTIMIZADO)
+// ==========================================================================
+const videosFrancia = [
+    "videos/pais8.mp4", 
+    "videos/pais9.mp4", 
+    "videos/pais10.mp4",
+    "videos/pais11.mp4" // Tus 4 videos
+];
+let indiceVideoActual = 0;
 
-    const videoElemento1 = document.getElementById("bg-video-francia-1");
-    const videoElemento2 = document.getElementById("bg-video-francia-2");
+const v1 = document.getElementById("bg-video-francia-1");
+const v2 = document.getElementById("bg-video-francia-2");
 
-    function inicializarMotorVideosFrancia() {
-        if (!videoElemento1 || !videoElemento2) return;
+function inicializarMotorVideosFrancia() {
+    if (!v1 || !v2) return;
 
-        // Inyectar y reproducir de golpe el primer video alpino en el contenedor activo
-        videoElemento1.src = videosFrancia[0];
-        videoElemento1.play().catch(err => console.log("Autoplay mitigado por restricciones del navegador"));
+    // Primer video al contenedor activo
+    v1.src = videosFrancia[0];
+    v1.play().catch(err => console.log("Autoplay mitigado"));
 
-        // Precargar silenciosamente el segundo video en el contenedor oculto
-        videoElemento2.src = videosFrancia[1];
+    // Precargar el segundo video (índice 1)
+    v2.src = videosFrancia[1];
 
-        // Intercambiar las fuentes de forma cruzada cada 10 segundos continuos
-        setInterval(intercalarVideosFrancia, 10000);
-    }
+    setInterval(intercalarVideosFrancia, 10000);
+}
 
-    function intercalarVideosFrancia() {
-        indiceVideoActual = (indiceVideoActual + 1) % videosFrancia.length;
-        const proximoIndice = (indiceVideoActual + 1) % videosFrancia.length;
+function intercalarVideosFrancia() {
+    // 1. Avanzar en el historial de forma cíclica (0, 1, 2, 3...)
+    indiceVideoActual = (indiceVideoActual + 1) % videosFrancia.length;
+    const proximoIndice = (indiceVideoActual + 1) % videosFrancia.length;
 
-        if (videoElemento1.classList.contains("activo")) {
-            // El contenedor 1 está al aire, reproducimos y desvanecemos hacia el 2
-            videoElemento2.play().catch(err => console.log(err));
-            videoElemento2.classList.remove("oculto");
-            videoElemento2.classList.add("activo");
+    // 2. Detectar automáticamente cuál está activo y cuál oculto
+    const esV1Activo = v1.classList.contains("activo");
+    const activo = esV1Activo ? v1 : v2;
+    const oculto = esV1Activo ? v2 : v1;
 
-            videoElemento1.classList.remove("activo");
-            videoElemento1.classList.add("oculto");
+    // 3. Intercambio de roles fluido (Desaparece el activo, aparece el oculto)
+    oculto.play().catch(err => console.log(err));
+    oculto.classList.replace("oculto", "activo");
+    activo.classList.replace("activo", "oculto");
 
-            // Reemplazar la fuente del contenedor oculto tras finalizar la transición de opacidad
-            setTimeout(() => {
-                videoElemento1.src = videosFrancia[proximoIndice];
-                videoElemento1.load();
-            }, 1500); 
+    // 4. Preparar el Siguiente video en el contenedor que acaba de ocultarse
+    setTimeout(() => {
+        activo.src = videosFrancia[proximoIndice];
+        activo.load();
+    }, 1500); 
+}
 
-        } else {
-            // El contenedor 2 está al aire, regresamos fluidamente al contenedor 1
-            videoElemento1.play().catch(err => console.log(err));
-            videoElemento1.classList.remove("oculto");
-            videoElemento1.classList.add("activo");
-
-            videoElemento2.classList.remove("activo");
-            videoElemento2.classList.add("oculto");
-
-            setTimeout(() => {
-                videoElemento2.src = videosFrancia[proximoIndice];
-                videoElemento2.load();
-            }, 1500);
+// Arrancar el motor
+inicializarMotorVideosFrancia();
+// ==========================================================================
+// ANIMACIÓN DE REVELACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
+// ==========================================================================
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target); // Detiene la observación tras animar
         }
-    }
-
-    // Arrancar el motor multimedia alpino
-    inicializarMotorVideosFrancia();
-
-
-    // ==========================================================================
-    // ANIMACIÓN DE REVELACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
-    // ==========================================================================
-    const elementosAnimados = document.querySelectorAll('.scroll-animado');
-
-    const opcionesObserver = {
-        root: null,
-        threshold: 0.12,
-        rootMargin: "0px"
-    };
-
-    const observer = new IntersectionObserver(function (entries, observer) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target); // Evita repetir la animación
-            }
-        });
-    }, opcionesObserver);
-
-    elementosAnimados.forEach(elemento => {
-        observer.observe(elemento);
-    }) })
+    });
+}, { threshold: 0.12 });
+// Selecciona y activa el observador para todos los elementos en una sola línea
+document.querySelectorAll('.scroll-animado').forEach(el => observer.observe(el));
+});

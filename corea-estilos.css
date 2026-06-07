@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PALETA Y VARIABLES ATMOSFÉRICAS
+   PALETA COREA
    ========================================================================== */
 :root {
     --color-negro-fondo: #070709;
@@ -11,24 +11,15 @@
     --neon-rosa-suave: rgba(255, 192, 203, 0.85);
     --neon-celeste-suave: rgba(173, 216, 230, 0.85);
     --white-neon-glow: rgba(255, 255, 255, 0.95);
-    --color-oro-soft: #E3C598;
-    
-    --transition-luxury: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+    --color-oro-soft: #E3C598;}
+html { scroll-behavior: smooth; }
 body {
-    background: linear-gradient(to bottom, #0d0e12 0%, #070709 50%, #030304 100%) var(--color-negro-fondo);
+    background: linear-gradient(to bottom, #0d0e12 0%, #070709 50%, #030304 100%);
     color: var(--color-blanco-puro);
     font-family: 'Raleway', sans-serif;
-    overflow-x: hidden;
-}
-
+    overflow-x: hidden;}
 /* ==========================================================================
-   ELEMENTOS INTERACTIVOS FIJOS Y FLOTANTES
+   ELEMENTOS INTERACTIVOS FIJOS Y FLOTANTES (REGRESAR Y BANDERA FLOTANTE)
    ========================================================================== */
 .btn-regresar-fijo {
     position: fixed;
@@ -36,7 +27,6 @@ body {
     z-index: 1000;
     background: rgba(7, 7, 9, 0.4);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--color-gris-texto);
     padding: 0.6rem 1.4rem;
@@ -44,44 +34,33 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     text-decoration: none;
-    transition: var(--transition-luxury);
-}
-
+    transition: var(--transition-luxury); }
 .btn-regresar-fijo:hover {
     border-color: var(--white-neon-glow);
     color: var(--color-blanco-puro);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
+    transform: translateY(-2px); }
 .bandera-flotante-link {
     position: fixed;
     top: 25px; right: 25px;        
     z-index: 9999;     
     text-decoration: none;
-    animation: flotarBanderaInfinita 4s ease-in-out infinite;
-}
-
+    animation: flotarBanderaInfinita 4s ease-in-out infinite; }
 .bandera-flotante-container {
     position: relative;
     width: 65px; height: 65px;
     border-radius: 50%; padding: 2px;
     background: rgba(7, 7, 9, 0.4);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     display: flex; align-items: center; justify-content: center;
-    transition: var(--transition-luxury);
-}
-
+    transition: var(--transition-luxury); }
 .bandera-img {
     width: 100%; height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: transform 0.5s ease;
-}
-
+    transition: transform 0.5s ease; }
 .tooltip-reserva {
     position: absolute;
     bottom: -38px;
@@ -96,45 +75,20 @@ body {
     white-space: nowrap;
     opacity: 0;
     transform: translateY(-4px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
+    transition: all 0.3s ease; }
 .bandera-flotante-link:hover .bandera-flotante-container {
     transform: scale(1.1); 
     border-color: var(--neon-rosa-suave);
-    box-shadow: 0 0 25px rgba(255, 192, 203, 0.2), 0 0 25px rgba(173, 216, 230, 0.1), 0 15px 35px rgba(0, 0, 0, 0.7);
-}
+    box-shadow: 0 0 25px rgba(255, 192, 203, 0.2), 0 0 25px rgba(173, 216, 230, 0.1), 0 15px 35px rgba(0, 0, 0, 0.7); }
 .bandera-flotante-link:hover .bandera-img { transform: rotate(10deg); }
 .bandera-flotante-link:hover .tooltip-reserva { opacity: 1; transform: translateY(0); }
 .bandera-flotante-link:active .bandera-flotante-container { transform: scale(0.95); }
-
 @keyframes flotarBanderaInfinita {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-8px); }
-}
-
+    50% { transform: translateY(-8px); } }
 /* ==========================================================================
-   PARTÍCULAS Y EFECTO HERO
+   EFECTO HERO
    ========================================================================== */
-#contenedor-flores { 
-    position: fixed; 
-    inset: 0; pointer-events: none; 
-    z-index: 99; 
-    overflow: hidden; }
-.flor-caida { 
-    position: absolute; 
-    color: var(--neon-rosa-suave); 
-    opacity: 0; 
-    font-size: 1rem; 
-    animation: caidaDiagonal linear infinite; }
-
-@keyframes caidaDiagonal {
-    0% { transform: translateY(-10%) translateX(0) rotate(0deg); opacity: 0; }
-    15%, 85% { opacity: 0.06; }
-    100% { transform: translateY(110vh) translateX(100px) rotate(360deg); opacity: 0; }
-}
-
 .hero-corea {
     position: relative;
     min-height: 70vh;
@@ -143,28 +97,23 @@ body {
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    text-align: center;
-}
+    text-align: center; }
+
+/*VIDEO*/
 
 .video-background-container { position: absolute; inset: 0; z-index: 1; }
-.video-background-container::after {
-    content: ""; 
-    position: absolute; 
-    inset: 0;
-    background: linear-gradient(to bottom, rgba(7, 7, 9, 0.1) 0%, rgba(7, 7, 9, 0.5) 70%, var(--color-negro-fondo) 100%);
-    z-index: 2;
-}
-
 .video-luxury-native {
     position: absolute; top: 50%; left: 50%;
     width: 100%; height: 100%; object-fit: cover;
     transform: translate(-50%, -50%); z-index: 1;
-    opacity: 0; transition: opacity 2s ease-in-out;
-}
+    opacity: 0; transition: opacity 2s ease-in-out; }
 .video-luxury-native.activo { opacity: 0.35; }
 .video-luxury-native.oculto { opacity: 0; }
 
+/*TEXTO SOBRE EL VIDEO*/
+
 .hero-contenido { position: relative; z-index: 3; max-width: 850px; }
+
 .titulo-pais { 
     font-family: 'Cormorant Garamond', serif; 
     font-size: 5.5rem; 
@@ -191,9 +140,8 @@ body {
     height: 1px; 
     background: linear-gradient(to right, transparent, rgba(255,225,255,0.4), transparent); 
     margin: 0 auto; }
-
 /* ==========================================================================
-   SECCIÓN INFOGRAFÍA DE DESTINOS
+   SECCIÓN INFOGRAFÍA DE CRISTAL INTERACTIVA
    ========================================================================== */
 .infografia-item { 
     margin-bottom: 4rem; 
@@ -205,10 +153,9 @@ body {
     transition: var(--transition-luxury); }
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
-    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.06);
-    transform: translateY(-8px) scale(1.015); z-index: 5; 
-}
+    transform: translateY(-8px) scale(1.015); }
 
 .glow-rosa, .glow-celeste { border-left: 1px solid rgba(255, 255, 255, 0.08); }
 .infografia-item:hover.glow-rosa { 
@@ -227,7 +174,8 @@ body {
     width: 100%; height: 340px; 
     object-fit: cover; 
     filter: brightness(0.75) grayscale(15%); 
-    transition: var(--transition-luxury); }
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    filter: brightness(0.75) grayscale(10%); }
 .infografia-item:hover .img-luxury { transform: scale(1.03); filter: brightness(0.95) grayscale(0%); }
 
 .lugar-numero { 
@@ -244,7 +192,6 @@ body {
     font-family: 'Cormorant Garamond', serif; 
     font-size: 2.3rem; font-weight: 400; 
     margin-bottom: 1.2rem; 
-    letter-spacing: 0.02rem; 
     color: var(--white-neon-glow); }
 .lugar-texto { font-size: 0.95rem; line-height: 1.8; color: var(--color-gris-texto); font-weight: 300; }
 
@@ -258,42 +205,47 @@ body {
     text-decoration: none; 
     opacity: 0.5; 
     position: relative; 
-    transition: all 0.3s ease;
-}
+    transition: all 0.3s ease; }
 .infografia-item:hover .btn-ver-mas-luxury { opacity: 0.85; }
 .btn-ver-mas-luxury::after { 
     content: ''; 
     position: absolute; 
-    bottom: -4px; 
-    left: 0; 
-    width: 0; height: 1px; 
+    bottom: -4px; left: 0; width: 0; height: 1px; 
     background-color: var(--color-oro-soft); 
     transition: width 0.3s ease; }
 .btn-ver-mas-luxury:hover { opacity: 1 !important; color: var(--color-blanco-puro); transform: translateX(4px); }
 .btn-ver-mas-luxury:hover::after { width: 100%; background-color: var(--color-blanco-puro); }
-
 /* ==========================================================================
-   NUEVA SECCIÓN: HOSPEDAJE Y CATEGORÍAS (Ex-Estilos en línea)
+   HOSPEDAJE Y CATEGORÍAS
    ========================================================================== */
-.seccion-hospedaje { padding: 5rem 1.5rem; max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.05); }
+.seccion-hospedaje { padding: 5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
 .encabezado-hospedaje { text-align: center; margin-bottom: 4rem; }
 .sub-hospedaje { text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.75rem; color: var(--color-oro-soft); }
 .titulo-hospedaje { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; margin: 0.5rem 0 1rem 0; }
 .desc-hospedaje { color: var(--color-gris-texto); max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.6; }
 
+/* Estructura de Tarjetas */
 .tarjeta-confort {
-    background: rgba(255, 255, 255, 0.01); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 8px; height: 100%;
-}
-.tag-confort { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: bold; display: block; margin-bottom: 0.5rem; }
-.tarjeta-confort h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin: 0 0 1rem 0; font-weight: 400; }
+    background: rgba(255, 255, 255, 0.01); 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+    padding: 2rem; border-radius: 8px; height: 100%; }
+.tarjeta-confort:hover {
+    background: var(--color-tarjeta-glass);
+    border-color: rgba(255,255,255,0.08);
+    transform: translateY(-5px);}
+
+/* Bordes Superiores y Tags Estilizados  */
+.tarjeta-confort h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400; }
 .tarjeta-confort p { color: #888; font-size: 0.85rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
 .tarjeta-confort ul { color: #ccc; font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.8; font-weight: 300; }
 
-/* Bordes superiores personalizados */
 .tc-premium { border-top: 3px solid #718096; } .c-premium { color: #718096; }
 .tc-luxury { border-top: 3px solid var(--color-oro-soft); } .c-luxury { color: var(--color-oro-soft); }
 .tc-imperial { border-top: 3px solid #e491d6cb; } .c-imperial { color: #e491d6cb; }
 
+.tag-confort { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: bold; display: block; margin-bottom: 0.5rem; }
+
+/* Baner de Garantía */
 .banner-garantia { 
     margin-top: 3rem; 
     background: rgba(255,255,255,0.01); 
@@ -305,14 +257,12 @@ body {
     gap: 1.5rem; }
 .icono-garantia { color: var(--color-oro-soft); font-size: 1.4rem; }
 .banner-garantia p { margin: 0; color: #888; font-size: 0.88rem; line-height: 1.5; font-weight: 300; }
-.banner-garantia strong { color: #fff; }
-
 /* ==========================================================================
    SECCIÓN COMENTARIOS Y RESERVA
    ========================================================================== */
 .comentarios-box { 
     background: rgba(12, 13, 18, 0.4); 
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); 
+    backdrop-filter: blur(8px); 
     border: 1px solid rgba(255, 255, 255, 0.03); 
     border-radius: 6px; 
     padding: 2.5rem; }
@@ -332,7 +282,6 @@ body {
     letter-spacing: 0.05rem; }
 .stars { color: var(--color-oro-soft); opacity: 0.8; font-size: 0.75rem; }
 .comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.5rem; line-height: 1.6; }
-
 .dynamic-input-group { display: flex; gap: 12px; margin-top: 1.5rem; }
 .form-control-comment { 
     background: rgba(5, 5, 7, 0.6); 
@@ -343,7 +292,11 @@ body {
     font-size: 0.85rem; 
     width: 100%; 
     transition: all 0.3s ease; }
-.form-control-comment:focus { outline: none; border-color: rgba(255,255,255,0.2); background: rgba(5, 5, 7, 0.9); }
+
+.form-control-comment:focus { 
+    outline: none; 
+    border-color: rgba(255,255,255,0.2); 
+    background: rgba(5, 5, 7, 0.9); }
 
 .btn-comment-submit { 
     background: transparent; 
@@ -355,17 +308,20 @@ body {
     text-transform: uppercase; 
     letter-spacing: 0.1rem; 
     transition: var(--transition-luxury); }
-.btn-comment-submit:hover { background: var(--white-neon-glow); color: var(--color-negro-fondo); border-color: var(--white-neon-glow); }
+.btn-comment-submit:hover { 
+    background: var(--white-neon-glow); 
+    color: var(--color-negro-fondo); 
+    border-color: var(--white-neon-glow); }
 
 .card-reserva-preview { 
     background: linear-gradient(135deg, rgba(12, 13, 18, 0.7) 0%, rgba(20, 25, 35, 0.2) 100%); 
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); 
+    backdrop-filter: blur(10px); 
     border: 1px solid rgba(255, 255, 255, 0.05); 
     border-radius: 8px; 
     padding: 3rem 2.5rem; 
     box-shadow: 0 20px 45px rgba(0,0,0,0.5); 
     text-align: center; }
-.reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; }
+.reserva-titulo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; }
 .reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 2rem; letter-spacing: 0.02rem; }
 
 .btn-reservar-corea { 
@@ -373,6 +329,7 @@ body {
     background: transparent; 
     padding: 1rem 2.5rem; 
     font-size: 0.75rem; 
+    color: var(--color-blanco-puro);
     text-transform: uppercase; 
     letter-spacing: 0.2rem; 
     text-decoration: none; 
@@ -385,12 +342,23 @@ body {
     color: var(--color-negro-fondo); 
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15); 
     transform: translateY(-3px); }
-
 /* ==========================================================================
-   ANIMACIONES SCROLL
+   ANIMACIONES DE ENTRADA SCROLL
    ========================================================================== */
 .scroll-animado { 
     opacity: 0; 
     transform: translateY(25px); 
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
 .scroll-animado.visible { opacity: 1; transform: translateY(0); }
+/* ==========================================================================
+   MEDIAS QUERIES / RESPONSIVE GRUPAL (HACE QUE LA PAG SEA RESPONSIVA/SE ADAPTE A PANTALLAS QUE MIDEN MENOS DE 991px
+   ========================================================================== */
+@media (max-width: 991px) {
+    .banner-garantia {
+        flex-direction: column;
+        text-align: center;
+    }
+    .titulo-pais {
+        font-size: 3.8rem;
+    }
+}
