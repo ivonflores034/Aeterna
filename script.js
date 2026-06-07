@@ -1,150 +1,88 @@
-// Función global que maneja la coreografía de la animación (Fade-Out -> Filtrar -> Fade-In)
+document.addEventListener('DOMContentLoaded', () => {
+    inicializarFiltros();
+    inicializarMotorVideos();
+});
+
+// ==========================================================================
+// FILTRADO COREOGRÁFICO DE DESTINOS
+// ==========================================================================
 function aplicarFiltroCoreografico(criterioValidacion) {
     const tarjetas = document.querySelectorAll('.tarjeta-pais');
 
-    // PASO 1: Desvanecer TODAS las tarjetas al mismo tiempo (Fade-out)
-    tarjetas.forEach(tarjeta => {
-        tarjeta.classList.add('fade-oculto');
-    });
+    tarjetas.forEach(t => t.classList.add('fade-oculto'));
 
-    // PASO 2: Esperar 400ms (lo que dura el desvanecimiento) para hacer el cambio en la sombra
     setTimeout(() => {
-        tarjetas.forEach(tarjeta => {
-            // Evaluamos si la tarjeta cumple el criterio de búsqueda o continente
-            if (criterioValidacion(tarjeta)) {
-                // Si pasa el filtro, le quitamos el display:none para que ocupe su lugar central
-                tarjeta.classList.remove('completamente-oculto');
-            } else {
-                // Si no pasa, la eliminamos por completo del flujo visual
-                tarjeta.classList.add('completamente-oculto');
-            }
+        tarjetas.forEach(t => {
+            t.classList.toggle('completamente-oculto', !criterioValidacion(t));
+            setTimeout(() => {
+                if (!t.classList.contains('completamente-oculto')) t.classList.remove('fade-oculto');
+            }, 50);
         });
-
-        // PASO 3: Un micro-segundo después (para dar tiempo a Bootstrap a centrar el row), las hacemos flotar hacia arriba
-        setTimeout(() => {
-            tarjetas.forEach(tarjeta => {
-                if (!tarjeta.classList.contains('completamente-oculto')) {
-                    tarjeta.classList.remove('fade-oculto'); // Hace el hermoso Fade-In flotante
-                }
-            });
-        }, 50);
-
-    }, 400); // Duración exacta de la salida en CSS
+    }, 400);
 }
 
-// 1. Filtrado por Botones de Continente
-function filtrarContinente(continente) {
-    aplicarFiltroCoreografico((tarjeta) => {
-        const perteneceAContinente = tarjeta.classList.contains(continente);
-        return continente === 'todos' || perteneceAContinente;
+function inicializarFiltros() {
+    const barraBuscar = document.getElementById('inputBuscarPais');
+    const botonesFiltro = document.querySelectorAll('.btn-filtro');
+
+    barraBuscar?.addEventListener('keyup', () => {
+        const texto = barraBuscar.value.toLowerCase();
+        aplicarFiltroCoreografico(t => {
+            const nombre = t.querySelector('.nombre-pais')?.textContent.toLowerCase();
+            return nombre ? nombre.includes(texto) : false;
+        });
     });
 
-    // Actualizar estados visuales de los botones estéticos
-    document.querySelectorAll('.btn-filtro').forEach(btn => btn.classList.remove('activo'));
-    const btnActivo = document.getElementById(`btn-${continente}`);
-    if (btnActivo) btnActivo.classList.add('activo');
-}
-
-// 2. Filtrado por la Barra de Búsqueda
-function buscarPais() {
-    const textoUsuario = document.getElementById('inputBuscarPais').value.toLowerCase();
-
-    aplicarFiltroCoreografico((tarjeta) => {
-        const elementoNombre = tarjeta.querySelector('.nombre-pais');
-        if (elementoNombre) {
-            const nombrePais = elementoNombre.textContent.toLowerCase();
-            return nombrePais.includes(textoUsuario);
-        }
-        return false;
+    botonesFiltro.forEach(btn => {
+        btn.addEventListener('click', () => {
+            botonesFiltro.forEach(b => b.classList.remove('activo'));
+            btn.classList.add('activo');
+            const cont = btn.dataset.continente;
+            aplicarFiltroCoreografico(t => cont === 'todos' || t.classList.contains(cont));
+        });
     });
 }
 
 // ==========================================================================
-// MOTOR DE VIDEOS CON DOBLE CONTENEDOR INTERCALADO
+// MOTOR DE VIDEOS INTERCALADOS
 // ==========================================================================
+const videosLocales = Array.from({ length: 45 }, (_, i) => `videos/pais${i + 1}.mp4`);
+let indiceVideo = -1;
 
-// 1. Generar automáticamente la lista con las rutas de tus 41 videos
-const listaVideosLocales = [];
-for (let i = 1; i <= 45; i++) {
-    listaVideosLocales.push(`videos/pais${i}.mp4`);
-}
-
-let indiceVideoLocal = 0;
-const tiempoIntercaladoLocal = 10000; // 10 segundos
-let usarVideoUno = true; // Controla cuál de los dos contenedores pasa al frente
-
-// Función para obtener un índice aleatorio diferente al actual
-function obtenerIndiceAleatorio(max, indiceActual) {
-    let nuevoIndice;
-    do {
-        nuevoIndice = Math.floor(Math.random() * max);
-    } while (nuevoIndice === indiceActual && max > 1);
-    return nuevoIndice;
-}
+const ganarIndiceAleatorio = (max, actual) => {
+    let nuevo;
+    do { nuevo = Math.floor(Math.random() * max); } while (nuevo === actual && max > 1);
+    return nuevo;
+};
 
 function inicializarMotorVideos() {
-    const video1 = document.getElementById('bg-video-1');
-    const video2 = document.getElementById('bg-video-2');
-    
-    if (!video1 || !video2 || listaVideosLocales.length === 0) return;
+    const v = [document.getElementById('bg-video-1'), document.getElementById('bg-video-2')];
+    if (!v[0] || !v[1] || !videosLocales.length) return;
 
-    // --- PASO CLAVE DE INICIO ---
-    // Seleccionar el primer video aleatorio y reproducirlo INMEDIATAMENTE en el contenedor 1
-    indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, -1);
-    video1.src = listaVideosLocales[indiceVideoLocal];
-    video1.load();
-    video1.play().catch(err => console.log("Autoplay inicial retenido:", err));
+    let activo = 0;
 
-    // Precargar el otro video aleatorio en el contenedor 2
-    let siguienteIndice = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
-    video2.src = listaVideosLocales[siguienteIndice];
-    video2.load();
+    const configurarVideo = (idx, srcIdx) => {
+        v[idx].src = videosLocales[srcIdx];
+        v[idx].load();
+    };
 
-    // Iniciar el ciclo de intercambio inteligente cada 10 segundos
+    indiceVideo = ganarIndiceAleatorio(videosLocales.length, indiceVideo);
+    configurarVideo(0, indiceVideo);
+    v[0].play().catch(e => console.log("Autoplay retenido:", e));
+
+    let siguienteIdx = ganarIndiceAleatorio(videosLocales.length, indiceVideo);
+    configurarVideo(1, siguienteIdx);
+
     setInterval(() => {
-        // Intercambio de roles (Crossfade en la sombra)
-        if (usarVideoUno) {
-            // El video 2 pasa al frente y se reproduce
-            video2.classList.remove('oculto');
-            video2.classList.add('activo');
-            video2.play().catch(e => console.log(e));
+        v[1 - activo].classList.replace('oculto', 'activo');
+        v[1 - activo].play().catch(e => console.log(e));
+        v[activo].classList.replace('activo', 'oculto');
 
-            // El video 1 se desvanece suavemente
-            video1.classList.remove('activo');
-            video1.classList.add('oculto');
+        setTimeout(() => {
+            indiceVideo = ganarIndiceAleatorio(videosLocales.length, indiceVideo);
+            configurarVideo(1 - activo, indiceVideo); 
+        }, 1500);
 
-            // Preparamos el siguiente video aleatorio dentro del video 1
-            setTimeout(() => {
-                indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
-                video1.src = listaVideosLocales[indiceVideoLocal];
-                video1.load();
-            }, 1500); // Esperamos a que termine de ocultarse para cambiarle la ruta sin que parpadee
-
-        } else {
-            // El video 1 pasa al frente y se reproduce
-            video1.classList.remove('oculto');
-            video1.classList.add('activo');
-            video1.play().catch(e => console.log(e));
-
-            // El video 2 se desvanece suavemente
-            video2.classList.remove('activo');
-            video2.classList.add('oculto');
-
-            // Preparamos en la sombra el siguiente video aleatorio dentro del video 2
-            setTimeout(() => {
-                indiceVideoLocal = obtenerIndiceAleatorio(listaVideosLocales.length, indiceVideoLocal);
-                video2.src = listaVideosLocales[indiceVideoLocal];
-                video2.load();
-            }, 1500);
-        }
-
-        // Invertimos la bandera lógica para el siguiente ciclo
-        usarVideoUno = !usarVideoUno;
-
-    }, tiempoIntercaladoLocal);
+        activo = 1 - activo;
+    }, 10000);
 }
-
-// Inicializar el motor cuando la estructura de la página esté lista
-document.addEventListener('DOMContentLoaded', () => {
-    inicializarMotorVideos();
-});

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     
     // ==========================================================================
-    // MOTOR DE VIDEOS ASÍNCRONO DE ENTRADA (PAIS1 Y PAIS42)
+    // MOTOR DE VIDEOS ASÍNCRONO SIMPLIFICADO
     // ==========================================================================
     const videosCorea = ["videos/pais1.mp4", "videos/pais42.mp4"];
     let indiceVideoActual = 0;
@@ -12,111 +12,81 @@ document.addEventListener("DOMContentLoaded", function () {
     function inicializarMotorVideosCorea() {
         if (!videoElemento1 || !videoElemento2) return;
 
-        // Cargar el primer video de entrada de forma inmediata
+        // Carga y reproducción inmediata del primer video
         videoElemento1.src = videosCorea[0];
-        videoElemento1.play().catch(err => console.log("Autoplay mitigado por el navegador"));
+        videoElemento1.play().catch(() => console.log("Autoplay mitigado por el navegador"));
 
-        // Preparar el segundo video en la sombra (precarga en segundo plano)
+        // Precarga del segundo video en segundo plano
         videoElemento2.src = videosCorea[1];
 
-        // Cambiar fluidamente de video cada 10 segundos
         setInterval(intercalarVideosCorea, 10000);
     }
 
     function intercalarVideosCorea() {
-        // Cambiar el índice de selección
         indiceVideoActual = (indiceVideoActual + 1) % videosCorea.length;
         const proximoIndice = (indiceVideoActual + 1) % videosCorea.length;
 
-        if (videoElemento1.classList.contains("activo")) {
-            // El 1 está visible, pasamos al 2 de forma fluida
-            videoElemento2.play().catch(err => console.log(err));
-            videoElemento2.classList.remove("oculto");
-            videoElemento2.classList.add("activo");
+        // Determinar dinámicamente cuál video está activo y cuál oculto
+        const activo = videoElemento1.classList.contains("activo") ? videoElemento1 : videoElemento2;
+        const oculto = activo === videoElemento1 ? videoElemento2 : videoElemento1;
 
-            videoElemento1.classList.remove("activo");
-            videoElemento1.classList.add("oculto");
+        // Intercambio fluido de clases y reproducción
+        oculto.play().catch(err => console.log(err));
+        oculto.classList.replace("oculto", "activo");
+        activo.classList.replace("activo", "oculto");
 
-            // Precargar el siguiente video en el contenedor que quedó oculto
-            setTimeout(() => {
-                videoElemento1.src = videosCorea[proximoIndice];
-                videoElemento1.load();
-            }, 1500); // Espera a que termine la transición de opacidad
-
-        } else {
-            // El 2 está visible, regresamos al 1 de forma fluida
-            videoElemento1.play().catch(err => console.log(err));
-            videoElemento1.classList.remove("oculto");
-            videoElemento1.classList.add("activo");
-
-            videoElemento2.classList.remove("activo");
-            videoElemento2.classList.add("oculto");
-
-            setTimeout(() => {
-                videoElemento2.src = videosCorea[proximoIndice];
-                videoElemento2.load();
-            }, 1500);
-        }
+        // Preparar y precargar de forma asíncrona la siguiente pista
+        setTimeout(() => {
+            activo.src = videosCorea[proximoIndice];
+            activo.load();
+        }, 1500); // Sincronizado con la transición CSS
     }
 
-    // Ejecutar el motor de videos de fondo
     inicializarMotorVideosCorea();
 
-
     // ==========================================================================
-    // 1. ANIMACIÓN DE ENTRADA AL HACER SCROLL (FADE IN + FLOAT UP)
+    // 1. INTERSECTION OBSERVER (ANIMACIÓN SCROLL)
     // ==========================================================================
     const elementosAnimados = document.querySelectorAll('.scroll-animado');
 
-    const opcionesObersver = {
-        root: null,
-        threshold: 0.12,
-        rootMargin: "0px"
-    };
-
-    const observer = new IntersectionObserver(function (entries, observer) {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
             }
         });
-    }, opcionesObersver);
+    }, { threshold: 0.12 });
 
-    elementosAnimados.forEach(elemento => {
-        observer.observe(elemento);
-    });
+    elementosAnimados.forEach(el => observer.observe(el));
 
     // ==========================================================================
-    // 2. GENERADOR DE PÉTALOS 
+    // 2. GENERADOR DE PÉTALOS EFICIENTE
     // ==========================================================================
     const contenedorFlores = document.getElementById('contenedor-flores');
-    const iconosFlores = ['🌺']; 
 
     function crearPetalo() {
         if (!contenedorFlores) return;
 
         const flor = document.createElement('div');
         flor.classList.add('flor-caida');
-        flor.innerText = iconosFlores[Math.floor(Math.random() * iconosFlores.length)];
+        flor.innerText = '🌺';
+
+        const escala = Math.random() * 0.7 + 0.5;
+        const duracion = Math.random() * 8 + 11;
 
         flor.style.left = Math.random() * 110 + 'vw';
-        const escala = Math.random() * 0.7 + 0.5;
         flor.style.transform = `scale(${escala})`;
-        
-        const duracion = Math.random() * 8 + 11;
         flor.style.animationDuration = duracion + 's';
         flor.style.animationDelay = Math.random() * 4 + 's';
 
         contenedorFlores.appendChild(flor);
 
-        setTimeout(() => {
-            flor.remove();
-        }, (duracion + 4) * 1000);
+        // Limpieza de memoria automática al terminar la caída
+        setTimeout(() => flor.remove(), (duracion + 4) * 1000);
     }
 
-    for (let i = 0; i < 15; i++) {
-        crearPetalo();
-    }
+    // Inicialización del ambiente
+    for (let i = 0; i < 15; i++) crearPetalo();
     setInterval(crearPetalo, 900);
 });

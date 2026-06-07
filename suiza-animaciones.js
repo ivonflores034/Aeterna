@@ -86,37 +86,4 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.observe(elemento);
     });
 
-
-    // ==========================================================================
-    // GENERADOR DE ATMÓSFERA: COPOS DE NIEVE FLOTANTES
-    // ==========================================================================
-    const contenedorNieve = document.getElementById('contenedor-nieve');
-    const iconosNieve = ['❅', '❆']; 
-
-    function crearCopoNieve() {
-        if (!contenedorNieve) return;
-
-        const copo = document.createElement('div');
-        copo.classList.add('copo-nieve-caida');
-        copo.innerText = iconosNieve[Math.floor(Math.random() * iconosNieve.length)];
-
-        copo.style.left = Math.random() * 110 + 'vw';
-        const escala = Math.random() * 0.7 + 0.5;
-        copo.style.transform = `scale(${escala})`;
-        
-        const duracion = Math.random() * 8 + 11;
-        copo.style.animationDuration = duracion + 's';
-        copo.style.animationDelay = Math.random() * 4 + 's';
-
-        contenedorNieve.appendChild(copo);
-
-        setTimeout(() => {
-            copo.remove();
-        }, (duracion + 4) * 1000);
-    }
-
-    for (let i = 0; i < 15; i++) {
-        crearCopoNieve();
-    }
-    setInterval(crearCopoNieve, 900);
 });

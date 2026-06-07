@@ -1,9 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     
     // ==========================================================================
-    // MOTOR DE VIDEOS ALPINOS ASÍNCRONO (PAIS5 Y PAIS45)
+    // MOTOR DE VIDEOS ALPINOS ASÍNCRONO
     // ==========================================================================
-    const videosFrancia = ["videos/pais8.mp4", "videos/pais9.mp4", "videos/pais10.mp4","videos/pais11.mp4", "videos/pais12.mp4", "videos/pais13.mp4", "videos/pais14.mp4"];
+    const videosFrancia = [
+        "videos/pais8.mp4", 
+        "videos/pais9.mp4", 
+        "videos/pais10.mp4",
+        "videos/pais11.mp4", 
+        "videos/pais12.mp4", 
+        "videos/pais13.mp4", 
+        "videos/pais14.mp4"
+    ];
     let indiceVideoActual = 0;
 
     const videoElemento1 = document.getElementById("bg-video-francia-1");
@@ -84,46 +92,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
     elementosAnimados.forEach(elemento => {
         observer.observe(elemento);
-    });
-
-    // ==========================================================================
-    // GENERADOR DE ATMÓSFERA: COPOS DE NIEVE FLOTANTES
-    // ==========================================================================
-    const contenedorNieve = document.getElementById('contenedor-nieve');
-    const iconosNieve = ['ღ']; 
-
-    function crearCopoNieve() {
-        if (!contenedorNieve) return;
-
-        const copo = document.createElement('div');
-        copo.classList.add('copo-nieve-caida');
-        copo.innerText = iconosNieve[Math.floor(Math.random() * iconosNieve.length)];
-
-        // Posicionamiento aleatorio horizontal a lo largo del viewport
-        copo.style.left = Math.random() * 110 + 'vw';
-        
-        // Escala aleatoria para simular profundidad de campo (3D)
-        const escala = Math.random() * 0.6 + 0.4;
-        copo.style.transform = `scale(${escala})`;
-        
-        // Tiempos aleatorios para romper patrones lineales de caída
-        const duracion = Math.random() * 8 + 12;
-        copo.style.animationDuration = duracion + 's';
-        copo.style.animationDelay = Math.random() * 3 + 's';
-
-        contenedorNieve.appendChild(copo);
-
-        // Remover del DOM una vez completada la trayectoria
-        setTimeout(() => {
-            copo.remove();
-        }, (duracion + 3) * 1000);
-    }
-
-    // Inicializar ráfaga base de entrada
-    for (let i = 0; i < 10; i++) {
-        crearCopoNieve();
-    }
-    
-    // Generación constante espaciada
-    setInterval(crearCopoNieve, 750);
-});
+    }) })

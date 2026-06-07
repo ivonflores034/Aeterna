@@ -19,10 +19,10 @@
                 <div class="logo">
                     <a href="#">AETERNA</a>
                 </div>
-                <ul class="nav-links d-flex align-items-center m-0 p-0">
+                <ul class="nav-links d-flex m-0 p-0">
                     <li><a href="#">Inicio</a></li>
                     <li><a href="#paises-section">Destinos</a></li>
-                    <li><a href="sorteos.html" class="nav-link-luxury" style="color: #164f7ed5; font-weight: bold;">✦ Sorteos</a></li>
+                    <li><a href="sorteos.html" class="nav-link-sorteos">✦ Sorteos</a></li>
                     <li><a href="registro.html">Registrarse</a></li>
                     <li><a href="reservar.html">Reservar</a></li>
                     <li><a href="#contacto-section">Contacto</a></li>
@@ -31,60 +31,53 @@
         </header>
         
         <main class="main-area">
-    <div class="video-background-container">
-        <video id="bg-video-1" class="video-fondo activo" autoplay muted playsinline></video>
-        <video id="bg-video-2" class="video-fondo oculto" muted playsinline></video>
-    </div>
-    <div class="video-overlay-luxury"></div>
+            <div class="video-background-container">
+                <video id="bg-video-1" class="video-fondo activo" autoplay muted playsinline></video>
+                <video id="bg-video-2" class="video-fondo oculto" muted playsinline></video>
+            </div>
+            <div class="video-overlay-luxury"></div>
 
-    <div class="container hero-wrapper-content mb-5">
-        <div class="row">
-            <div class="col-12 col-md-7 text-start content-left-align">
-                <div class="hero-brand-group">
+            <div class="container hero-wrapper-content">
+                <div class="content-left-align">
                     <h1 class="welcome-text animated-fade">Bienvenidos a Aeterna</h1>
                     <p class="subtitle-text animated-fade">Crónicas Inolvidables</p>
-                </div>
-                <div class="philosophy-divider animated-fade"></div>
-                <div class="hero-philosophy-group animated-fade">
-                    <h2 class="philosophy-title-hero">Nuestra Filosofía</h2>
-                    <p class="philosophy-p-hero">
-                        No diseñamos simples viajes; esculpimos legados de vida. Creemos firmemente en el lujo silencioso, aquel que no necesita gritar para ser apreciado, manifestado en itinerarios minuciosos a medida, accesos exclusivos vedados al público general y un profundo respeto por la identidad cultural de cada latitud.
+                    <div class="philosophy-divider animated-fade"></div>
+                    <h2 class="philosophy-title-hero animated-fade">Nuestra Filosofía</h2>
+                    <p class="philosophy-p-hero animated-fade">
+                        No diseñamos simples viajes; esculpimos legados de vida. Creemos firmemente en el lujo silencioso, aquel que no necesita gritar para ser apreciado, manifestado in itinerarios minuciosos a medida, accesos exclusivos vedados al público general y un profundo respeto por la identidad cultural de cada latitud.
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-</main>
+        </main>
 
-    <section class="sorteos-area" style="padding: 4rem 2rem; max-width: 1200px; margin: 0 auto; text-align: center; position: relative; z-index: 10;">
-        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.08); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-radius: 20px; padding: 3rem 2rem; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
-            
-            <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, transparent, #164f7ed5, transparent); width: 80%; height: 2px;"></div>
-            
-            <span style="text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.75rem; color: #164f7ed5; font-weight: 600; display: block; margin-bottom: 0.5rem;">Club de Beneficios Aeterna</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; letter-spacing: 0.1rem; margin-bottom: 1rem; color: #ffffff;">Sorteo Mensual de Cabinas</h2>
-            <p style="color: #a0a0a0; max-width: 650px; margin: 0 auto 2rem auto; font-size: 0.95rem; line-height: 1.6;">
-                Cada reserva acumula probabilidades automáticas para nuestro embarque de cortesía mensual. Es hora de premiar su lealtad con el mejor confort.
-            </p>
+        <section class="sorteos-area container text-center py-5 position-relative">
+            <div class="sorteos-card p-4 p-md-5 position-relative overflow-hidden">
+                <div class="sorteos-divider-top"></div>
+                
+                <span class="sorteos-tag text-uppercase d-block mb-2">Club de Beneficios Aeterna</span>
+                <h2 class="sorteos-title mb-3">Sorteo Mensual de Cabinas</h2>
+                <p class="sorteos-desc mx-auto mb-4">
+                    Cada reserva acumula probabilidades automáticas para nuestro embarque de cortesía mensual. Es hora de premiar su lealtad con el mejor confort.
+                </p>
 
-            <div style="display: inline-flex; align-items: center; gap: 3rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.5rem 3rem; border-radius: 12px; margin-bottom: 2rem; text-align: left;">
+                <div class="sorteos-info-group d-inline-flex flex-column flex-md-row align-items-md-center gap-3 gap-md-5 p-4 rounded mb-4 text-start">
+                    <div>
+                        <small class="sorteos-info-label d-block mb-1">DESTINO ESTE MES (JUNIO)</small>
+                        <span class="sorteos-info-value"><i class="fa-solid fa-plane-departure me-2"></i> Suiza — Alpes Alpinos</span>
+                    </div>
+                    <div class="sorteos-info-divider ps-md-5">
+                        <small class="sorteos-info-label d-block mb-1">CATEGORÍAS ACTIVAS</small>
+                        <span class="sorteos-info-subvalue">Premium Economy & Luxury Business</span>
+                    </div>
+                </div>
+
                 <div>
-                    <small style="color: #666; text-transform: uppercase; letter-spacing: 0.15rem; font-size: 0.65rem; display: block; margin-bottom: 0.3rem;">DESTINO ESTE MES (JUNIO)</small>
-                    <span style="font-size: 1.3rem; color: #ffffff; letter-spacing: 0.05rem;"><i class="fa-solid fa-plane-departure" style="color: #164f7ed5; margin-right: 0.5rem;"></i> Suiza — Alpes Alpinos</span>
-                </div>
-                <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 3rem;">
-                    <small style="color: #666; text-transform: uppercase; letter-spacing: 0.15rem; font-size: 0.65rem; display: block; margin-bottom: 0.3rem;">CATEGORÍAS ACTIVAS</small>
-                    <span style="font-size: 0.9rem; color: #e0e0e0; letter-spacing: 0.05rem;">Premium Economy & Luxury Business</span>
+                    <a href="sorteos.html" class="btn-sorteos-club text-uppercase">
+                        Ver Reglas del Club <i class="fa-solid fa-chevron-right ms-2 fs-7"></i>
+                    </a>
                 </div>
             </div>
-
-            <div>
-                <a href="sorteos.html" style="display: inline-block; padding: 1rem 2.5rem; border: 1px solid rgba(255, 255, 255, 0.637); color: #ffffff; text-decoration: none; text-transform: uppercase; letter-spacing: 0.2rem; font-size: 0.75rem; border-radius: 4px; transition: all 0.4s ease; background: transparent;" onmouseover="this.style.background='#164f7ed5'; this.style.boxShadow='0 0 15px rgba(212,175,55,0.2)'" onmouseout="this.style.background='transparent'; this.style.boxShadow='none'">
-                    Ver Reglas del Club <i class="fa-solid fa-chevron-right" style="margin-left: 0.5rem; font-size: 0.7rem;"></i>
-                </a>
-            </div>
-        </div>
-    </section>
+        </section>
 
         <section id="paises-section" class="paises-area container py-5"> 
             <div class="text-center mb-5">
@@ -95,139 +88,120 @@
             <div class="row justify-content-center mb-4">
                 <div class="col-md-6 col-sm-10">
                     <div class="input-group search-box-container">
-                        <span class="input-group-text bg-transparent border-end-0 text-muted">
-                            <i class="fas fa-search"></i>
-                        </span>
-                        <input type="text" id="inputBuscarPais" class="form-control border-start-0 bg-transparent custom-search-input" placeholder="Buscar país por nombre..." onkeyup="buscarPais()">
+                        <span class="input-group-text bg-transparent border-end-0 text-muted"><i class="fas fa-search"></i></span>
+                        <input type="text" id="inputBuscarPais" class="form-control border-start-0 bg-transparent custom-search-input" placeholder="Buscar país por nombre...">
                     </div>
                 </div>
             </div>
 
             <div class="text-center mb-4">
                 <div class="btn-group-luxury" role="group" aria-label="Filtro de Continentes">
-                    <button type="button" class="btn-filtro activo" id="btn-todos" onclick="filtrarContinente('todos')">Todos</button>
-                    <button type="button" class="btn-filtro" id="btn-europa" onclick="filtrarContinente('europa')">Europa</button>
-                    <button type="button" class="btn-filtro" id="btn-asia" onclick="filtrarContinente('asia')">Asia</button>
-                    <button type="button" class="btn-filtro" id="btn-america" onclick="filtrarContinente('america')">América</button>
+                    <button type="button" class="btn-filtro activo" data-continente="todos">Todos</button>
+                    <button type="button" class="btn-filtro" data-continente="europa">Europa</button>
+                    <button type="button" class="btn-filtro" data-continente="asia">Asia</button>
+                    <button type="button" class="btn-filtro" data-continente="america">América</button>
                 </div>
             </div>
 
             <div class="row g-4 justify-content-center" id="contenedor-paises">
-
+                <!-- Francia -->
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
-                    <a href="francia.html" class="tarjeta-enlace-luxury">
-                     <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/cc/96/9d/cc969d372f952c2053437c16ad80ee6a.jpg" alt="Francia">
-                        </div>
+                    <a href="francia.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/cc/96/9d/cc969d372f952c2053437c16ad80ee6a.jpg" alt="Francia"></div>
                         <div class="card-body-luxury">
-                             <h3 class="nombre-pais">Francia</h3>
-                             <p>Experiencias de alta costura y gastronomía en París.</p>
+                            <h3 class="nombre-pais">Francia</h3>
+                            <p>Experiencias de alta costura y gastronomía en París.</p>
                         </div>
-                     </div>
-                     </a>
+                    </a>
                 </div>
 
+                <!-- Italia -->
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/1200x/7b/db/18/7bdb18515af8751d3ba324c2105875e7.jpg" alt="Italia">
-                        </div>
+                    <a href="italia.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/1200x/7b/db/18/7bdb18515af8751d3ba324c2105875e7.jpg" alt="Italia"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Italia</h3>
                             <p>Villas privadas suspendidas sobre el mar mediterráneo y alta gastronomía italiana.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
+                <!-- Japón -->
                 <div class="col-12 col-md-4 tarjeta-pais asia" data-continente="asia">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/55/bf/6f/55bf6f8e23130c33e511cfdaa928790c.jpg" alt="Japón">
-                        </div>
+                    <a href="japon.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/55/bf/6f/55bf6f8e23130c33e511cfdaa928790c.jpg" alt="Japón"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Japón</h3>
                             <p>Santuarios ancestrales resguardados, ceremonias de té privadas y jardines zen místicos.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
+                <!-- Perú -->
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/1200x/0e/dd/ed/0eddedef6a67d2a4391e38eb9f444e10.jpg" alt="Perú">
-                        </div>
+                    <a href="peru.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/1200x/0e/dd/ed/0eddedef6a67d2a4391e38eb9f444e10.jpg" alt="Perú"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Perú</h3>
                             <p>Travesías de lujo hacia Machu Picchu a bordo del Hiram Bingham y retreats místicos.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
+                <!-- Suiza -->
                 <div class="col-12 col-md-4 tarjeta-pais europa" data-continente="europa">
-                    <a href="suiza.html" class="tarjeta-enlace-luxury">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/97/32/77/9732772e1af26a20824ace7613f2123b.jpg" alt="Suiza">
-                        </div>
+                    <a href="suiza.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/97/32/77/9732772e1af26a20824ace7613f2123b.jpg" alt="Suiza"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Suiza</h3>
                             <p>Lujo alpino, Relojería fina y paisajes majestuosos.</p>
                         </div>
-                    </div>
                     </a>
                 </div>
 
+                <!-- Corea -->
                 <div class="col-12 col-md-4 tarjeta-pais asia" data-continente="asia">
-                    <a href="corea.html" class="tarjeta-enlace-luxury">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/15/d8/75/15d87575174474d05147fbaf61144802.jpg" alt="Corea">
-                        </div>
+                    <a href="corea.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/15/d8/75/15d87575174474d05147fbaf61144802.jpg" alt="Corea"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Corea</h3>
                             <p>Vanguardia tecnológica mezclada con tradiciones ancestrales.</p>
                         </div>
-                    </div>
                     </a>
                 </div>
 
+                <!-- Estados Unidos -->
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/42/97/a0/4297a05ba769952608c35d2f7abcfbee.jpg" alt="Estados Unidos">
-                        </div>
+                    <a href="usa.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/42/97/a0/4297a05ba769952608c35d2f7abcfbee.jpg" alt="Estados Unidos"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Estados Unidos</h3>
                             <p>Experiencias exclusivas en Nueva York y villas privadas de Miami.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
+                <!-- Colombia -->
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/41/65/58/416558e6dfaa7a0b8998f95ed372731f.jpg" alt="Colombia">
-                        </div>
+                    <a href="colombia.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/41/65/58/416558e6dfaa7a0b8998f95ed372731f.jpg" alt="Colombia"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Colombia</h3>
                             <p>Café de alta especialidad y resorts de encanto en el Caribe.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
+                <!-- Bolivia -->
                 <div class="col-12 col-md-4 tarjeta-pais america" data-continente="america">
-                    <div class="card-luxury">
-                        <div class="card-img-container">
-                            <img src="https://i.pinimg.com/736x/98/8e/39/988e3962884c37090c67e6cf02dabfad.jpg" alt="Bolivia">
-                        </div>
+                    <a href="bolivia.html" class="card-luxury d-block text-decoration-none">
+                        <div class="card-img-container"><img src="https://i.pinimg.com/736x/98/8e/39/988e3962884c37090c67e6cf02dabfad.jpg" alt="Bolivia"></div>
                         <div class="card-body-luxury">
                             <h3 class="nombre-pais">Bolivia</h3>
                             <p>Aventuras privadas en el Salar de Uyuni y hoteles de sal premium.</p>
                         </div>
-                    </div>
+                    </a>
                 </div>
-
             </div>
         </section>
 
@@ -237,7 +211,7 @@
                     <div class="col-12 col-md-6 text-center text-md-start border-md-right">
                         <h4 class="footer-brand mb-4">AETERNA</h4>
                         <ul class="list-unstyled contact-info-list p-0 m-0">
-                            <li class="mb-3"><i class="fa-solid fa-location-dot me-3 icon-gold"></i> Av. dela Fuerza Naval 1626, MET hotel</li>
+                            <li class="mb-3"><i class="fa-solid fa-location-dot me-3 icon-gold"></i> Av. de la Fuerza Naval 1626, MET hotel</li>
                             <li class="mb-3"><i class="fa-solid fa-phone me-3 icon-gold"></i> +591 67309013</li>
                             <li class="mb-0"><i class="fa-solid fa-envelope me-3 icon-gold"></i> aeternaluxury@travel.com</li>
                         </ul>
@@ -254,11 +228,9 @@
                 </div>
             </div>
         </footer>
-
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
