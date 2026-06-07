@@ -53,8 +53,7 @@ body {
     backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    display: flex; align-items: center; justify-content: center;
-    }
+    display: flex; align-items: center; justify-content: center; }
 .bandera-img {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -70,7 +69,7 @@ body {
     letter-spacing: 0.15rem;
     padding: 5px 12px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 3px solid rgba(255, 255, 255, 0.05);
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
@@ -89,7 +88,7 @@ body {
 /* ==========================================================================
    EFECTO HERO - BOLIVIA
    ========================================================================== */
-.hero-francia {
+.hero-bolivia {
     position: relative;
     min-height: 70vh;
     padding: 4rem 2rem;
