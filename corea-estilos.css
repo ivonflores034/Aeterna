@@ -31,10 +31,8 @@ body {
     color: var(--color-gris-texto);
     padding: 0.6rem 1.4rem;
     font-size: 0.7rem;
-    text-transform: uppercase;
     letter-spacing: 0.2rem;
-    text-decoration: none;
-    transition: var(--transition-luxury); }
+    text-decoration: none; }
 .btn-regresar-fijo:hover {
     border-color: var(--white-neon-glow);
     color: var(--color-blanco-puro);
@@ -44,18 +42,14 @@ body {
     position: fixed;
     top: 25px; right: 25px;        
     z-index: 9999;     
-    text-decoration: none;
     animation: flotarBanderaInfinita 4s ease-in-out infinite; }
 .bandera-flotante-container {
-    position: relative;
     width: 65px; height: 65px;
     border-radius: 50%; padding: 2px;
-    background: rgba(7, 7, 9, 0.4);
     backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    display: flex; align-items: center; justify-content: center;
-    transition: var(--transition-luxury); }
+    display: flex; align-items: center; justify-content: right; }
 .bandera-img {
     width: 100%; height: 100%;
     object-fit: cover;
@@ -64,17 +58,16 @@ body {
 .tooltip-reserva {
     position: absolute;
     bottom: -38px;
-    background: rgba(7, 7, 9, 0.95);
+    background: rgba(5, 7, 12, 0.553);
     color: var(--color-oro-soft); 
     font-size: 0.65rem;
-    text-transform: uppercase;
     letter-spacing: 0.15rem;
     padding: 5px 12px;
-    border-radius: 3px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10 px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
     white-space: nowrap;
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-10px);
     transition: all 0.3s ease; }
 .bandera-flotante-link:hover .bandera-flotante-container {
     transform: scale(1.1); 
@@ -115,7 +108,7 @@ body {
 .hero-contenido { position: relative; z-index: 3; max-width: 850px; }
 
 .titulo-pais { 
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: 'Playfair Display', serif; 
     font-size: 5.5rem; 
     font-weight: 500; 
     letter-spacing: 0.4rem; 
@@ -149,8 +142,7 @@ body {
     border: 1px solid transparent; 
     border-radius: 8px; 
     position: relative; 
-    z-index: 1; 
-    transition: var(--transition-luxury); }
+    z-index: 1; }
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(14px);
@@ -179,7 +171,7 @@ body {
 .infografia-item:hover .img-luxury { transform: scale(1.03); filter: brightness(0.95) grayscale(0%); }
 
 .lugar-numero { 
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: 'Playfair Display', serif; 
     font-size: 2.8rem; 
     font-style: italic; 
     font-weight: 300; 
@@ -189,7 +181,7 @@ body {
 .text-celeste { color: var(--neon-celeste-suave); text-shadow: 0 0 10px rgba(173,216,230,0.2); }
 
 .lugar-titulo { 
-    font-family: 'Cormorant Garamond', serif; 
+    font-family: 'Playfair Display', serif; 
     font-size: 2.3rem; font-weight: 400; 
     margin-bottom: 1.2rem; 
     color: var(--white-neon-glow); }
@@ -218,7 +210,7 @@ body {
 /* ==========================================================================
    HOSPEDAJE Y CATEGORÍAS
    ========================================================================== */
-.seccion-hospedaje { padding: 5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.05); }
+.seccion-hospedaje { padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
 .encabezado-hospedaje { text-align: center; margin-bottom: 4rem; }
 .sub-hospedaje { text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.75rem; color: var(--color-oro-soft); }
 .titulo-hospedaje { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 400; margin: 0.5rem 0 1rem 0; }
@@ -228,7 +220,7 @@ body {
 .tarjeta-confort {
     background: rgba(255, 255, 255, 0.01); 
     border: 1px solid rgba(255, 255, 255, 0.05); 
-    padding: 2rem; border-radius: 8px; height: 100%; }
+    padding: 2.5rem 2rem; border-radius: 8px; height: 100%; }
 .tarjeta-confort:hover {
     background: var(--color-tarjeta-glass);
     border-color: rgba(255,255,255,0.08);
@@ -266,7 +258,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.03); 
     border-radius: 6px; 
     padding: 2.5rem; }
-.titulo-comentarios { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 0.05rem; }
+.titulo-comentarios { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 0.05rem; }
 .divider-short { width: 30px; height: 1px; background-color: rgba(255,255,255,0.2); }
 .comentario-item { border-bottom: 1px solid rgba(255,255,255,0.03); padding: 1.5rem 0; }
 .comentario-item:last-child { border-bottom: none; }
@@ -306,8 +298,7 @@ body {
     padding: 0 1.5rem; 
     font-size: 0.8rem; 
     text-transform: uppercase; 
-    letter-spacing: 0.1rem; 
-    transition: var(--transition-luxury); }
+    letter-spacing: 0.1rem; }
 .btn-comment-submit:hover { 
     background: var(--white-neon-glow); 
     color: var(--color-negro-fondo); 
@@ -334,8 +325,7 @@ body {
     letter-spacing: 0.2rem; 
     text-decoration: none; 
     border: 1px solid rgba(255,255,255,0.2); 
-    border-radius: 4px; 
-    transition: var(--transition-luxury); }
+    border-radius: 4px; }
 .btn-reservar-corea:hover { 
     background: var(--white-neon-glow); 
     border-color: var(--white-neon-glow); 

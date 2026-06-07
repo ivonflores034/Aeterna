@@ -1,0 +1,68 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // ==========================================================================
+    // MOTOR DE VIDEOS ASÍNCRONO - BOLIVIA (OPTIMIZADO)
+    // ==========================================================================
+    const videosBolivia = [
+        "videos/pais8.mp4", 
+        "videos/pais9.mp4", 
+        "videos/pais10.mp4",
+        "videos/pais11.mp4" // Tus 4 videos de Bolivia
+    ];
+    let indiceVideoActual = 0;
+
+    const v1 = document.getElementById("bg-video-francia-1");
+    const v2 = document.getElementById("bg-video-francia-2");
+
+    function inicializarMotorVideosBolivia() {
+        if (!v1 || !v2) return;
+
+        // Primer video al contenedor activo
+        v1.src = videosBolivia[0];
+        v1.play().catch(err => console.log("Autoplay mitigado"));
+
+        // Precargar el segundo video (índice 1)
+        v2.src = videosBolivia[1];
+
+        setInterval(intercalarVideosBolivia, 10000);
+    }
+
+    function intercalarVideosBolivia() {
+        // 1. Avanzar en el historial de forma cíclica (0, 1, 2, 3...)
+        indiceVideoActual = (indiceVideoActual + 1) % videosBolivia.length;
+        const proximoIndice = (indiceVideoActual + 1) % videosBolivia.length;
+
+        // 2. Detectar automáticamente cuál está activo y cuál oculto
+        const esV1Activo = v1.classList.contains("activo");
+        const activo = esV1Activo ? v1 : v2;
+        const oculto = esV1Activo ? v2 : v1;
+
+        // 3. Intercambio de roles fluido (Desaparece el activo, aparece el oculto)
+        oculto.play().catch(err => console.log(err));
+        oculto.classList.replace("oculto", "activo");
+        activo.classList.replace("activo", "oculto");
+
+        // 4. Preparar el Siguiente video en el contenedor que acaba de ocultarse
+        setTimeout(() => {
+            activo.src = videosBolivia[proximoIndice];
+            activo.load();
+        }, 1500); 
+    }
+
+    // Arrancar el motor
+    inicializarMotorVideosBolivia();
+
+    // ==========================================================================
+    // ANIMACIÓN DE REVELACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
+    // ==========================================================================
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                obs.unobserve(entry.target); // Detiene la observación tras animar
+            }
+        });
+    }, { threshold: 0.12 });
+
+    // Selecciona y activa el observador para todos los elementos en una sola línea
+    document.querySelectorAll('.scroll-animado').forEach(el => observer.observe(el));
+});

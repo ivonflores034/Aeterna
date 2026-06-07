@@ -1,253 +1,211 @@
 /* ==========================================================================
-   PALETA DE LUJO ALPINO Y VARIABLES ATMOSFÉRICAS
+   PALETA SUIZA
    ========================================================================== */
 :root {
-    --color-negro-fondo: #05070c;     /* Un negro azulado sutil, mucho más limpio y profundo */
-    --color-tarjeta-glass: rgba(13, 19, 33, 0.4); /* Cristal alpino súper traslúcido */
+    --color-negro-fondo: #05070c;      
+    --color-tarjeta-glass: rgba(13, 19, 33, 0.4); 
     --color-blanco-puro: #FFFFFF;
-    --color-gris-texto: #BCC5D4;      /* Gris plateado de alta legibilidad */
+    --color-gris-texto: #BCC5D4;       
     
-    /* Variaciones de la paleta solicitada */
+    /* Tonos Atmosféricos Suizos */
     --color-azul-marino-profundo: #0d1b33;
-    --color-azul-firma-glow: rgba(255, 225, 56, 0.795);  /* Celeste/azul glacial brillante */
+    --color-azul-firma-glow: rgba(22, 56, 224, 0.795);  
     --color-rojo-vino-suizo: #6b2631;
-    --color-rojo-vino-glow: rgba(190, 86, 86, 0.9);      /* Rojo vino vibrante pero lujoso */
-    --color-plateado-cristal: rgba(224, 231, 245, 0.95);  /* Blanco/Plateado neón para textos */
-    --color-oro-soft: #E3C598;        /* El mismo dorado champaña sutil para unificar la agencia */
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
+    --color-rojo-vino-glow: rgba(190, 86, 86, 0.9);      
+    --color-plateado-cristal: rgba(224, 231, 245, 0.95); 
+    --color-oro-soft: #E3C598; 
+    --transition-luxury: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+html { scroll-behavior: smooth; }
 body {
-    background-color: var(--color-negro-fondo);
+    background: linear-gradient(to bottom, #090e1a 0%, #05070c 50%, #020306 100%);
     color: var(--color-blanco-puro);
     font-family: 'Raleway', sans-serif;
-    overflow-x: hidden;
-    position: relative;
-    /* Gradiente lineal continuo y limpio que emula una noche despejada en los Alpes */
-    background: linear-gradient(to bottom, #090e1a 0%, #05070c 50%, #020306 100%);
-}
-
+    overflow-x: hidden; }
 /* ==========================================================================
-   BOTÓN FIJO REGRESAR (MÁS INTEGRADO Y MINIMALISTA)
+   ELEMENTOS INTERACTIVOS FIJOS Y FLOTANTES (REGRESAR Y BANDERA FLOTANTE)
    ========================================================================== */
 .btn-regresar-fijo {
+    /* Posiciona el botón de vovler al inicio sobre el video */
     position: fixed;
-    top: 25px;
-    left: 25px;
+    top: 25px; left: 25px;
+    /* hace algo muy importante jaja */
     z-index: 1000;
     background-color: rgba(5, 7, 12, 0.4);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Color del texto */
     color: var(--color-gris-texto);
-    padding: 0.6rem 1.4rem;
+    /* Espacio 'alto' y 'ancho' emtre el texto y el borde */
+    padding: 0.6rem 1.4rem; 
     font-size: 0.7rem;
-    text-transform: uppercase;
+    /* Espaciado entre las letras */
     letter-spacing: 0.2rem;
-    text-decoration: none;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+    /* Le quita el '_____' a la palabra del botón */
+    text-decoration: none; }
 .btn-regresar-fijo:hover {
     border-color: var(--color-plateado-cristal);
+    /* Cambia el color del texto al hacer hover */
     color: var(--color-blanco-puro);
     box-shadow: 0 0 20px rgba(224, 231, 245, 0.15);
-    transform: translateY(-2px);
-}
-
+    transform: translateY(-2px); }
+.bandera-flotante-link {
+    position: fixed;
+    top: 25px; right: 25px;       
+    z-index: 9999;     
+    animation: flotarBanderaInfinita 4s ease-in-out infinite; }
+.bandera-flotante-container {
+    width: 65px; height: 65px;
+    border-radius: 50%; padding: 2px;
+    backdrop-filter: blur(12px);
+    border: 2px solid rgba(255, 255, 255, 0.26);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Propiedades del 'Reservar Ahora' */
+    display: flex; align-items: center; justify-content: right; }
+.bandera-img {
+    width: 100%; height: 100%;
+    /* ajusta la imagen al contenedor */
+    object-fit: cover;
+    border-radius: 50%;
+    /* maneja la transición de la imagen al hacer hover sobre la bandera */
+    transition: transform 0.5s ease; }
+.tooltip-reserva {
+    position: absolute;
+    bottom: -38px;
+    background: rgba(5, 7, 12, 0.553);
+    /* Color de texto del 'Reservar Ahora' */
+    color: var(--color-oro-soft); 
+    font-size: 0.65rem;
+    letter-spacing: 0.15rem;
+    padding: 5px 12px;
+    border-radius: 10px;
+    border: 3px solid rgba(255, 255, 255, 0.05);
+    /*Ajusta el 'contenedor' al texto */
+    white-space: nowrap;
+    /* evita que se vea a menos que se haga hover sobre la bandera */
+    opacity: 0;
+    /* evita que se vea al pasar el mouse sobre él */
+    pointer-events: none;
+    /* distancia que recorre al quitar el hover ( '-' arriba, '+' abajo*/
+    transform: translateY(-10px);
+    /* tiempo y estilo de transición */
+    transition: all 0.3s ease; }
+.bandera-flotante-link:hover .bandera-flotante-container {
+    /* transición de tamaño al hacer hover */
+    transform: scale(1.1); 
+    /* cambia el color del bolde al hacer hover */
+    border-color: var(--color-rojo-vino-glow);
+    /* sombra alrededor de la bandera */
+    box-shadow: 0 0 25px rgba(174, 21, 44, 0.25), 0 0 25px rgba(252, 119, 2, 0.221), 0 15px 35px rgba(0, 0, 0, 0.7); }
+.bandera-flotante-link:hover .bandera-img { transform: rotate(10deg); }
+.bandera-flotante-link:hover .tooltip-reserva { opacity: 1; transform: translateY(0); }
+.bandera-flotante-link:active .bandera-flotante-container { transform: scale(0.95); }
+@keyframes flotarBanderaInfinita {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); } }
 /* ==========================================================================
-   HERO ADAPTATIVO CON VIDEO INMERSIVO
+   EFECTO HERO
    ========================================================================== */
 .hero-suiza {
     position: relative;
     min-height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     padding: 4rem 2rem;
     overflow: hidden;
-    background: #05070c; 
-}
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;}
 
-.video-background-container {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 1;
-}
+/*VIDEO*/
 
-/* Oscurecimiento degradado para acoplar el video mágicamente al flujo del diseño */
-.video-background-container::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(to bottom, 
-        rgba(5, 7, 12, 0.1) 0%, 
-        rgba(5, 7, 12, 0.5) 70%, 
-        var(--color-negro-fondo) 100%);
-    z-index: 2;
-}
-
+.video-background-container { position: absolute; inset: 0; z-index: 1; }
 .video-luxury-native {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 2s ease-in-out;
-    will-change: opacity;
-}
-
+    position: absolute; top: 50%; left: 50%;
+    width: 100%; height: 100%; object-fit: cover;
+    transform: translate(-50%, -50%); z-index: 1;
+    opacity: 0; transition: opacity 2s ease-in-out;
+    will-change: opacity; }
 .video-luxury-native.activo { opacity: 0.35; }
 .video-luxury-native.oculto { opacity: 0; }
 
-.hero-contenido {
-    position: relative;
-    z-index: 3;
-    max-width: 850px;
-}
+/*TEXTO SOBRE EL VIDEO*/
 
+.hero-contenido { position: relative; z-index: 3; max-width: 850px; }
 .titulo-pais {
     font-family: 'Cormorant Garamond', serif;
     font-size: 5.5rem;
     font-weight: 500;
     letter-spacing: 0.4rem;
-    color: var(--color-blanco-puro);
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    margin-bottom: 1rem;
-}
-
+    margin-bottom: 1rem; }
 .subtitulo-premium {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
     color: var(--color-oro-soft);
     display: block;
-    margin-bottom: 1rem;
-}
-
+    margin-bottom: 1rem; }
 .descripcion-hero {
     max-width: 600px;
     margin: 2rem auto;
     font-size: 1rem;
     color: var(--color-gris-texto);
     line-height: 1.9;
-    font-weight: 300;
-}
-
+    font-weight: 300; }
 .divider-glow {
     width: 80px;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(224, 231, 245, 0.3), transparent);
-    margin: 0 auto;
-}
-
+    margin: 0 auto; }
 /* ==========================================================================
-   TARJETAS INFOGRÁFICAS DE CRISTAL AÉREAS (MINIMALISMO FLUIDO)
+   SECCIÓN INFOGRAFÍA DE CRISTAL INTERACTIVA
    ========================================================================== */
 .infografia-item {
     margin-bottom: 4rem; 
     padding: 2.5rem;
-    background-color: transparent; /* Eliminamos el bloque rígido inicial */
-    border: 1px solid transparent; /* Ocultamos bordes por defecto */
+    border: 1px solid transparent;
     border-radius: 8px;
     position: relative;
-    z-index: 1;
-    
-    /* Animación ultrasuave */
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                background-color 0.6s ease, 
-                border-color 0.6s ease, 
-                box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: transform, box-shadow, background-color; 
-}
-
-/* REVELACIÓN HOVER: El cristal cobra vida e interactúa con el fondo */
+    z-index: 1; }
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.05);
-    
-    /* Pequeña elevación orgánica en 3D */
-    transform: translateY(-8px) scale(1.015); 
-    z-index: 5; 
-}
-
-/* Bordes de Destellos Glaciales y Vinotintos */
+    transform: translateY(-8px) scale(1.015); }
 .glow-rojo-vino { border-left: 1px solid rgba(139, 30, 47, 0.1); transition: all 0.5s ease; }
 .glow-azul-marino { border-left: 1px solid rgba(56, 175, 255, 0.1); transition: all 0.5s ease; }
-
 .infografia-item:hover.glow-rojo-vino { 
     border-left: 2px solid var(--color-rojo-vino-glow); 
-    box-shadow: -10px 0 30px rgba(186, 45, 66, 0.04), 0 20px 50px rgba(0,0,0,0.55);
-}
-
+    box-shadow: -10px 0 30px rgba(186, 45, 66, 0.04), 0 20px 50px rgba(0,0,0,0.55); }
 .infografia-item:hover.glow-azul-marino { 
     border-left: 2px solid var(--color-azul-firma-glow); 
-    box-shadow: -10px 0 30px rgba(56, 175, 255, 0.04), 0 20px 50px rgba(0,0,0,0.55);
-}
-
-/* Envolturas Cinemáticas de las Imágenes */
+    box-shadow: -10px 0 30px rgba(56, 175, 255, 0.04), 0 20px 50px rgba(0,0,0,0.55); }
 .img-wrapper-premium {
     overflow: hidden;
     border-radius: 6px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.65);
-    background-color: #020306;
-}
-
+    background-color: #020306; }
 .img-luxury {
     width: 100%;
     height: 340px;
     object-fit: cover;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-    filter: brightness(0.75) grayscale(10%);
-}
-
-.infografia-item:hover .img-luxury {
-    transform: scale(1.03);
-    filter: brightness(0.95) grayscale(0%);
-}
-
-/* Tipografías Finas de la Infografía */
+    filter: brightness(0.75) grayscale(10%); }
+.infografia-item:hover .img-luxury { transform: scale(1.03); filter: brightness(0.95) grayscale(0%); }
 .lugar-numero {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
     font-style: italic;
     font-weight: 300;
     display: block;
-    margin-bottom: 0.2rem;
-}
+    margin-bottom: 0.2rem; }
 .text-rojo-vino { color: var(--color-rojo-vino-glow); text-shadow: 0 0 10px rgba(186,45,66,0.2); }
 .text-azul-marino { color: var(--color-plateado-cristal); text-shadow: 0 0 10px rgba(224,231,245,0.2); }
-
 .lugar-titulo {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.3rem;
-    font-weight: 400;
+    font-size: 2.3rem; font-weight: 400;
     margin-bottom: 1.2rem;
-    letter-spacing: 0.02rem;
-    color: var(--color-plateado-cristal);
-    transition: color 0.4s ease;
-}
+    color: var(--color-plateado-cristal); }
 
-.infografia-item:hover .lugar-titulo {
-    color: var(--color-blanco-puro);
-}
-
-.lugar-texto {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--color-gris-texto);
-    font-weight: 300;
-}
-
-/* Enlaces Internos Estilizados */
+.infografia-item:hover .lugar-titulo { color: var(--color-blanco-puro); }
+.lugar-texto { font-size: 0.95rem; line-height: 1.8; color: var(--color-gris-texto); font-weight: 300; }
 .btn-ver-mas-luxury {
     display: inline-block;
     margin-top: 1.5rem;
@@ -258,33 +216,58 @@ body {
     text-decoration: none;
     opacity: 0.5;
     position: relative;
-    transition: all 0.3s ease;
-}
-
-.infografia-item:hover .btn-ver-mas-luxury {
-    opacity: 0.85;
-}
-
+    transition: all 0.3s ease; }
+.infografia-item:hover .btn-ver-mas-luxury { opacity: 0.85; }
 .btn-ver-mas-luxury::after {
     content: '';
     position: absolute;
     bottom: -4px; left: 0; width: 0; height: 1px;
     background-color: var(--color-oro-soft);
-    transition: width 0.3s ease;
-}
-
-.btn-ver-mas-luxury:hover {
-    opacity: 1 !important;
-    color: var(--color-blanco-puro);
-    transform: translateX(4px);
-}
-.btn-ver-mas-luxury:hover::after {
-    width: 100%;
-    background-color: var(--color-blanco-puro);
-}
-
+    transition: width 0.3s ease; }
+.btn-ver-mas-luxury:hover { opacity: 1 !important; color: var(--color-blanco-puro); transform: translateX(4px); }
+.btn-ver-mas-luxury:hover::after { width: 100%; background-color: var(--color-blanco-puro); }
 /* ==========================================================================
-   COMENTARIOS Y SECCIÓN INFERIOR (EQUILIBRADO)
+   HOSPEDAJE Y CATEGORÍAS
+   ========================================================================== */
+.seccion-hospedaje { padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.encabezado-hospedaje { text-align: center; margin-bottom: 4rem; }
+.sub-hospedaje { text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.75rem; color: var(--color-oro-soft); }
+.titulo-hospedaje { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 400; margin: 0.5rem 0 1rem 0; }
+.desc-hospedaje { color: var(--color-gris-texto); max-width: 600px; margin: 0 auto; font-size: 0.9rem; line-height: 1.6; }
+
+/* Estructura de Tarjetas */
+.tarjeta-confort {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem 2rem; border-radius: 8px; height: 100%; }
+.tarjeta-confort:hover {
+    background: var(--color-tarjeta-glass);
+    border-color: rgba(255,255,255,0.08);
+    transform: translateY(-5px);}
+
+/* Bordes Superiores y Tags Estilizados */
+.tarjeta-confort h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400; }
+.tarjeta-confort p { color: #888; font-size: 0.85rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
+.tarjeta-confort ul { color: #ccc; font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.8; font-weight: 300; }
+
+.tc-premium { border-top: 3px solid var(--color-azul-marino-profundo); } .c-premium { color: var(--color-azul-firma-glow); }
+.tc-luxury { border-top: 3px solid var(--color-oro-soft); } .c-luxury { color: var(--color-oro-soft); }
+.tc-imperial { border-top: 3px solid var(--color-rojo-vino-suizo); } .c-imperial { color: var(--color-rojo-vino-glow); }
+
+.tag-confort { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: bold; display: block; margin-bottom: 0.7rem; }
+
+/* Banner de Garantía */
+.banner-garantia {
+    margin-top: 3rem;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 6px;
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; gap: 1.5rem; }
+.icono-garantia { color: var(--color-oro-soft); font-size: 1.4rem; }
+.banner-garantia p { margin: 0; color: #888; font-size: 0.88rem; line-height: 1.5; font-weight: 300; }
+/* ==========================================================================
+   COMENTARIOS Y ACCIONES COMERCIALES
    ========================================================================== */
 .comentarios-box {
     background-color: rgba(9, 14, 26, 0.4);
@@ -292,22 +275,12 @@ body {
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 6px;
-    padding: 2.5rem;
-}
-
-.titulo-comentarios { 
-    font-family: 'Cormorant Garamond', serif; 
-    font-size: 1.8rem; 
-    font-weight: 400;
-    letter-spacing: 0.05rem;
-}
-
+    padding: 2.5rem; }
+.titulo-comentarios { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 0.05rem; }
 .divider-short { width: 30px; height: 1px; background-color: rgba(255,255,255,0.15); }
-
 .comentario-item { border-bottom: 1px solid rgba(255,255,255,0.03); padding: 1.5rem 0; }
 .comentario-item:last-child { border-bottom: none; }
 .comentario-item h5 { font-size: 0.9rem; font-weight: 400; color: var(--color-plateado-cristal); }
-
 .rol-luxury {
     font-size: 0.65rem;
     color: var(--color-oro-soft);
@@ -316,14 +289,10 @@ body {
     padding: 2px 8px;
     border-radius: 20px;
     text-transform: uppercase;
-    letter-spacing: 0.05rem;
-}
-
-.stars { color: var(--color-oro-soft); opacity: 0.8; font-size: 0.75rem; }
+    letter-spacing: 0.05rem; }
+.stars { color: #E3C598; opacity: 0.8; font-size: 0.75rem; }
 .comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.5rem; line-height: 1.6; }
-
 .dynamic-input-group { display: flex; gap: 12px; margin-top: 1.5rem; }
-
 .form-control-comment {
     background: rgba(4, 5, 10, 0.6);
     border: 1px solid rgba(255,255,255,0.06);
@@ -332,14 +301,11 @@ body {
     padding: 0.7rem 1rem;
     font-size: 0.85rem;
     width: 100%;
-    transition: all 0.3s ease;
-}
+    transition: all 0.3s ease; }
 .form-control-comment:focus { 
     outline: none; 
     border-color: rgba(255,255,255,0.2); 
-    background: rgba(4, 5, 10, 0.9);
-}
-
+    background: rgba(4, 5, 10, 0.9); }
 .btn-comment-submit {
     background: transparent;
     border: 1px solid rgba(255,255,255,0.1);
@@ -348,16 +314,11 @@ body {
     padding: 0 1.5rem;
     font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
+    letter-spacing: 0.1rem; }
 .btn-comment-submit:hover { 
     background: var(--color-plateado-cristal); 
     color: var(--color-negro-fondo); 
-    border-color: var(--color-plateado-cristal);
-}
-
-/* Tarjeta de Reserva Minimalista */
+    border-color: var(--color-plateado-cristal); }
 .card-reserva-preview {
     background: linear-gradient(135deg, rgba(9, 14, 26, 0.75) 0%, rgba(13, 27, 51, 0.25) 100%);
     backdrop-filter: blur(10px);
@@ -366,128 +327,43 @@ body {
     border-radius: 8px;
     padding: 3rem 2.5rem;
     box-shadow: 0 20px 45px rgba(0,0,0,0.55);
-    text-align: center;
-}
-
+    text-align: center; }
 .reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; }
 .reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 2rem; letter-spacing: 0.02rem; }
-
 .btn-reservar-suiza {
     display: inline-block;
     background: transparent;
-    color: var(--color-blanco-puro);
     padding: 1rem 2.5rem;
     font-size: 0.75rem;
+    color: var(--color-blanco-puro);
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
+    border-radius: 4px; }
 .btn-reservar-suiza:hover {
     background: var(--color-plateado-cristal);
     border-color: var(--color-plateado-cristal);
     color: var(--color-negro-fondo);
     box-shadow: 0 10px 30px rgba(224, 231, 245, 0.15);
-    transform: translateY(-3px);
-}
-
+    transform: translateY(-3px); }
 /* ==========================================================================
-   ANIMACIONES SCROLL
+   ANIMACIONES DE ENTRADA SCROLL
    ========================================================================== */
 .scroll-animado {
     opacity: 0;
     transform: translateY(25px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.scroll-animado.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);}
+.scroll-animado.visible { opacity: 1; transform: translateY(0); }
 /* ==========================================================================
-   BOTÓN FLOTANTE: BANDERA DE SUIZA (RESERVAS)
+   MEDIAS QUERIES / RESPONSIVE GRUPAL
    ========================================================================== */
-.bandera-flotante-link {
-    position: fixed;
-    top: 25px;         
-    right: 25px;       
-    z-index: 9999;     
-    text-decoration: none;
-    animation: flotarBanderaInfinita 4s ease-in-out infinite;
-}
-
-.bandera-flotante-container {
-    position: relative;
-    width: 65px; 
-    height: 65px;
-    border-radius: 50%; 
-    padding: 2px;
-    background: rgba(5, 7, 12, 0.4);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 2px solid rgba(255, 255, 255, 0.26);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-}
-
-.bandera-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%;
-    transition: transform 0.5s ease;
-}
-
-.tooltip-reserva {
-    position: absolute;
-    bottom: -38px;
-    background: rgba(5, 7, 12, 0.95);
-    color: var(--color-oro-soft); 
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15rem;
-    padding: 5px 12px;
-    border-radius: 3px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-4px);
-    transition: all 0.3s ease;
-}
-
-/* Interacciones de la insignia suiza */
-.bandera-flotante-link:hover .bandera-flotante-container {
-    transform: scale(1.1); 
-    border-color: var(--color-rojo-vino-glow);
-    /* Brillo de luz rojo vino combinado con destellos plateados */
-    box-shadow: 0 0 25px rgba(186, 45, 66, 0.25), 0 0 25px rgba(224, 231, 245, 0.1), 0 15px 35px rgba(0, 0, 0, 0.7);
-    background: rgba(9, 14, 26, 0.9);
-}
-
-.bandera-flotante-link:hover .bandera-img {
-    transform: rotate(10deg);
-}
-
-.bandera-flotante-link:hover .tooltip-reserva {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.bandera-flotante-link:active .bandera-flotante-container {
-    transform: scale(0.95);
-}
-
-@keyframes flotarBanderaInfinita {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
+@media (max-width: 991px) {
+    .banner-garantia {
+        flex-direction: column;
+        text-align: center;
+    }
+    .titulo-pais {
+        font-size: 3.8rem;
+    }
 }
