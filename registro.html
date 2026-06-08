@@ -6,15 +6,12 @@
     <title>Aeterna - Registrarse</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="registro-estilos.css">
 </head>
 <body>
 
     <div class="main-registro-container d-flex align-items-center justify-content-center min-vh-100">
-        
         <div class="card-registro animated-fade">
             
             <div class="text-center mb-4">
@@ -25,45 +22,44 @@
 
             <form id="formRegistro" novalidate>
                 
-                <div class="mb-3 input-group-luxury">
+                <div class="mb-3">
                     <label for="nombre" class="form-label-luxury">Nombre Completo</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-user icon-input"></i>
-                        <input type="text" class="form-control-luxury" id="nombre" required placeholder="Ej. Alexander Wright">
+                        <input type="text" class="form-control-luxury" id="nombre" placeholder="Ej. Alexander Wright">
                     </div>
-                    <div class="error-feedback" id="error-nombre">El nombre debe tener al menos 3 caracteres.</div>
+                    <div class="error-feedback" id="error-nombre">Mínimo 4 letras (Mayúscula inicial, sin caracteres especiales).</div>
                 </div>
 
-                <div class="mb-3 input-group-luxury">
+                <div class="mb-3">
                     <label for="email" class="form-label-luxury">Correo Electrónico</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-envelope icon-input"></i>
-                        <input type="email" class="form-control-luxury" id="email" required placeholder="alexander@luxury.com">
+                        <input type="email" class="form-control-luxury" id="email" placeholder="alexander@luxury.com">
                     </div>
                     <div class="error-feedback" id="error-email">Por favor, introduce un correo electrónico válido.</div>
                 </div>
 
-                <div class="mb-3 input-group-luxury">
+                <div class="mb-3">
                     <label for="password" class="form-label-luxury">Contraseña</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock icon-input"></i>
-                        <input type="password" class="form-control-luxury" id="password" required placeholder="••••••••">
+                        <input type="password" class="form-control-luxury" id="password" placeholder="••••••••">
                     </div>
                     <div class="error-feedback" id="error-password">Debe contener mínimo 8 caracteres, una mayúscula y un número.</div>
                 </div>
 
-                <div class="mb-4 input-group-luxury">
+                <div class="mb-4">
                     <label for="confirmPassword" class="form-label-luxury">Confirmar Contraseña</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-shield-halved icon-input"></i>
-                        <input type="password" class="form-control-luxury" id="confirmPassword" required placeholder="••••••••">
+                        <input type="password" class="form-control-luxury" id="confirmPassword" placeholder="••••••••">
                     </div>
                     <div class="error-feedback" id="error-confirmPassword">Las contraseñas no coinciden.</div>
                 </div>
 
                 <button type="submit" class="btn-registro-submit w-100 mb-3">
-                    <span class="btn-text">Unirse al Club</span>
-                    <i class="fa-solid fa-arrow-right-long ms-2"></i>
+                    Unirse al Club <i class="fa-solid fa-arrow-right-long ms-2"></i>
                 </button>
 
                 <div class="text-center footer-link-registro">

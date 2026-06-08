@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PALETA BOLIVIA
+   PALETA ESTADOS UNIDOS (AETERNA LUXURY COLLECTION)
    ========================================================================== */
 :root {
     --color-negro-fondo: #06080F;      
@@ -7,19 +7,26 @@
     --color-blanco-puro: #FFFFFF;
     --color-gris-texto: #B8C1D1;       
     
-    /* Tonos Atmosféricos - Inspiración Bolivia Premium */
-    --color-azul-bolivia: #0E2922;                  /* Verde Amazonas / Esmeralda Profundo */
-    --color-azul-glow: rgba(46, 204, 113, 0.85);     /* Glow Verde Amazonía */    
-    --color-rojo-bolivia: #7A1919;                  /* Rojo Tricolor Mineral */
-    --color-rojo-glow: rgba(231, 76, 60, 0.85);     /* Glow Rojo Andino */     
-    --color-plateado-cristal: rgba(230, 247, 242, 0.95); /* Blanco Salar de Uyuni */
-    --color-oro-soft: #D4AF37;                      /* Oro Andino Soft */ }
-html { scroll-behavior: smooth; }
+    /* Tonos Atmosféricos - Inspiración American Luxe */
+    --color-azul-usa: #122847;
+    --color-azul-glow: rgba(56, 149, 255, 0.85);    
+    --color-rojo-usa: #800909;
+    --color-rojo-glow: rgba(224, 49, 75, 0.85);     
+    --color-plateado-cristal: rgba(230, 236, 247, 0.95); 
+    --color-oro-soft: #E0C397; 
+}
+
+html { 
+    scroll-behavior: smooth; 
+}
+
 body {
-    background: linear-gradient(to bottom, #07100e 0%, #06080f 50%, #030407 100%);
+    background: linear-gradient(to bottom, #0a0e1a 0%, #06080f 50%, #030407 100%);
     color: var(--color-blanco-puro);
     font-family: 'Raleway', sans-serif;
-    overflow-x: hidden; }
+    overflow-x: hidden; 
+}
+
 /* ==========================================================================
    ELEMENTOS INTERACTIVOS FIJOS Y FLOTANTES (REGRESAR Y BANDERA FLOTANTE)
    ========================================================================== */
@@ -34,38 +41,45 @@ body {
     padding: 0.6rem 1.4rem;
     font-size: 0.7rem;
     letter-spacing: 0.2rem;
-    text-decoration: none;
-    }
+    text-decoration: none; 
+}
+
 .btn-regresar-fijo:hover {
     border-color: var(--color-plateado-cristal);
     color: var(--color-blanco-puro);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px); }
+    transform: translateY(-2px); 
+}
+
 .bandera-flotante-link {
     position: fixed;
-    top: 25px;         
-    right: 25px;       
+    top: 25px; right: 25px;       
     z-index: 9999;     
-    animation: flotarBanderaInfinita 4s ease-in-out infinite; }
+    animation: flotarBanderaInfinita 4s ease-in-out infinite; 
+}
+
 .bandera-flotante-container {
     width: 65px; height: 65px;
     border-radius: 50%; padding: 2px;
     backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    display: flex; align-items: center; justify-content: center; }
+    display: flex; align-items: center; justify-content: center; 
+}
+
 .bandera-img {
     width: 100%; height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: transform 0.5s ease; }
+    transition: transform 0.5s ease; 
+}
+
 .tooltip-reserva {
     position: absolute;
     bottom: -38px;
-    background: rgba(6, 8, 15, 0.95);
+    background: rgba(5, 7, 12, 0.553);
     color: var(--color-oro-soft); 
     font-size: 0.65rem;
-    text-transform: uppercase;
     letter-spacing: 0.15rem;
     padding: 5px 12px;
     border-radius: 10px;
@@ -74,44 +88,56 @@ body {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-10px);
-    transition: all 0.3s ease; }
+    transition: all 0.3s ease; 
+}
+
 .bandera-flotante-link:hover .bandera-flotante-container {
     transform: scale(1.1); 
     border-color: var(--color-plateado-cristal);
-    box-shadow: 0 0 25px rgba(46, 204, 113, 0.2), 0 0 25px rgba(231, 76, 60, 0.2), 0 15px 35px rgba(0, 0, 0, 0.7); }
+    box-shadow: 0 0 25px rgba(56, 149, 255, 0.2), 0 0 25px rgba(224, 49, 75, 0.2), 0 15px 35px rgba(0, 0, 0, 0.7); 
+}
+
 .bandera-flotante-link:hover .bandera-img { transform: rotate(10deg); }
 .bandera-flotante-link:hover .tooltip-reserva { opacity: 1; transform: translateY(0); }
 .bandera-flotante-link:active .bandera-flotante-container { transform: scale(0.95); }
+
 @keyframes flotarBanderaInfinita {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); } }
+    50% { transform: translateY(-8px); } 
+}
+
 /* ==========================================================================
-   EFECTO HERO - BOLIVIA
+   EFECTO HERO (USA SELECTION)
    ========================================================================== */
-.hero-bolivia {
+.hero-francia {
     position: relative;
     min-height: 70vh;
     padding: 4rem 2rem;
     overflow: hidden;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center; }
+    align-items: center; justify-content: center;
+    text-align: center; 
+}
 
-/*VIDEO*/
+/* BACKGROUND VIDEO */
+.video-background-container { 
+    position: absolute; inset: 0; z-index: 1; 
+}
 
-.video-background-container { position: absolute; inset: 0; z-index: 1; }
 .video-luxury-native {
     position: absolute; top: 50%; left: 50%;
     width: 100%; height: 100%; object-fit: cover;
     transform: translate(-50%, -50%); z-index: 1;
-    opacity: 0; transition: opacity 2s ease-in-out; }
+    opacity: 0; transition: opacity 2s ease-in-out; 
+}
+
 .video-luxury-native.activo { opacity: 0.35; }
 .video-luxury-native.oculto { opacity: 0; }
 
-/*TEXTO SOBRE EL VIDEO*/
-
-.hero-contenido { position: relative; z-index: 3; max-width: 850px; }
+/* TEXTO CAPA HERO */
+.hero-contenido { 
+    position: relative; z-index: 3; max-width: 850px; 
+}
 
 .titulo-pais {
     font-family: 'Cormorant Garamond', serif;
@@ -119,26 +145,34 @@ body {
     font-weight: 500;
     letter-spacing: 0.4rem;
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem; 
+}
+
 .subtitulo-premium {
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.4rem;
     color: var(--color-oro-soft);
     display: block;
-    margin-bottom: 1rem; }
+    margin-bottom: 1rem; 
+}
+
 .descripcion-hero {
     max-width: 600px;
     margin: 2rem auto;
     font-size: 1rem;
     color: var(--color-gris-texto);
     line-height: 1.9;
-    font-weight: 300; }
+    font-weight: 300; 
+}
+
 .divider-glow {
     width: 80px;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-    margin: 0 auto; }
+    margin: 0 auto; 
+}
+
 /* ==========================================================================
    SECCIÓN INFOGRAFÍA DE CRISTAL INTERACTIVA
    ========================================================================== */
@@ -148,34 +182,44 @@ body {
     border: 1px solid transparent;
     border-radius: 8px;
     position: relative;
-    z-index: 1;
-    }
+    z-index: 1; 
+}
+
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.06);
-    transform: translateY(-8px) scale(1.015); }
+    transform: translateY(-8px) scale(1.015); 
+}
 
 .glow-rojo-vino { border-left: 1px solid rgba(140, 36, 52, 0.1); }
 .glow-azul-marino { border-left: 1px solid rgba(34, 80, 150, 0.1); }
+
 .infografia-item:hover.glow-rojo-vino { 
     border-left: 2px solid var(--color-rojo-glow); 
-    box-shadow: -10px 0 30px rgba(231, 76, 60, 0.03), 0 20px 50px rgba(0,0,0,0.5); }
+    box-shadow: -10px 0 30px rgba(224, 49, 75, 0.03), 0 20px 50px rgba(0,0,0,0.5); 
+}
+
 .infografia-item:hover.glow-azul-marino { 
     border-left: 2px solid var(--color-azul-glow); 
-    box-shadow: -10px 0 30px rgba(46, 204, 113, 0.03), 0 20px 50px rgba(0,0,0,0.5); }
+    box-shadow: -10px 0 30px rgba(56, 149, 255, 0.03), 0 20px 50px rgba(0,0,0,0.5); 
+}
 
 .img-wrapper-premium {
     overflow: hidden;
     border-radius: 6px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-    background-color: #030407; }
+    background-color: #030407; 
+}
+
 .img-luxury {
     width: 100%;
     height: 340px;
     object-fit: cover;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
-    filter: brightness(0.75) grayscale(10%); }
+    filter: brightness(0.75) grayscale(10%); 
+}
+
 .infografia-item:hover .img-luxury { transform: scale(1.03); filter: brightness(0.95) grayscale(0%); }
 
 .lugar-numero {
@@ -184,15 +228,18 @@ body {
     font-style: italic;
     font-weight: 300;
     display: block;
-    margin-bottom: 0.2rem; }
-.text-rojo-vino { color: var(--color-rojo-glow); text-shadow: 0 0 10px rgba(231,76,60,0.15); }
+    margin-bottom: 0.2rem; 
+}
+
+.text-rojo-vino { color: var(--color-rojo-glow); text-shadow: 0 0 10px rgba(224,49,75,0.15); }
 .text-azul-marino { color: var(--color-plateado-cristal); text-shadow: 0 0 10px rgba(230,236,247,0.15); }
 
 .lugar-titulo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.3rem; font-weight: 400;
     margin-bottom: 1.2rem;
-    color: var(--color-plateado-cristal); }
+    color: var(--color-plateado-cristal); 
+}
 
 .infografia-item:hover .lugar-titulo { color: var(--color-blanco-puro); }
 .lugar-texto { font-size: 0.95rem; line-height: 1.8; color: var(--color-gris-texto); font-weight: 300; }
@@ -207,18 +254,24 @@ body {
     text-decoration: none;
     opacity: 0.5;
     position: relative;
-    transition: all 0.3s ease; }
+    transition: all 0.3s ease; 
+}
+
 .infografia-item:hover .btn-ver-mas-luxury { opacity: 0.85; }
+
 .btn-ver-mas-luxury::after {
     content: '';
     position: absolute;
     bottom: -4px; left: 0; width: 0; height: 1px;
     background-color: var(--color-oro-soft);
-    transition: width 0.3s ease; }
+    transition: width 0.3s ease; 
+}
+
 .btn-ver-mas-luxury:hover { opacity: 1 !important; color: var(--color-blanco-puro); transform: translateX(4px); }
 .btn-ver-mas-luxury:hover::after { width: 100%; background-color: var(--color-blanco-puro); }
+
 /* ==========================================================================
-   HOSPEDAJE Y CATEGORÍAS
+   HOSPEDAJE Y CATEGORÍAS DE CONFORT USA
    ========================================================================== */
 .seccion-hospedaje { padding: 5rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
 .encabezado-hospedaje { text-align: center; margin-bottom: 4rem; }
@@ -230,20 +283,23 @@ body {
 .tarjeta-confort {
     background: rgba(255, 255, 255, 0.01);
     border: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 2.5rem 2rem; border-radius: 8px; height: 100%; }
+    padding: 2.5rem 2rem; border-radius: 8px; height: 100%; 
+}
+
 .tarjeta-confort:hover {
     background: var(--color-tarjeta-glass);
     border-color: rgba(255,255,255,0.08);
-    transform: translateY(-5px);}
+    transform: translateY(-5px);
+}
 
-/* Bordes Superiores y Tags Estilizados */
 .tarjeta-confort h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400; }
 .tarjeta-confort p { color: #888; font-size: 0.85rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
 .tarjeta-confort ul { color: #ccc; font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.8; font-weight: 300; }
 
-.tc-premium { border-top: 3px solid var(--color-azul-bolivia); } .c-premium { color: var(--color-azul-glow); }
+/* Líneas de color superiores temáticas */
+.tc-premium { border-top: 3px solid var(--color-azul-usa); } .c-premium { color: var(--color-azul-glow); }
 .tc-luxury { border-top: 3px solid var(--color-oro-soft); } .c-luxury { color: var(--color-oro-soft); }
-.tc-imperial { border-top: 3px solid var(--color-rojo-bolivia); } .c-imperial { color: var(--color-rojo-glow); }
+.tc-imperial { border-top: 3px solid var(--color-rojo-usa); } .c-imperial { color: var(--color-rojo-glow); }
 
 .tag-confort { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: bold; display: block; margin-bottom: 0.7rem; }
 
@@ -254,11 +310,12 @@ body {
     border: 1px solid rgba(255,255,255,0.03);
     border-radius: 6px;
     padding: 1.5rem 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; }
+    display: flex; align-items: center; gap: 1.5rem; 
+}
+
 .icono-garantia { color: var(--color-oro-soft); font-size: 1.4rem; }
 .banner-garantia p { margin: 0; color: #888; font-size: 0.88rem; line-height: 1.5; font-weight: 300; }
+
 /* ==========================================================================
    COMENTARIOS Y ACCIONES COMERCIALES
    ========================================================================== */
@@ -268,12 +325,15 @@ body {
     -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 6px;
-    padding: 2.5rem; }
+    padding: 2.5rem; 
+}
+
 .titulo-comentarios { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 0.05rem; }
 .divider-short { width: 30px; height: 1px; background-color: rgba(255,255,255,0.2); }
 .comentario-item { border-bottom: 1px solid rgba(255,255,255,0.03); padding: 1.5rem 0; }
 .comentario-item:last-child { border-bottom: none; }
 .comentario-item h5 { font-size: 0.9rem; font-weight: 400; color: var(--color-plateado-cristal); }
+
 .rol-luxury {
     font-size: 0.65rem;
     color: var(--color-oro-soft);
@@ -282,10 +342,14 @@ body {
     padding: 2px 8px;
     border-radius: 20px;
     text-transform: uppercase;
-    letter-spacing: 0.05rem; }
-.stars { color: var(--color-oro-soft); opacity: 0.8; font-size: 0.75rem; }
+    letter-spacing: 0.05rem; 
+}
+
+.stars { color: #E0C397; opacity: 0.8; font-size: 0.75rem; }
 .comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.5rem; line-height: 1.6; }
+
 .dynamic-input-group { display: flex; gap: 12px; margin-top: 1.5rem; }
+
 .form-control-comment {
     background: rgba(4, 5, 8, 0.6);
     border: 1px solid rgba(255,255,255,0.06);
@@ -294,12 +358,14 @@ body {
     padding: 0.7rem 1rem;
     font-size: 0.85rem;
     width: 100%;
-    transition: all 0.3s ease; }
+    transition: all 0.3s ease; 
+}
 
 .form-control-comment:focus { 
     outline: none; 
     border-color: rgba(255,255,255,0.2); 
-    background: rgba(4, 5, 8, 0.9); }
+    background: rgba(4, 5, 8, 0.9); 
+}
 
 .btn-comment-submit {
     background: transparent;
@@ -307,15 +373,16 @@ body {
     border-radius: 4px;
     color: var(--color-gris-texto);
     padding: 0 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    }
+    letter-spacing: 0.1rem; 
+}
 
 .btn-comment-submit:hover { 
     background: var(--color-plateado-cristal); 
     color: var(--color-negro-fondo); 
-    border-color: var(--color-plateado-cristal); }
+    border-color: var(--color-plateado-cristal); 
+}
 
 .card-reserva-preview {
     background: linear-gradient(135deg, rgba(10, 14, 24, 0.7) 0%, rgba(15, 25, 45, 0.2) 100%);
@@ -325,11 +392,14 @@ body {
     border-radius: 8px;
     padding: 3rem 2.5rem;
     box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-    text-align: center; }
+    text-align: center; 
+}
+
 .reserva-titulo { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 400; }
 .reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 2rem; letter-spacing: 0.02rem; }
 
-.btn-reservar-bolivia {
+/* Adaptado para heredar los estilos comerciales del destino */
+.btn-reservar-francia {
     display: inline-block;
     background: transparent;
     padding: 1rem 2.5rem;
@@ -339,24 +409,30 @@ body {
     letter-spacing: 0.2rem;
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-    }
-.btn-reservar-bolivia:hover {
+    border-radius: 4px; 
+}
+
+.btn-reservar-francia:hover {
     background: var(--color-plateado-cristal);
     border-color: var(--color-plateado-cristal);
     color: var(--color-negro-fondo);
     box-shadow: 0 10px 30px rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px); }
+    transform: translateY(-3px); 
+}
+
 /* ==========================================================================
    ANIMACIONES DE ENTRADA SCROLL
    ========================================================================== */
 .scroll-animado {
     opacity: 0;
     transform: translateY(25px);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);}
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .scroll-animado.visible { opacity: 1; transform: translateY(0); }
+
 /* ==========================================================================
-   MEDIAS QUERIES / RESPONSIVE GRUPAL
+   MEDIA QUERIES RESPONSIVE
    ========================================================================== */
 @media (max-width: 991px) {
     .banner-garantia {

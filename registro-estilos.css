@@ -1,16 +1,10 @@
-/* ==========================================================================
-   PALETA DE COLORES "SOFT OLD MONEY" & VARIABLES GLOBALES
-   ========================================================================== */
 :root {
     --color-marfil-suave: #FBF9F6;
-    --color-crema: #F4EFEA;
     --color-oro-soft: #3f6092c7;
-    --color-oro-apagado: #b8b042;
     --color-gris-texto: #A0A0A0;
     --color-negro-profundo: #0A0A0B;
 }
 
-/* Configuraciones de fondo globales */
 body {
     margin: 0;
     padding: 0;
@@ -20,7 +14,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Fondo Dinámico */
 .main-registro-container {
     position: relative;
     background: radial-gradient(circle at 50% 30%, rgba(35, 45, 75, 0.4), transparent 60%),
@@ -48,7 +41,6 @@ body {
     to { background-position: 300px 600px; }
 }
 
-/* Animación de Entrada para la Tarjeta */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -64,9 +56,6 @@ body {
     animation: fadeInUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* ==========================================================================
-   ESTILO DE LA TARJETA DE REGISTRO
-   ========================================================================== */
 .card-registro {
     position: relative;
     z-index: 5;
@@ -79,7 +68,6 @@ body {
     margin: 1.5rem;
 }
 
-/* Detalles de Identidad Visual (Logotipo y Título) */
 .logo-registro a {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2rem;
@@ -91,7 +79,7 @@ body {
 }
 
 .logo-registro a:hover {
-    color: #3f6092c7;
+    color: var(--color-oro-soft);
 }
 
 .titulo-registro {
@@ -110,9 +98,6 @@ body {
     margin: 0.8rem auto 0 auto;
 }
 
-/* ==========================================================================
-   FORMULARIOS (INPUTS Y LABELS)
-   ========================================================================== */
 .form-label-luxury {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -124,14 +109,13 @@ body {
 
 .input-wrapper {
     position: relative;
-    display: flex;
-    align-items: center;
 }
 
 .icon-input {
     position: absolute;
+    top: 30%;
     left: 12px;
-    color: #3f6092c7;
+    color: var(--color-oro-soft);
     font-size: 0.85rem;
     pointer-events: none;
     transition: color 0.3s ease;
@@ -151,17 +135,14 @@ body {
 .form-control-luxury:focus {
     background-color: rgba(10, 10, 11, 0.9);
     border-color: var(--color-oro-soft);
-    outline: none;
     box-shadow: 0 0 8px rgba(93, 116, 219, 0.15);
 }
 
-/* Marcadores de posición*/
 .form-control-luxury::placeholder {
     color: rgba(255, 255, 255, 0.2);
     font-size: 0.8rem;
 }
 
-/* Clases de Error de Validación */
 .form-control-luxury.input-error {
     border-color: #d9534f !important;
     box-shadow: 0 0 8px rgba(217, 83, 79, 0.15) !important;
@@ -175,9 +156,6 @@ body {
     letter-spacing: 0.02rem;
 }
 
-/* ==========================================================================
-   BOTONES Y ENLACES (BOTÓN PREMIUM)
-   ========================================================================== */
 .btn-registro-submit {
     background: transparent;
     border: 1px solid #ffffff;
@@ -193,15 +171,14 @@ body {
 }
 
 .btn-registro-submit:hover {
-    background-color: #3f6092c7;
+    background-color: var(--color-oro-soft);
     color: var(--color-negro-profundo);
     font-weight: 500;
     box-shadow: 0 8px 20px rgba(105, 118, 236, 0.363);
 }
 
-/* Enlaces estilo old money */
 .link-gold {
-    color: #3f6092c7;
+    color: var(--color-oro-soft);
     text-decoration: none;
     font-size: 0.8rem;
     transition: color 0.3s ease;
@@ -219,7 +196,6 @@ body {
 }
 
 .back-home {
-    display: inline-block;
     color: var(--color-gris-texto);
     text-decoration: none;
     font-size: 0.75rem;
@@ -229,5 +205,5 @@ body {
 }
 
 .back-home:hover {
-    color: #3f6092c7;
+    color: var(--color-oro-soft);
 }

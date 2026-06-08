@@ -1,36 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
     // ==========================================================================
-    // MOTOR DE VIDEOS ASÍNCRONO - BOLIVIA (OPTIMIZADO)
+    // MOTOR DE VIDEOS ASÍNCRONO - COLOMBIA (OPTIMIZADO)
     // ==========================================================================
-    const videosBolivia = [
-        "videos/pais19.mp4", 
-        "videos/pais31.mp4", 
-        "videos/pais33.mp4",
-        "videos/pais27.mp4" // Tus 4 videos de Bolivia
+    const videosColombia = [
+        "videos/colombia1.mp4", 
+        "videos/colombia2.mp4", 
+        "videos/colombia3.mp4",
+        "videos/colombia4.mp4" // Tus 4 videos cinemáticos de Colombia
     ];
     let indiceVideoActual = 0;
 
-    // IDs actualizados para conectar con el nuevo HTML
-    const v1 = document.getElementById("bg-video-bolivia-1");
-    const v2 = document.getElementById("bg-video-bolivia-2");
+    // Vinculados a los IDs del Header Hero
+    const v1 = document.getElementById("bg-video-francia-1");
+    const v2 = document.getElementById("bg-video-francia-2");
 
-    function inicializarMotorVideosBolivia() {
+    function inicializarMotorVideosColombia() {
         if (!v1 || !v2) return;
 
         // Primer video al contenedor activo
-        v1.src = videosBolivia[0];
-        v1.play().catch(err => console.log("Autoplay mitigado"));
+        v1.src = videosColombia[0];
+        v1.play().catch(err => console.log("Autoplay mitigado por políticas del navegador"));
 
-        // Precargar el segundo video (índice 1)
-        v2.src = videosBolivia[1];
+        // Precargar el segundo video (índice 1) en segundo plano
+        v2.src = videosColombia[1];
 
-        setInterval(intercalarVideosBolivia, 10000);
+        setInterval(intercalarVideosColombia, 10000);
     }
 
-    function intercalarVideosBolivia() {
+    function intercalarVideosColombia() {
         // 1. Avanzar en el historial de forma cíclica (0, 1, 2, 3...)
-        indiceVideoActual = (indiceVideoActual + 1) % videosBolivia.length;
-        const proximoIndice = (indiceVideoActual + 1) % videosBolivia.length;
+        indiceVideoActual = (indiceVideoActual + 1) % videosColombia.length;
+        const proximoIndice = (indiceVideoActual + 1) % videosColombia.length;
 
         // 2. Detectar automáticamente cuál está activo y cuál oculto
         const esV1Activo = v1.classList.contains("activo");
@@ -40,17 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
         // 3. Intercambio de roles fluido (Desaparece el activo, aparece el oculto)
         oculto.play().catch(err => console.log(err));
         oculto.classList.replace("oculto", "activo");
-        activos.classList.replace("activo", "oculto");
+        activo.classList.replace("activo", "oculto");
 
         // 4. Preparar el Siguiente video en el contenedor que acaba de ocultarse
         setTimeout(() => {
-            activo.src = videosBolivia[proximoIndice];
+            activo.src = videosColombia[proximoIndice];
             activo.load();
         }, 1500); 
     }
 
-    // Arrancar el motor
-    inicializarMotorVideosBolivia();
+    // Arrancar el motor multimedia
+    inicializarMotorVideosColombia();
 
     // ==========================================================================
     // ANIMACIÓN DE REVELACIÓN AL HACER SCROLL (INTERSECTION OBSERVER)
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                obs.unobserve(entry.target); // Detiene la observación tras animar
+                obs.unobserve(entry.target); // Detiene la observación tras animar de forma eficiente
             }
         });
     }, { threshold: 0.12 });

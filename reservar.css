@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PALETA DE COLORES "SOFT OLD MONEY" & REUSADOS
+   PALETA DE COLORESSOFT OLD MONEY" y RESET BÁSICO
    ========================================================================== */
 :root {
     --color-marfil-suave: #FBF9F6;
@@ -19,6 +19,9 @@ body {
     overflow-x: hidden;
 }
 
+/* Forzar herencia de fuente */
+input, select, button, .logo-registro a, .titulo-registro { font-family: inherit; }
+
 /* Contenedor con fondo animado de estrellas */
 .main-registro-container {
     position: relative;
@@ -37,30 +40,30 @@ body {
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 1;
     background-image: 
-        radial-gradient(circle at 15% 25%, #ffffff 1px, transparent 1px),
-        radial-gradient(circle at 75% 45%, #ffffff 1px, transparent 1px),
-        radial-gradient(circle at 40% 75%, #ffffff 2px, transparent 2px),
-        radial-gradient(circle at 90% 15%, #ffffff 1px, transparent 1px);
+        radial-gradient(circle at 15% 25%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 75% 45%, #fff 1px, transparent 1px),
+        radial-gradient(circle at 40% 75%, #fff 2px, transparent 2px),
+        radial-gradient(circle at 90% 15%, #fff 1px, transparent 1px);
     background-size: 300px 300px;
     opacity: 0.25;
     animation: estrellasMovimiento 25s linear infinite;
 }
 
 @keyframes estrellasMovimiento {
-    from { background-position: 0 0; }
     to { background-position: 300px 600px; }
 }
 
-.animated-fade {
-    animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
+/* Animaciones */
+.animated-fade { animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.form-step.step-active { display: block; animation: fadeIn 0.5s ease forwards; }
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* Tarjeta Principal */
+/* Tarjeta Principal y Tipografía */
 .card-registro {
     position: relative;
     z-index: 5;
@@ -74,7 +77,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Identidades Tipográficas */
 .logo-registro a {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.2rem;
@@ -83,6 +85,7 @@ body {
     color: var(--color-marfil-suave);
     text-decoration: none;
 }
+
 .titulo-registro {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.2rem;
@@ -91,16 +94,15 @@ body {
     letter-spacing: 0.1rem;
     margin-top: 0.3rem;
 }
+
 .title-divider {
     width: 45px;
     height: 1px;
     background-color: var(--color-oro-soft);
-    margin: 0.6rem auto 0 auto;
+    margin: 0.6rem auto 1.5rem auto !important; /* Corregido y unificado en una sola declaración */
 }
 
-/* ==========================================================================
-   ESTRUCTURA DE FLUJO DE PASOS (BARRA SUPERIOR)
-   ========================================================================== */
+/* Barra Superior de Progreso */
 .progress-bar-luxury {
     display: flex;
     justify-content: space-between;
@@ -117,12 +119,7 @@ body {
     z-index: 1;
 }
 
-.step-indicator {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-}
-
+.step-indicator { position: relative; z-index: 2; text-align: center; }
 .step-indicator span {
     display: inline-flex;
     align-items: center;
@@ -158,21 +155,9 @@ body {
     font-weight: 500;
 }
 
-/* Controladores de visibilidad del Formulario */
-.form-step {
-    display: none;
-}
-.form-step.step-active {
-    display: block;
-    animation: fadeInStep 0.5s ease forwards;
-}
+.form-step { display: none; }
 
-@keyframes fadeInStep {
-    from { opacity: 0; transform: translateX(10px); }
-    to { opacity: 1; transform: translateX(0); }
-}
-
-/* Form inputs */
+/* Form inputs y Validación */
 .form-label-luxury {
     display: block;
     font-size: 0.7rem;
@@ -182,19 +167,8 @@ body {
     margin-bottom: 0.5rem;
 }
 
-.input-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-}
-
-.icon-input {
-    position: absolute;
-    left: 14px;
-    color: var(--color-oro-soft);
-    font-size: 0.85rem;
-    pointer-events: none;
-}
+.input-wrapper { position: relative; display: flex; align-items: center; }
+.icon-input { position: absolute; left: 14px; color: var(--color-oro-soft); font-size: 0.85rem; pointer-events: none; }
 
 .form-control-luxury {
     width: 100%;
@@ -203,7 +177,6 @@ body {
     padding: 0.75rem 0.8rem 0.75rem 2.6rem;
     color: var(--color-marfil-suave);
     font-size: 0.85rem;
-    font-family: 'Raleway', sans-serif;
     letter-spacing: 0.03rem;
     transition: all 0.3s ease;
     box-sizing: border-box;
@@ -216,24 +189,11 @@ body {
     box-shadow: 0 0 10px rgba(63, 96, 146, 0.2);
 }
 
-select.form-control-luxury {
-    cursor: pointer;
-    appearance: none; /* Quita estilo por defecto del navegador */
-}
+select.form-control-luxury { cursor: pointer; appearance: none; }
+.form-control-luxury.input-error { border-color: #d9534f !important; }
+.error-feedback { display: none; color: #e26f6b; font-size: 0.7rem; margin-top: 0.35rem; }
 
-/* Validación visual */
-.form-control-luxury.input-error {
-    border-color: #d9534f !important;
-}
-.error-feedback {
-    display: none;
-    color: #e26f6b;
-    font-size: 0.7rem;
-    margin-top: 0.35rem;
-    display: none;
-}
-
-/* Botones */
+/* Botones y enlaces */
 .btn-registro-submit {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.8);
@@ -243,7 +203,6 @@ select.form-control-luxury {
     text-transform: uppercase;
     letter-spacing: 0.15rem;
     cursor: pointer;
-    font-family: 'Raleway', sans-serif;
     transition: all 0.4s ease;
 }
 
@@ -262,13 +221,9 @@ select.form-control-luxury {
     letter-spacing: 0.08rem;
     transition: color 0.3s ease;
 }
-.back-home:hover {
-    color: var(--color-oro-soft);
-}
+.back-home:hover { color: var(--color-oro-soft); }
 
-/* ==========================================================================
-   TARJETA PREVIA / TICKET ESTILO GLASSMORPHISM (PASO 3)
-   ========================================================================== */
+/* Glassmorphism Ticket (Paso 3) */
 .ticket-preview-box {
     background: rgba(255, 255, 255, 0.02);
     border: 1px dashed rgba(255, 255, 255, 0.15);
@@ -277,43 +232,36 @@ select.form-control-luxury {
     position: relative;
 }
 
-.ticket-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    padding-bottom: 0.6rem;
-    margin-bottom: 1rem;
-}
+.ticket-header, .ticket-row { display: flex; justify-content: space-between; }
+.ticket-header { align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 0.6rem; margin-bottom: 1rem; }
+.ticket-header span { font-size: 0.65rem; letter-spacing: 0.2rem; color: var(--color-gris-texto); }
 
-.ticket-header span {
-    font-size: 0.65rem;
-    letter-spacing: 0.2rem;
-    color: var(--color-gris-texto);
-}
+.ticket-row { margin-bottom: 1rem; gap: 1rem; }
+.ticket-row:last-child { margin-bottom: 0; }
+.ticket-row small { display: block; font-size: 0.58rem; letter-spacing: 0.05rem; color: var(--color-gris-texto); text-transform: uppercase; margin-bottom: 0.15rem; }
+.ticket-row p { margin: 0; font-size: 0.8rem; color: var(--color-crema); }
 
-.ticket-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    gap: 1rem;
-}
+/* ==========================================================================
+   NUEVAS CLASES REUTILIZABLES COMPACTADAS
+   ========================================================================== */
+.text-center { text-align: center; }
+.w-100 { width: 100%; }
+.flex-container { display: flex; gap: 1rem; }
+.flex-1 { flex: 1; }
+.items-center { align-items: center; }
+.btn-back { background: none; border: none; cursor: pointer; }
 
-.ticket-row:last-child {
-    margin-bottom: 0;
-}
+/* Márgenes compactos */
+.mb-3 { margin-bottom: 1rem; }
+.mb-4, .mt-4 { margin-block: 1.5rem; } /* Agrupa margin-top y margin-bottom */
+.mb-5 { margin-bottom: 2rem; }
+.ml-1 { margin-left: 0.3rem; }
+.ml-2 { margin-left: 0.5rem; }
 
-.ticket-row small {
-    display: block;
-    font-size: 0.58rem;
-    letter-spacing: 0.05rem;
-    color: var(--color-gris-texto);
-    text-transform: uppercase;
-    margin-bottom: 0.15rem;
-}
+.footer-agency { text-align: center; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; }
 
-.ticket-row p {
-    margin: 0;
-    font-size: 0.8rem;
-    color: var(--color-crema);
-}
+/* Inyecciones específicas de Color (Fuerza visual) */
+.ticket-row p.text-gold, .form-step p.text-gold { color: var(--color-oro-soft) !important; }
+.ticket-row p.text-gold-dark { color: var(--color-oro-apagado) !important; }
+.ticket-row p.text-marfil-bold { color: var(--color-marfil-suave) !important; font-weight: 500; }
+.ticket-row p.text-blue { color: #6da2f0 !important; }

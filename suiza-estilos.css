@@ -2,6 +2,7 @@
    PALETA SUIZA
    ========================================================================== */
 :root {
+    /* Variables de color para reutilizar en todo el proyecto */
     --color-negro-fondo: #05070c;      
     --color-tarjeta-glass: rgba(13, 19, 33, 0.4); 
     --color-blanco-puro: #FFFFFF;
@@ -14,53 +15,72 @@
     --color-rojo-vino-glow: rgba(190, 86, 86, 0.9);      
     --color-plateado-cristal: rgba(224, 231, 245, 0.95); 
     --color-oro-soft: #E3C598; 
+    /* Transición suave y elegante de estilo 'luxury' usando curvas bezier */
     --transition-luxury: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-html { scroll-behavior: smooth; }
+
+html { 
+    /* Hace que el salto entre secciones al usar enlaces internos sea suave */
+    scroll-behavior: smooth; }
+
 body {
+    /* Fondo degradado oscuro hacia abajo */
     background: linear-gradient(to bottom, #090e1a 0%, #05070c 50%, #020306 100%);
     color: var(--color-blanco-puro);
     font-family: 'Raleway', sans-serif;
+    /* Oculta el scroll horizontal si algo se desborda */
     overflow-x: hidden; }
+
 /* ==========================================================================
    ELEMENTOS INTERACTIVOS FIJOS Y FLOTANTES (REGRESAR Y BANDERA FLOTANTE)
    ========================================================================== */
 .btn-regresar-fijo {
-    /* Posiciona el botón de vovler al inicio sobre el video */
+    /* Posiciona el botón de volver al inicio sobre el video */
     position: fixed;
     top: 25px; left: 25px;
-    /* hace algo muy importante jaja */
+    /* Capa superior para que nada tape al botón */
     z-index: 1000;
     background-color: rgba(5, 7, 12, 0.4);
+    /* Efecto de vidrio esmerilado de fondo */
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255, 255, 255, 0.08);
     /* Color del texto */
     color: var(--color-gris-texto);
-    /* Espacio 'alto' y 'ancho' emtre el texto y el borde */
+    /* Espacio 'alto' y 'ancho' entre el texto y el borde */
     padding: 0.6rem 1.4rem; 
     font-size: 0.7rem;
     /* Espaciado entre las letras */
     letter-spacing: 0.2rem;
     /* Le quita el '_____' a la palabra del botón */
     text-decoration: none; }
+
 .btn-regresar-fijo:hover {
     border-color: var(--color-plateado-cristal);
     /* Cambia el color del texto al hacer hover */
     color: var(--color-blanco-puro);
+    /* Brillo sutil alrededor del botón */
     box-shadow: 0 0 20px rgba(224, 231, 245, 0.15);
+    /* Lo desplaza ligeramente hacia arriba para dar efecto de flotado */
     transform: translateY(-2px); }
+
 .bandera-flotante-link {
+    /* Fija la bandera en la esquina superior derecha */
     position: fixed;
     top: 25px; right: 25px;       
     z-index: 9999;     
+    /* Aplica la animación continua de flotado */
     animation: flotarBanderaInfinita 4s ease-in-out infinite; }
+
 .bandera-flotante-container {
     width: 65px; height: 65px;
+    /* Convierte el contenedor en un círculo perfecto */
     border-radius: 50%; padding: 2px;
     backdrop-filter: blur(12px);
     border: 2px solid rgba(255, 255, 255, 0.26);
+    /* Sombra oscura y profunda para dar relieve */
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    /* Propiedades del 'Reservar Ahora' */
+    /* Centra la imagen de la bandera dentro del círculo */
     display: flex; align-items: center; justify-content: right; }
+
 .bandera-img {
     width: 100%; height: 100%;
     /* ajusta la imagen al contenedor */
@@ -68,7 +88,9 @@ body {
     border-radius: 50%;
     /* maneja la transición de la imagen al hacer hover sobre la bandera */
     transition: transform 0.5s ease; }
+
 .tooltip-reserva {
+    /* Posiciona la etiqueta flotante justo debajo de la bandera */
     position: absolute;
     bottom: -38px;
     background: rgba(5, 7, 12, 0.553);
@@ -79,64 +101,84 @@ body {
     padding: 5px 12px;
     border-radius: 10px;
     border: 3px solid rgba(255, 255, 255, 0.05);
-    /*Ajusta el 'contenedor' al texto */
+    /* Ajusta el 'contenedor' al texto sin romper líneas */
     white-space: nowrap;
     /* evita que se vea a menos que se haga hover sobre la bandera */
     opacity: 0;
-    /* evita que se vea al pasar el mouse sobre él */
+    /* evita que se vea al pasar el mouse sobre él (clics pasan de largo) */
     pointer-events: none;
-    /* distancia que recorre al quitar el hover ( '-' arriba, '+' abajo*/
+    /* distancia que recorre al quitar el hover ( '-' arriba, '+' abajo) */
     transform: translateY(-10px);
     /* tiempo y estilo de transición */
     transition: all 0.3s ease; }
+
 .bandera-flotante-link:hover .bandera-flotante-container {
-    /* transición de tamaño al hacer hover */
+    /* transición de tamaño al hacer hover (crece un 10%) */
     transform: scale(1.1); 
-    /* cambia el color del bolde al hacer hover */
+    /* cambia el color del borde al hacer hover */
     border-color: var(--color-rojo-vino-glow);
-    /* sombra alrededor de la bandera */
+    /* triple sombra: resplandor rojo, resplandor naranja y sombra base oscura */
     box-shadow: 0 0 25px rgba(174, 21, 44, 0.25), 0 0 25px rgba(252, 119, 2, 0.221), 0 15px 35px rgba(0, 0, 0, 0.7); }
+
+/* Rota ligeramente la bandera hacia la derecha al poner el mouse encima */
 .bandera-flotante-link:hover .bandera-img { transform: rotate(10deg); }
+/* Hace visible el cartel de reserva y lo posiciona en su lugar original */
 .bandera-flotante-link:hover .tooltip-reserva { opacity: 1; transform: translateY(0); }
+/* Efecto de 'hundido' o clic presionado reduciendo un poco su tamaño */
 .bandera-flotante-link:active .bandera-flotante-container { transform: scale(0.95); }
+
+/* Animación matemática de bucle para subir y bajar la bandera */
 @keyframes flotarBanderaInfinita {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-8px); } }
+
 /* ==========================================================================
-   EFECTO HERO
+   EFECTO HERO (SECCIÓN PRINCIPAL DE ENTRADA)
    ========================================================================== */
 .hero-suiza {
     position: relative;
+    /* Ocupa como mínimo el 70% de la altura de la pantalla */
     min-height: 70vh;
     padding: 4rem 2rem;
     overflow: hidden;
+    /* Alineación de flexbox para centrar todo el contenido del Hero */
     display: flex; align-items: center; justify-content: center;
     text-align: center;}
 
-/*VIDEO*/
+/* VIDEO DE FONDO */
 
+/* Contenedor que expande el video para rellenar todo el fondo del Hero */
 .video-background-container { position: absolute; inset: 0; z-index: 1; }
 .video-luxury-native {
     position: absolute; top: 50%; left: 50%;
+    /* Obliga al video a cubrir el espacio sin deformarse */
     width: 100%; height: 100%; object-fit: cover;
+    /* Truco clásico para centrar perfectamente un elemento absoluto */
     transform: translate(-50%, -50%); z-index: 1;
+    /* Invisible por defecto con transición suave de 2 segundos para cuando aparezca */
     opacity: 0; transition: opacity 2s ease-in-out;
+    /* Optimización de rendimiento para animaciones de opacidad */
     will-change: opacity; }
+/* Muestra el video de fondo de manera sutil para que no tape las letras */
 .video-luxury-native.activo { opacity: 0.35; }
+/* Oculta por completo el video */
 .video-luxury-native.oculto { opacity: 0; }
 
-/*TEXTO SOBRE EL VIDEO*/
+/* TEXTO SOBRE EL VIDEO */
 
+/* Capa superior para que los textos queden por encima del video de fondo */
 .hero-contenido { position: relative; z-index: 3; max-width: 850px; }
 .titulo-pais {
     font-family: 'Cormorant Garamond', serif;
     font-size: 5.5rem;
     font-weight: 500;
     letter-spacing: 0.4rem;
+    /* Sombra negra difuminada para que las letras se lean bien sobre el video */
     text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     margin-bottom: 1rem; }
 .subtitulo-premium {
     font-size: 0.75rem;
+    /* Fuerza a las letras a ir en mayúsculas */
     text-transform: uppercase;
     letter-spacing: 0.4rem;
     color: var(--color-oro-soft);
@@ -147,13 +189,16 @@ body {
     margin: 2rem auto;
     font-size: 1rem;
     color: var(--color-gris-texto);
+    /* Controla la separación entre líneas de texto */
     line-height: 1.9;
     font-weight: 300; }
 .divider-glow {
     width: 80px;
     height: 1px;
+    /* Línea divisoria elegante que se difumina hacia los extremos */
     background: linear-gradient(to right, transparent, rgba(224, 231, 245, 0.3), transparent);
     margin: 0 auto; }
+
 /* ==========================================================================
    SECCIÓN INFOGRAFÍA DE CRISTAL INTERACTIVA
    ========================================================================== */
@@ -164,31 +209,48 @@ body {
     border-radius: 8px;
     position: relative;
     z-index: 1; }
+
+/* Efecto de tarjeta de cristal iluminada al pasar el ratón */
 .infografia-item:hover {
     background-color: var(--color-tarjeta-glass);
     backdrop-filter: blur(14px);
     border-color: rgba(255, 255, 255, 0.05);
+    /* Sube un poco y se agranda un 1.5% sutilmente */
     transform: translateY(-8px) scale(1.015); }
+
+/* Bordes izquierdos tenues preparados para iluminarse con colores específicos */
 .glow-rojo-vino { border-left: 1px solid rgba(139, 30, 47, 0.1); transition: all 0.5s ease; }
 .glow-azul-marino { border-left: 1px solid rgba(56, 175, 255, 0.1); transition: all 0.5s ease; }
+
+/* Al hacer hover, activa el borde rojo vino brillante junto con una sombra premium */
 .infografia-item:hover.glow-rojo-vino { 
     border-left: 2px solid var(--color-rojo-vino-glow); 
     box-shadow: -10px 0 30px rgba(186, 45, 66, 0.04), 0 20px 50px rgba(0,0,0,0.55); }
+
+/* Al hacer hover, activa el borde azul brillante junto con su sombra correspondiente */
 .infografia-item:hover.glow-azul-marino { 
     border-left: 2px solid var(--color-azul-firma-glow); 
     box-shadow: -10px 0 30px rgba(56, 175, 255, 0.04), 0 20px 50px rgba(0,0,0,0.55); }
+
+/* Contenedor de imágenes que recorta los excesos al hacer zoom */
 .img-wrapper-premium {
     overflow: hidden;
     border-radius: 6px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.65);
     background-color: #020306; }
+
 .img-luxury {
     width: 100%;
     height: 340px;
     object-fit: cover;
+    /* Transición avanzada para el zoom de la foto */
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
+    /* Imagen oscurecida y ligeramente desaturada por defecto */
     filter: brightness(0.75) grayscale(10%); }
+
+/* Al pasar el mouse por la tarjeta, la foto cobra vida con color, luz y un zoom suave */
 .infografia-item:hover .img-luxury { transform: scale(1.03); filter: brightness(0.95) grayscale(0%); }
+
 .lugar-numero {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.8rem;
@@ -196,16 +258,21 @@ body {
     font-weight: 300;
     display: block;
     margin-bottom: 0.2rem; }
+
+/* Variaciones de color con resplandor de neón para los números decorativos */
 .text-rojo-vino { color: var(--color-rojo-vino-glow); text-shadow: 0 0 10px rgba(186,45,66,0.2); }
 .text-azul-marino { color: var(--color-plateado-cristal); text-shadow: 0 0 10px rgba(224,231,245,0.2); }
+
 .lugar-titulo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.3rem; font-weight: 400;
     margin-bottom: 1.2rem;
     color: var(--color-plateado-cristal); }
 
+/* Ilumina el título principal pasándolo a blanco puro al hacer hover */
 .infografia-item:hover .lugar-titulo { color: var(--color-blanco-puro); }
 .lugar-texto { font-size: 0.95rem; line-height: 1.8; color: var(--color-gris-texto); font-weight: 300; }
+
 .btn-ver-mas-luxury {
     display: inline-block;
     margin-top: 1.5rem;
@@ -214,18 +281,27 @@ body {
     letter-spacing: 0.2rem;
     color: var(--color-oro-soft);
     text-decoration: none;
+    /* Se muestra medio transparente al inicio */
     opacity: 0.5;
     position: relative;
     transition: all 0.3s ease; }
+
+/* Incrementa la visibilidad del botón al interactuar con la tarjeta entera */
 .infografia-item:hover .btn-ver-mas-luxury { opacity: 0.85; }
+
+/* Crea una línea decorativa invisible (ancho 0) debajo del botón */
 .btn-ver-mas-luxury::after {
     content: '';
     position: absolute;
     bottom: -4px; left: 0; width: 0; height: 1px;
     background-color: var(--color-oro-soft);
     transition: width 0.3s ease; }
+
+/* Ajustes de hover individuales del botón: cambia color y se mueve un poco a la derecha */
 .btn-ver-mas-luxury:hover { opacity: 1 !important; color: var(--color-blanco-puro); transform: translateX(4px); }
+/* Despliega la línea inferior al 100% del ancho */
 .btn-ver-mas-luxury:hover::after { width: 100%; background-color: var(--color-blanco-puro); }
+
 /* ==========================================================================
    HOSPEDAJE Y CATEGORÍAS
    ========================================================================== */
@@ -240,32 +316,39 @@ body {
     background: rgba(255, 255, 255, 0.01);
     border: 1px solid rgba(255, 255, 255, 0.05);
     padding: 2.5rem 2rem; border-radius: 8px; height: 100%; }
+
 .tarjeta-confort:hover {
+    /* Fondo de cristal y elevación en hover para las tarjetas de hospedaje */
     background: var(--color-tarjeta-glass);
     border-color: rgba(255,255,255,0.08);
     transform: translateY(-5px);}
 
-/* Bordes Superiores y Tags Estilizados */
+/* Estilos internos de tipografía dentro de las tarjetas */
 .tarjeta-confort h4 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 1rem; font-weight: 400; }
 .tarjeta-confort p { color: #888; font-size: 0.85rem; line-height: 1.6; font-weight: 300; margin-bottom: 1.5rem; }
 .tarjeta-confort ul { color: #ccc; font-size: 0.85rem; padding-left: 1.2rem; line-height: 1.8; font-weight: 300; }
 
+/* Asignación de colores de bordes superiores temáticos por categoría de habitación */
 .tc-premium { border-top: 3px solid var(--color-azul-marino-profundo); } .c-premium { color: var(--color-azul-firma-glow); }
 .tc-luxury { border-top: 3px solid var(--color-oro-soft); } .c-luxury { color: var(--color-oro-soft); }
 .tc-imperial { border-top: 3px solid var(--color-rojo-vino-suizo); } .c-imperial { color: var(--color-rojo-vino-glow); }
 
+/* Pequeñas etiquetas o badges sobre los títulos del hospedaje */
 .tag-confort { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15rem; font-weight: bold; display: block; margin-bottom: 0.7rem; }
 
-/* Banner de Garantía */
+/* Banner de Garantía de Confianza/Seguridad */
 .banner-garantia {
     margin-top: 3rem;
     background: rgba(255,255,255,0.01);
     border: 1px solid rgba(255,255,255,0.03);
     border-radius: 6px;
     padding: 1.5rem 2rem;
+    /* Flexbox para alinear el icono al lado del párrafo con espacio uniforme */
     display: flex; align-items: center; gap: 1.5rem; }
+
 .icono-garantia { color: var(--color-oro-soft); font-size: 1.4rem; }
 .banner-garantia p { margin: 0; color: #888; font-size: 0.88rem; line-height: 1.5; font-weight: 300; }
+
 /* ==========================================================================
    COMENTARIOS Y ACCIONES COMERCIALES
    ========================================================================== */
@@ -276,11 +359,16 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 6px;
     padding: 2.5rem; }
+
 .titulo-comentarios { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; letter-spacing: 0.05rem; }
+/* Separador minimalista muy corto para estética de lujo */
 .divider-short { width: 30px; height: 1px; background-color: rgba(255,255,255,0.15); }
 .comentario-item { border-bottom: 1px solid rgba(255,255,255,0.03); padding: 1.5rem 0; }
+/* Quita la línea de separación al último comentario de la lista */
 .comentario-item:last-child { border-bottom: none; }
 .comentario-item h5 { font-size: 0.9rem; font-weight: 400; color: var(--color-plateado-cristal); }
+
+/* Insignia dorada redonda que denota un usuario o cliente exclusivo/VIP */
 .rol-luxury {
     font-size: 0.65rem;
     color: var(--color-oro-soft);
@@ -290,8 +378,12 @@ body {
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.05rem; }
+
+/* Contenedor de estrellas de calificación doradas */
 .stars { color: #E3C598; opacity: 0.8; font-size: 0.75rem; }
 .comentario-item p { font-size: 0.85rem; color: var(--color-gris-texto); margin-top: 0.5rem; line-height: 1.6; }
+
+/* Caja contenedora para inputs y botones dispuestos en fila con separación */
 .dynamic-input-group { display: flex; gap: 12px; margin-top: 1.5rem; }
 .form-control-comment {
     background: rgba(4, 5, 10, 0.6);
@@ -302,10 +394,14 @@ body {
     font-size: 0.85rem;
     width: 100%;
     transition: all 0.3s ease; }
+
+/* Estilo cuando el usuario hace clic dentro del campo para escribir */
 .form-control-comment:focus { 
     outline: none; 
     border-color: rgba(255,255,255,0.2); 
     background: rgba(4, 5, 10, 0.9); }
+
+/* Botón transparente para enviar comentarios */
 .btn-comment-submit {
     background: transparent;
     border: 1px solid rgba(255,255,255,0.1);
@@ -315,11 +411,16 @@ body {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.1rem; }
+
+/* Invierte los colores en hover: fondo claro y letras oscuras */
 .btn-comment-submit:hover { 
     background: var(--color-plateado-cristal); 
     color: var(--color-negro-fondo); 
     border-color: var(--color-plateado-cristal); }
+
+/* Tarjeta final de llamada a la acción (Call to Action) para reservas */
 .card-reserva-preview {
+    /* Degradado en diagonal simulando un destello premium */
     background: linear-gradient(135deg, rgba(9, 14, 26, 0.75) 0%, rgba(13, 27, 51, 0.25) 100%);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -328,8 +429,11 @@ body {
     padding: 3rem 2.5rem;
     box-shadow: 0 20px 45px rgba(0,0,0,0.55);
     text-align: center; }
+
 .reserva-titulo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 400; }
 .reserva-sub { font-size: 0.85rem; color: var(--color-gris-texto); margin-bottom: 2rem; letter-spacing: 0.02rem; }
+
+/* Botón elegante de acción principal para confirmar la reserva suiza */
 .btn-reservar-suiza {
     display: inline-block;
     background: transparent;
@@ -341,28 +445,38 @@ body {
     text-decoration: none;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 4px; }
+
+/* Efecto hover del botón de reserva principal con elevación y sombra luminosa */
 .btn-reservar-suiza:hover {
     background: var(--color-plateado-cristal);
     border-color: var(--color-plateado-cristal);
     color: var(--color-negro-fondo);
     box-shadow: 0 10px 30px rgba(224, 231, 245, 0.15);
     transform: translateY(-3px); }
+
 /* ==========================================================================
-   ANIMACIONES DE ENTRADA SCROLL
+   ANIMACIONES DE ENTRADA SCROLL (REVEAL ANIMATIONS)
    ========================================================================== */
 .scroll-animado {
+    /* Oculto y bajado 25px por defecto para esperar la acción de JavaScript */
     opacity: 0;
     transform: translateY(25px);
+    /* Transiciones fluidas usando curvas bezier personalizadas */
     transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);}
+
+/* Clase que inyectará JS cuando el elemento entre en el campo visual del usuario */
 .scroll-animado.visible { opacity: 1; transform: translateY(0); }
+
 /* ==========================================================================
    MEDIAS QUERIES / RESPONSIVE GRUPAL
    ========================================================================== */
 @media (max-width: 991px) {
+    /* Cambia la disposición a vertical en pantallas medianas/pequeñas */
     .banner-garantia {
         flex-direction: column;
         text-align: center;
     }
+    /* Reduce el tamaño del título del país para evitar desbordes en móviles */
     .titulo-pais {
         font-size: 3.8rem;
     }
